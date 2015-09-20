@@ -11,7 +11,7 @@
 }
 
 #info-box {
-        background-color: white;
+        background-color: white
         border: 1px solid black;
         bottom: 30px;
         height: 40px;
@@ -22,22 +22,12 @@
       }
 
 #info{
-    float:right;
-    margin-right: 200px;
+    
     height:600px;
-    width: 250px; 
     text-align: center;
 }
 
-#legend {
-    background: white;
-    left-padding: 10px;
-}
 
-#fibre_legend {
-    height: 360px;
-    width: 320px;
-}
 
 
 

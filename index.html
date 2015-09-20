@@ -11,33 +11,32 @@
     <h1>Map of ICMP Traceroute Measurements</h1>
     <p>Please select a destination IP address to see traceroute measurements from probes.</p>
     
-    <div id="map">
-      <script type="text/javascript" src="map.js"></script>
-      <script async defer
-      src="https://maps.googleapis.com/maps/api/js?&callback=initMap">
+    <div class="row">
+      <div id="map" class="col-md-8">
+        <script type="text/javascript" src="map.js"></script>
+        <script async defer
+        src="https://maps.googleapis.com/maps/api/js?&callback=initMap">
+        </script>
+      </div>
 
-      </script>
 
-      
+      <div id ="info" class="col-md-4">
+        <h3>Hop Information</h3>
+        <table class = "table table-striped">
+          <tr>
+            <th> Country</th>
+            <th> Hop Number</th>
+            <th> RTT</th>
+            <tr>
+      </div>
     </div>
 
-
-    <div id ="info" class="container">
-      <h3>Hop Information</h3>
-      <table class = "table table-striped">
-        <tr>
-          <th> Country</th>
-          <th> Hop Number</th>
-          <th> RTT</th>
-          <tr>
-     </div>
-
-     <div class="checkbox">
-    <label>
-      <input type="checkbox" value="fibre" id="fibre" onclick="changeLayer(this.value);"> Terrestrial Fibre
-    </label>
-  </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" value="fibre" id="fibre" onclick="changeLayer(this.value);" checked> Terrestrial Fibre
+            </label>
+          </div>
 
 
-  </body>
-  </html>
+        </body>
+        </html>

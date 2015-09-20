@@ -8,6 +8,7 @@ function initMap() {
 });
 
   add_fibre_layer(map);
+  document.getElementById("fibre").checked == true;
 
 
 }
