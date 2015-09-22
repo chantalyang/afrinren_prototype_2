@@ -16,10 +16,30 @@ function initMap() {
 
 function read_json(){
 	$.getJSON("/data/test_measurement_1.json", function(json1) {
-	    $.each(json1, function(key, data) {
-	    	console.log(key, data);
+	    $.each(json1, function(key, data) { //Loop through all the json fields
+	    	console.log(data.prb_id);
+	    	 $.each(data.result, function(key, data){ //Loop through the results field 
+	    	 	try{
+		    	 	var lat = data.result.coordinates[0];
+		    	 	var lng = data.result.coordinates[1];
+	    	 		var latLng = new google.maps.LatLng(lat, lng); 
+	    	 		var hop_num = data.hop.toString();
+
+	    	 	//console.log(data.result.coordinates[0])
+	    	 	//console.log(data.result.coordinates[1])
+			    	var marker = new google.maps.Marker({
+		            position: latLng,
+		            map: map,
+		            label: hop_num
+		        })
+			    }
+			  catch(err){
+
+			  }
+
 	    	})
     });
+});
 }
 
 function add_measurement_layer(){
