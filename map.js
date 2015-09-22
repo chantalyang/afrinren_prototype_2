@@ -9,15 +9,21 @@ function initMap() {
 
 	add_fibre_layer(map);
 	add_probe_layer(map);
+	add_measurement_layer();
+	
 
-	// var myTitle = document.createElement('h1');
-	// myTitle.style.color = 'white';
-	// myTitle.innerHTML = 'Hello World';
-	// var myTextDiv = document.createElement('div');
-	// myTextDiv.appendChild(myTitle);
+}
 
-	// map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(myTextDiv);
+function read_json(){
+	$.getJSON("/data/test_measurement_1.json", function(json1) {
+	    $.each(json1, function(key, data) {
+	    	console.log(key, data);
+	    	})
+    });
+}
 
+function add_measurement_layer(){
+	read_json();
 }
 
 function add_fibre_layer(gmap){
