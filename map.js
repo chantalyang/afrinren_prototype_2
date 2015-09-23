@@ -1,5 +1,6 @@
 var map;
 var all_hops = [];
+var hop_path = [];
 
 function initMap() {
 	map = new google.maps.Map(document.getElementById('map'), {
@@ -12,57 +13,65 @@ function initMap() {
 	add_probe_layer(map);
 	
 
+
 }
 
 
 function add_measurement_layer(){
-$.getJSON("/data/test_measurement_1.json", function(json1) {
+	$.getJSON("/data/test_measurement_1.json", function(json1) {
 	    $.each(json1, function(key, data) { //Loop through all the json fields
 	    	console.log(data.prb_id);
 	    	if (data.prb_id == 13114){
 	    		$.each(data.result, function(key, data){ //Loop through the results field 
-	    	 	try{
+	    			try{
 
-		    	 	var lat = data.result.coordinates[0];
-		    	 	var lng = data.result.coordinates[1];
-	    	 		var latLng = new google.maps.LatLng(lat, lng); 
-	    	 		var hop_num = data.hop.toString();
+	    				var lati = data.result.coordinates[0];
+	    				var lngi = data.result.coordinates[1];
+	    				var latLng = new google.maps.LatLng(lati, lngi); 
+	    				var hop_num = data.hop.toString();
 
-	    	 		console.log("Hop:" + hop_num + " coords: " + data.result.coordinates);
 
-	    	 		var hop_sym = {
-					path: google.maps.SymbolPath.CIRCLE,
-					scale:6,
-					fillColor: 'white',
-					fillOpacity: 1,
-					strokeColor: "blue",
-					strokeWeight:2
-					}
+	    				
 
-					var icon_string = "numbers/number_"+hop_num+".png"
+	    				console.log("Hop:" + hop_num + " coords: " + data.result.coordinates);
 
-				     var marker = new google.maps.Marker({
-			            position: latLng,
-			            map: map,
+	    				var hop_sym = {
+	    					path: google.maps.SymbolPath.CIRCLE,
+	    					scale:6,
+	    					fillColor: 'white',
+	    					fillOpacity: 1,
+	    					strokeColor: "blue",
+	    					strokeWeight:2
+	    				}
+
+	    				var icon_string = "numbers3/number_"+hop_num+".png"
+
+	    				var marker = new google.maps.Marker({
+	    					position: latLng,
+	    					map: map,
 			            //label: hop_num,
-						icon: icon_string,
+			            icon: icon_string,
+			            clickable: true
 			        })
-				     all_hops.push(marker);
-			    }
-			  catch(err){
 
-			  }
+	    				all_hops.push(marker);
+	    				
 
-	    	})
-	    	}
+	    			}
+	    			catch(err){
 
-    });
+	    			}
+
+	    		})
+}
+
+});
 });}
 
 function add_fibre_layer(gmap){
 	fibre_data_layer = new google.maps.Data();
 	fibre_data_layer.loadGeoJson("/data/fibre.json");
-	fibre_data_layer.setStyle({strokeWeight: 1, strokeColor:"purple", strokeOpacity:0.5});
+	fibre_data_layer.setStyle({strokeWeight: 1, strokeColor:"#e8702a", strokeOpacity:0.5});
 	fibre_data_layer.setMap(gmap);  
 
 }
@@ -72,7 +81,7 @@ function add_probe_layer(gmap){
 	var probe_symbol = {
 		path: google.maps.SymbolPath.CIRCLE,
 		scale:6,
-		fillColor: 'red',
+		fillColor: '#0ea7b5',
 		fillOpacity: 1,
 		strokeColor: "black",
 		strokeWeight:1,
@@ -84,7 +93,7 @@ function add_probe_layer(gmap){
 	probe_layer.setStyle({icon: probe_symbol, clickable: true});
 
 	var  infoWindow = new google.maps.InfoWindow({
-	content: "",
+		content: "",
 	});
 
 	 //Mouseover events listener
@@ -111,16 +120,16 @@ function add_probe_layer(gmap){
 	 		add_measurement_layer(map);
 	 	}
 
-	 	 probe_layer.overrideStyle(event.feature,
-         {icon: {
-          path: google.maps.SymbolPath.CIRCLE,
-          fillColor: "#0ece4b",
-          fillOpacity: 1,
-          scale: 6,
-           strokeColor: "black",
-            strokeWeight:1,
-          }, 
-        });
+	 	probe_layer.overrideStyle(event.feature,
+	 		{icon: {
+	 			path: google.maps.SymbolPath.CIRCLE,
+	 			fillColor: "#0ece4b",
+	 			fillOpacity: 1,
+	 			scale: 6,
+	 			strokeColor: "black",
+	 			strokeWeight:1,
+	 		}, 
+	 	});
 
 
 
@@ -130,6 +139,10 @@ function add_probe_layer(gmap){
 
 
 	}
+
+function addLine(polyline){
+		polyline.setMap(map)
+}
 
 	function changeLayer(selected_layer){
 
