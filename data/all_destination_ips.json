@@ -9,6 +9,7 @@
     },
     "properties": {
     "ip_address":"41.223.156.170",
+    "country":"AO",
     "asn":"AS11259",
     "name":"ANGOLATELECOM"
     }
@@ -21,6 +22,7 @@
     },
     "properties": {
     "ip_address":"41.221.254.22",
+    "country":"AO",
     "asn":"AS17400",
     "name":"EBONET"
     }
@@ -33,6 +35,7 @@
     },
     "properties": {
     "ip_address":"168.167.8.1",
+    "country":"BW",
     "asn":"AS14988",
     "name":"BTC-GATE1"
     }
@@ -45,6 +48,7 @@
     },
     "properties": {
     "ip_address":"168.167.220.2",
+    "country":"BW",
     "asn":"AS14988",
     "name":"BTC-GATE1"
     }
@@ -57,6 +61,7 @@
     },
     "properties": {
     "ip_address":"41.242.128.134",
+    "country":"CD",
     "asn":"AS37453",
     "name":"VODACOM-CONGO"
     }
@@ -69,6 +74,7 @@
     },
     "properties": {
     "ip_address":"213.55.95.15",
+    "country":"ET",
     "asn":"AS24757",
     "name":" Ethiopian Telecommunication Corporation"
     }
@@ -81,6 +87,7 @@
     },
     "properties": {
     "ip_address":"213.55.96.149",
+    "country":"ET",
     "asn":"AS24757",
     "name":" Ethiopian Telecommunication Corporation"
     }
@@ -93,6 +100,7 @@
     },
     "properties": {
     "ip_address":"213.55.96.150",
+    "country":"ET",
     "asn":"AS24757",
     "name":" Ethiopian Telecommunication Corporation"
     }
@@ -105,6 +113,7 @@
     },
     "properties": {
     "ip_address":"213.55.85.42",
+    "country":"ET",
     "asn":"AS24757",
     "name":" Ethiopian Telecommunication Corporation"
     }
@@ -117,6 +126,7 @@
     },
     "properties": {
     "ip_address":"213.55.101.26",
+    "country":"ET",
     "asn":"AS24757",
     "name":" Ethiopian Telecommunication Corporation"
     }
@@ -129,6 +139,7 @@
     },
     "properties": {
     "ip_address":"213.55.90.6",
+    "country":"ET",
     "asn":"AS24757",
     "name":" Ethiopian Telecommunication Corporation"
     }
@@ -141,6 +152,7 @@
     },
     "properties": {
     "ip_address":"213.55.98.158",
+    "country":"ET",
     "asn":"AS24757",
     "name":" Ethiopian Telecommunication Corporation"
     }
@@ -153,6 +165,7 @@
     },
     "properties": {
     "ip_address":"41.204.161.16",
+    "country":"KE",
     "asn":"AS36914",
     "name":"Kenya Education Network"
     }
@@ -165,6 +178,7 @@
     },
     "properties": {
     "ip_address":"41.89.96.80",
+    "country":"KE",
     "asn":"AS36914",
     "name":"Kenya Education Network"
     }
@@ -177,6 +191,7 @@
     },
     "properties": {
     "ip_address":"41.204.161.16",
+    "country":"KE",
     "asn":"AS36914",
     "name":"Kenya Education Network"
     }
@@ -189,6 +204,7 @@
     },
     "properties": {
     "ip_address":"41.188.42.18",
+    "country":"MG",
     "asn":"AS37054",
     "name":"TGN"
     }
@@ -201,6 +217,7 @@
     },
     "properties": {
     "ip_address":"41.188.61.248",
+    "country":"MG",
     "asn":"AS37054",
     "name":"TGN"
     }
@@ -213,6 +230,7 @@
     },
     "properties": {
     "ip_address":"41.70.16.34",
+    "country":"MW",
     "asn":"AS37098",
     "name":"globe-as"
     }
@@ -225,6 +243,7 @@
     },
     "properties": {
     "ip_address":"41.70.31.194",
+    "country":"MW",
     "asn":"AS37098",
     "name":"globe-as"
     }
@@ -237,6 +256,7 @@
     },
     "properties": {
     "ip_address":"41.87.6.25",
+    "country":"MW",
     "asn":"AS36969",
     "name":"Malawi Telecommunications Limited"
     }
@@ -249,6 +269,7 @@
     },
     "properties": {
     "ip_address":"41.221.98.158",
+    "country":"MW",
     "asn":"AS36969",
     "name":"Malawi Telecommunications Limited"
     }
@@ -261,6 +282,7 @@
     },
     "properties": {
     "ip_address":"196.3.96.21",
+    "country":"MZ",
     "asn":"AS31960",
     "name":"EMUNET"
     }
@@ -273,6 +295,7 @@
     },
     "properties": {
     "ip_address":"196.3.99.98",
+    "country":"MZ",
     "asn":"AS31960",
     "name":"EMUNET"
     }
@@ -285,6 +308,7 @@
     },
     "properties": {
     "ip_address":"41.220.160.149",
+    "country":"MZ",
     "asn":"AS30619",
     "name":"Telecomunicacoes de Mocambique (TDM)"
     }
@@ -297,6 +321,7 @@
     },
     "properties": {
     "ip_address":"196.3.96.240",
+    "country":"MZ",
     "asn":"AS31960",
     "name":"EMUNET"
     }
@@ -309,6 +334,7 @@
     },
     "properties": {
     "ip_address":"196.3.96.21",
+    "country":"MZ",
     "asn":"AS31960",
     "name":"EMUNET"
     }
@@ -321,6 +347,7 @@
     },
     "properties": {
     "ip_address":"41.205.129.146",
+    "country":"NA",
     "asn":"AS36996",
     "name":"TELECOM-NAMIBIA"
     }
@@ -333,6 +360,7 @@
     },
     "properties": {
     "ip_address":"196.12.10.105",
+    "country":"NA",
     "asn":"AS37513",
     "name":"Polytechnic-NA"
     }
@@ -345,6 +373,7 @@
     },
     "properties": {
     "ip_address":"41.222.244.13",
+    "country":"RW",
     "asn":"AS37010",
     "name":"NUS-AS"
     }
@@ -357,6 +386,7 @@
     },
     "properties": {
     "ip_address":"197.243.16.110",
+    "country":"RW",
     "asn":"AS37228",
     "name":"RDB"
     }
@@ -369,6 +399,7 @@
     },
     "properties": {
     "ip_address":"197.243.16.104",
+    "country":"RW",
     "asn":"AS37228",
     "name":"RDB"
     }
@@ -381,6 +412,7 @@
     },
     "properties": {
     "ip_address":"137.158.158.44",
+    "country":"ZA",
     "asn":"AS36982",
     "name":"UCT"
     }
@@ -393,6 +425,7 @@
     },
     "properties": {
     "ip_address":"196.21.236.147",
+    "country":"ZA",
     "asn":"AS2018",
     "name":"TENET-1"
     }
@@ -405,6 +438,7 @@
     },
     "properties": {
     "ip_address":"146.182.34.110",
+    "country":"ZA",
     "asn":"AS37501",
     "name":"UOFS"
     }
@@ -417,6 +451,7 @@
     },
     "properties": {
     "ip_address":"146.230.128.52",
+    "country":"ZA",
     "asn":"AS2018",
     "name":"TENET-1"
     }
@@ -429,6 +464,7 @@
     },
     "properties": {
     "ip_address":"196.21.218.26",
+    "country":"ZA",
     "asn":"AS2018",
     "name":"TENET-1"
     }
@@ -441,6 +477,7 @@
     },
     "properties": {
     "ip_address":"143.160.38.244",
+    "country":"ZA",
     "asn":"AS8094",
     "name":"PUKNET"
     }
@@ -453,6 +490,7 @@
     },
     "properties": {
     "ip_address":"137.215.97.20",
+    "country":"ZA",
     "asn":"AS2018",
     "name":"TENET-1"
     }
@@ -465,6 +503,7 @@
     },
     "properties": {
     "ip_address":"146.231.129.7",
+    "country":"ZA",
     "asn":"AS37520",
     "name":"Rhodes-Univ"
     }
@@ -477,6 +516,7 @@
     },
     "properties": {
     "ip_address":"146.232.21.146",
+    "country":"ZA",
     "asn":"AS2018",
     "name":"TENET-1"
     }
@@ -489,6 +529,7 @@
     },
     "properties": {
     "ip_address":"196.21.45.85",
+    "country":"ZA",
     "asn":"AS2018",
     "name":"TENET-1"
     }
@@ -501,6 +542,7 @@
     },
     "properties": {
     "ip_address":"146.141.9.215",
+    "country":"ZA",
     "asn":"AS2018",
     "name":"TENET-1"
     }
@@ -513,6 +555,7 @@
     },
     "properties": {
     "ip_address":"196.44.161.193",
+    "country":"TZ",
     "asn":"AS22354",
     "name":"UNIV-DAR"
     }
@@ -525,6 +568,7 @@
     },
     "properties": {
     "ip_address":"41.73.194.141",
+    "country":"TZ",
     "asn":"AS36930",
     "name":"ZanZibar Telecom"
     }
@@ -537,6 +581,7 @@
     },
     "properties": {
     "ip_address":"41.93.37.4",
+    "country":"TZ",
     "asn":"AS37182",
     "name":"TERNET"
     }
@@ -549,6 +594,7 @@
     },
     "properties": {
     "ip_address":"41.204.150.67",
+    "country":"TZ",
     "asn":"AS36930",
     "name":"ZanZibar Telecom"
     }
@@ -561,6 +607,7 @@
     },
     "properties": {
     "ip_address":"41.93.31.1",
+    "country":"TZ",
     "asn":"AS37182",
     "name":"TERNET"
     }
@@ -573,6 +620,7 @@
     },
     "properties": {
     "ip_address":"41.78.64.5",
+    "country":"TZ",
     "asn":"AS36930",
     "name":"ZanZibar Telecom"
     }
@@ -585,6 +633,7 @@
     },
     "properties": {
     "ip_address":"196.43.133.74",
+    "country":"UG",
     "asn":"AS327687",
     "name":"RENU"
     }
@@ -597,6 +646,7 @@
     },
     "properties": {
     "ip_address":"41.63.1.2",
+    "country":"ZM",
     "asn":"AS37532",
     "name":"ZAMREN"
     }
@@ -609,6 +659,7 @@
     },
     "properties": {
     "ip_address":"41.63.3.8",
+    "country":"ZM",
     "asn":"AS37532",
     "name":"ZAMREN"
     }
@@ -621,6 +672,7 @@
     },
     "properties": {
     "ip_address":"41.63.16.6",
+    "country":"ZM",
     "asn":"AS37532",
     "name":"ZAMREN"
     }
@@ -633,6 +685,7 @@
     },
     "properties": {
     "ip_address":"197.220.12.243",
+    "country":"ZM",
     "asn":"AS36959",
     "name":"afczas"
     }
@@ -645,6 +698,7 @@
     },
     "properties": {
     "ip_address":"196.220.96.209",
+    "country":"ZW",
     "asn":"AS37568",
     "name":"NUoS-ASN"
     }
@@ -657,6 +711,7 @@
     },
     "properties": {
     "ip_address":"41.78.77.122",
+    "country":"ZW",
     "asn":"AS37184",
     "name":"POWERTEL"
     }
@@ -669,6 +724,7 @@
     },
     "properties": {
     "ip_address":"41.78.78.26",
+    "country":"ZW",
     "asn":"AS37184",
     "name":"POWERTEL"
     }
@@ -681,6 +737,7 @@
     },
     "properties": {
     "ip_address":"197.155.226.212",
+    "country":"ZW",
     "asn":"AS30844",
     "name":"Liquid Telecommunications Ltd"
     }
