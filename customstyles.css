@@ -2,24 +2,14 @@
     height: 50px;
     margin: 10px;
     padding: 0;
+    margin-left:50px;
 }
 
 #map {
     height: 600px;
     width: 800px;
-    float: left;
 }
 
-#info-box {
-        background-color: white
-        border: 1px solid black;
-        bottom: 30px;
-        height: 40px;
-        width: 40px;
-        padding: 10px;
-        position: absolute;
-        left: 30px;
-      }
 
 #info{
     

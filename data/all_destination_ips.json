@@ -1,0 +1,701 @@
+{
+   "type": "FeatureCollection",
+   "features": [
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  20.744699, -8.419200 ]
+    },
+    "properties": {
+    "ip_address":"41.223.156.170",
+    "asn":"AS11259",
+    "name":"ANGOLATELECOM"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  18.500000, -12.500000 ]
+    },
+    "properties": {
+    "ip_address":"41.221.254.22",
+    "asn":"AS17400",
+    "name":"EBONET"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  25.911900, -24.646400 ]
+    },
+    "properties": {
+    "ip_address":"168.167.8.1",
+    "asn":"AS14988",
+    "name":"BTC-GATE1"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  25.911900, -24.646400 ]
+    },
+    "properties": {
+    "ip_address":"168.167.220.2",
+    "asn":"AS14988",
+    "name":"BTC-GATE1"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  25.000000, 0.000000 ]
+    },
+    "properties": {
+    "ip_address":"41.242.128.134",
+    "asn":"AS37453",
+    "name":"VODACOM-CONGO"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  38.000000, 8.000000 ]
+    },
+    "properties": {
+    "ip_address":"213.55.95.15",
+    "asn":"AS24757",
+    "name":" Ethiopian Telecommunication Corporation"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  38.400000, 8.200000 ]
+    },
+    "properties": {
+    "ip_address":"213.55.96.149",
+    "asn":"AS24757",
+    "name":" Ethiopian Telecommunication Corporation"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  38.600000, 8.600000 ]
+    },
+    "properties": {
+    "ip_address":"213.55.96.150",
+    "asn":"AS24757",
+    "name":" Ethiopian Telecommunication Corporation"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  38.800000, 8.800000 ]
+    },
+    "properties": {
+    "ip_address":"213.55.85.42",
+    "asn":"AS24757",
+    "name":" Ethiopian Telecommunication Corporation"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  39.400002, 10.433300 ]
+    },
+    "properties": {
+    "ip_address":"213.55.101.26",
+    "asn":"AS24757",
+    "name":" Ethiopian Telecommunication Corporation"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  39.000000, 9.00000 ]
+    },
+    "properties": {
+    "ip_address":"213.55.90.6",
+    "asn":"AS24757",
+    "name":" Ethiopian Telecommunication Corporation"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  39.200000, 9.200001 ]
+    },
+    "properties": {
+    "ip_address":"213.55.98.158",
+    "asn":"AS24757",
+    "name":" Ethiopian Telecommunication Corporation"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  38.000000, 1.000000 ]
+    },
+    "properties": {
+    "ip_address":"41.204.161.16",
+    "asn":"AS36914",
+    "name":"Kenya Education Network"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  -0.130000, 51.500000 ]
+    },
+    "properties": {
+    "ip_address":"194.201.253.8",
+    "asn":"AS25568",
+    "name":"KENYAWEB"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  38.000000, 1.000000 ]
+    },
+    "properties": {
+    "ip_address":"41.89.96.80",
+    "asn":"AS36914",
+    "name":"Kenya Education Network"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  39.00000, 2.000000 ]
+    },
+    "properties": {
+    "ip_address":"41.204.161.16",
+    "asn":"AS36914",
+    "name":"Kenya Education Network"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  47.000000, -20.000000 ]
+    },
+    "properties": {
+    "ip_address":"41.188.42.18",
+    "asn":"AS37054",
+    "name":"TGN"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  47.200000, -20.200000 ]
+    },
+    "properties": {
+    "ip_address":"41.188.61.248",
+    "asn":"AS37054",
+    "name":"TGN"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  33.299999, -13.666700 ]
+    },
+    "properties": {
+    "ip_address":"41.70.16.34",
+    "asn":"AS37098",
+    "name":"globe-as"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  34.299999, -14.666700 ]
+    },
+    "properties": {
+    "ip_address":"41.70.31.194",
+    "asn":"AS37098",
+    "name":"globe-as"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  34.000000, -13.500000 ]
+    },
+    "properties": {
+    "ip_address":"41.87.6.25",
+    "asn":"AS36969",
+    "name":"Malawi Telecommunications Limited"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  35.000000, -14.500000 ]
+    },
+    "properties": {
+    "ip_address":"41.221.98.158",
+    "asn":"AS36969",
+    "name":"Malawi Telecommunications Limited"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  32.589199, -25.965300 ]
+    },
+    "properties": {
+    "ip_address":"196.3.96.21",
+    "asn":"AS31960",
+    "name":"EMUNET"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 32.589199, -26.965300 ]
+    },
+    "properties": {
+    "ip_address":"196.3.99.98",
+    "asn":"AS31960",
+    "name":"EMUNET"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  34.589199, -26.265300 ]
+    },
+    "properties": {
+    "ip_address":"41.220.160.149",
+    "asn":"AS30619",
+    "name":"Telecomunicacoes de Mocambique (TDM)"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 32.689199, -26.465300 ]
+    },
+    "properties": {
+    "ip_address":"196.3.96.240",
+    "asn":"AS31960",
+    "name":"EMUNET"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 32.789199, -26.665300 ]
+    },
+    "properties": {
+    "ip_address":"196.3.96.21",
+    "asn":"AS31960",
+    "name":"EMUNET"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  17.000000, -22.000000 ]
+    },
+    "properties": {
+    "ip_address":"41.205.129.146",
+    "asn":"AS36996",
+    "name":"TELECOM-NAMIBIA"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  18.000000, -23.000000 ]
+    },
+    "properties": {
+    "ip_address":"196.12.10.105",
+    "asn":"AS37513",
+    "name":"Polytechnic-NA"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  30.000000, -2.000000 ]
+    },
+    "properties": {
+    "ip_address":"41.222.244.13",
+    "asn":"AS37010",
+    "name":"NUS-AS"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  31.000000, -3.000000 ]
+    },
+    "properties": {
+    "ip_address":"197.243.16.110",
+    "asn":"AS37228",
+    "name":"RDB"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  32.000000, -4.000000 ]
+    },
+    "properties": {
+    "ip_address":"197.243.16.104",
+    "asn":"AS37228",
+    "name":"RDB"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  18.423201, -33.925800 ]
+    },
+    "properties": {
+    "ip_address":"137.158.158.44",
+    "asn":"AS36982",
+    "name":"UCT"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  18.400000, -33.983299 ]
+    },
+    "properties": {
+    "ip_address":"196.21.236.147",
+    "asn":"AS2018",
+    "name":"TENET-1"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  24.000000, -29.000000 ]
+    },
+    "properties": {
+    "ip_address":"146.182.34.110",
+    "asn":"AS37501",
+    "name":"UOFS"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  31.029200, -29.857901 ]
+    },
+    "properties": {
+    "ip_address":"146.230.128.52",
+    "asn":"AS2018",
+    "name":"TENET-1"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  18.400000, -33.983299 ]
+    },
+    "properties": {
+    "ip_address":"196.21.218.26",
+    "asn":"AS2018",
+    "name":"TENET-1"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  27.100000, -26.716700 ]
+    },
+    "properties": {
+    "ip_address":"143.160.38.244",
+    "asn":"AS8094",
+    "name":"PUKNET"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  28.229401, -25.706900 ]
+    },
+    "properties": {
+    "ip_address":"137.215.97.20",
+    "asn":"AS2018",
+    "name":"TENET-1"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  27.964701, -30.795401 ]
+    },
+    "properties": {
+    "ip_address":"146.231.129.7",
+    "asn":"AS37520",
+    "name":"Rhodes-Univ"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  18.866800, -33.934601 ]
+    },
+    "properties": {
+    "ip_address":"146.232.21.146",
+    "asn":"AS2018",
+    "name":"TENET-1"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  18.628500, -33.900200 ]
+    },
+    "properties": {
+    "ip_address":"196.21.45.85",
+    "asn":"AS2018",
+    "name":"TENET-1"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  24.000000, -29.000000 ]
+    },
+    "properties": {
+    "ip_address":"146.141.9.215",
+    "asn":"AS2018",
+    "name":"TENET-1"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  35.000000, -6.000000 ]
+    },
+    "properties": {
+    "ip_address":"196.44.161.193",
+    "asn":"AS22354",
+    "name":"UNIV-DAR"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  35.100000, -6.200000 ]
+    },
+    "properties": {
+    "ip_address":"41.73.194.141",
+    "asn":"AS36930",
+    "name":"ZanZibar Telecom"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  35.200000, -6.400000 ]
+    },
+    "properties": {
+    "ip_address":"41.93.37.4",
+    "asn":"AS37182",
+    "name":"TERNET"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  35.300000, -6.600000 ]
+    },
+    "properties": {
+    "ip_address":"41.204.150.67",
+    "asn":"AS36930",
+    "name":"ZanZibar Telecom"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  35.400000, -6.800000 ]
+    },
+    "properties": {
+    "ip_address":"41.93.31.1",
+    "asn":"AS37182",
+    "name":"TERNET"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  35.750000, -6.183300 ]
+    },
+    "properties": {
+    "ip_address":"41.78.64.5",
+    "asn":"AS36930",
+    "name":"ZanZibar Telecom"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  32.565601, 0.315600 ]
+    },
+    "properties": {
+    "ip_address":"196.43.133.74",
+    "asn":"AS327687",
+    "name":"RENU"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  30.20000, -15.20000 ]
+    },
+    "properties": {
+    "ip_address":"41.63.1.2",
+    "asn":"AS37532",
+    "name":"ZAMREN"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  30.400000, -15.400000 ]
+    },
+    "properties": {
+    "ip_address":"41.63.3.8",
+    "asn":"AS37532",
+    "name":"ZAMREN"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  27.150000, -14.500000 ]
+    },
+    "properties": {
+    "ip_address":"41.63.16.6",
+    "asn":"AS37532",
+    "name":"ZAMREN"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  30.000000, -15.000000 ]
+    },
+    "properties": {
+    "ip_address":"197.220.12.243",
+    "asn":"AS36959",
+    "name":"afczas"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  30.000000, -20.000000 ]
+    },
+    "properties": {
+    "ip_address":"196.220.96.209",
+    "asn":"AS37568",
+    "name":"NUoS-ASN"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  31.044701, -17.817801 ]
+    },
+    "properties": {
+    "ip_address":"41.78.77.122",
+    "asn":"AS37184",
+    "name":"POWERTEL"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  30.000000, -20.000000 ]
+    },
+    "properties": {
+    "ip_address":"41.78.78.26",
+    "asn":"AS37184",
+    "name":"POWERTEL"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  30.200000, -20.200000 ]
+    },
+    "properties": {
+    "ip_address":"197.155.226.212",
+    "asn":"AS30844",
+    "name":"Liquid Telecommunications Ltd"
+    }
+  }
+]
+}

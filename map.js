@@ -1,5 +1,6 @@
 var map;
 var all_hops = [];
+var all_destination_ips = [];
 var hop_path = [];
 
 function initMap() {
@@ -10,8 +11,61 @@ function initMap() {
 });
 
 	add_fibre_layer(map);
-	add_probe_layer(map);
+	//add_probe_layer(map);
+	add_destination_ip_layer(map);
+
+
+}
+
+function add_fibre_layer(gmap){
+	fibre_data_layer = new google.maps.Data();
+	fibre_data_layer.loadGeoJson("/data/fibre.json");
+	fibre_data_layer.setStyle({strokeWeight: 2, strokeColor:"purple", strokeOpacity:0.5});
+	fibre_data_layer.setMap(gmap);  
+
+}
+
+function add_destination_ip_layer(gmap){
 	
+	var dest_ip_symbol = {
+		path: google.maps.SymbolPath.CIRCLE,
+		scale:6,
+		fillColor: 'white',
+		fillOpacity: 1,
+		strokeColor: "red",
+		strokeWeight:2,
+	};
+
+	var  infoWindow = new google.maps.InfoWindow({
+		content: "",
+	});
+
+	destination_ip_layer = new google.maps.Data();
+	destination_ip_layer.loadGeoJson("/data/all_destination_ips.json");
+	//destination_ip_layer.setStyle({icon: dest_ip_symbol, clickable:true});
+	destination_ip_layer.setMap(gmap); 
+
+	 //Show destination IP info on mouseover
+	 var dest_hover_listener = destination_ip_layer.addListener('mouseover', function(event) {
+
+        //Display infowindow
+        infoWindow.setContent("<b>" + event.feature.getProperty("name") + "</b>" +
+        	"<br>" + "<b>ASN: </b> " + event.feature.getProperty("asn") +
+        	"<br>" + " <b>IP Address:</b>" + event.feature.getProperty("ip_address"));
+        var anchor = new google.maps.MVCObject();
+        anchor.set("position",event.latLng);
+        infoWindow.open(map,anchor);
+
+      });//End event listener
+
+	 //Automatically close info window after 3 seconds
+	 var dest_mouseout_listener = destination_ip_layer.addListener("mouseout",function(event) {
+
+	    if (infoWindow) {
+    		setTimeout(function () { infoWindow.close(); }, 2500);
+	    }
+
+});
 
 
 }
@@ -68,13 +122,9 @@ function add_measurement_layer(){
 });
 });}
 
-function add_fibre_layer(gmap){
-	fibre_data_layer = new google.maps.Data();
-	fibre_data_layer.loadGeoJson("/data/fibre.json");
-	fibre_data_layer.setStyle({strokeWeight: 2, strokeColor:"purple", strokeOpacity:0.5});
-	fibre_data_layer.setMap(gmap);  
 
-}
+
+
 
 function add_probe_layer(gmap){
 
