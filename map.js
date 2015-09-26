@@ -20,17 +20,17 @@ function initMap() {
 function add_fibre_layer(gmap){
 	fibre_data_layer = new google.maps.Data();
 	fibre_data_layer.loadGeoJson("/data/fibre.json");
-	fibre_data_layer.setStyle({strokeWeight: 2, strokeColor:"purple", strokeOpacity:0.5});
+	fibre_data_layer.setStyle({strokeWeight: 2, strokeColor:"purple", strokeOpacity:0.3});
 	fibre_data_layer.setMap(gmap);  
 
 }
 
 function add_destination_ip_layer(gmap){
 	
-	var country_colour = {
-		"AO": "#a6cee3", 
+	var country_colour_1 = {
+		"AO": "white", 
 		"BW": "#1f78b4", 
-		"CD": "#b2df8a",
+		"CD": "#35978f",
 		"ET": "#33a02c",
 		"KE": "#fb9a99",
 		"MG": "#e31a1c",
@@ -41,18 +41,26 @@ function add_destination_ip_layer(gmap){
 		"ZA": "#ffff99",
 		"TZ": "#b15928" ,
 		"UG": "#8c510a",
-		"ZM": "#878787",
+		"ZM": "#bf812d",
 		"ZW": "#bababa"	
-					}	
-
-	var dest_ip_symbol = {
-		path: google.maps.SymbolPath.CIRCLE,
-		scale:6,
-		fillColor: country_colour["AO"],
-		fillOpacity: 1,
-		strokeColor: "black",
-		strokeWeight:2,
-	};
+					}
+	// var country_colour_2 = {				
+	// 	"AO": "#9e0142", 
+	// 	"BW": "#d53e4f", 
+	// 	"CD": "#f46d43",
+	// 	"ET": "#fdae61",
+	// 	"KE": "#ffffbf",
+	// 	"MG": "#e6f598",
+	// 	"MW" : "#abdda4",
+	// 	"MZ" : "#66c2a5",
+	// 	"NA": "#3288bd",
+	// 	"RW": "#5e4fa2",
+	// 	"ZA": "#ffff99",
+	// 	"TZ": "#b15928" ,
+	// 	"UG": "#8c510a",
+	// 	"ZM": "#dfc27d",
+	// 	"ZW": "#bababa"		
+	// 		}
 
 	var  infoWindow = new google.maps.InfoWindow({
 		content: "",
@@ -63,13 +71,12 @@ function add_destination_ip_layer(gmap){
 	destination_ip_layer.setStyle(style_ip);
 	destination_ip_layer.setMap(gmap); 
 
+	//Set colours for each ip per country
 	function style_ip(feature){
-
-		for (var key in country_colour){
+		for (var key in country_colour_1){
 			if (feature.getProperty("country") == key){
-				colour = country_colour[key];
+				colour = country_colour_1[key];
 			}
-
 		}
 
 		return {
@@ -78,15 +85,20 @@ function add_destination_ip_layer(gmap){
 				scale: 6,
 				fillColor: colour,
 				fillOpacity:1,
-				strokeWeight:1,
+				strokeWeight:2,
 				strokeColor: "black",
 			},
       
-      
-  };
+    	  
+  		};
+  	}
+
+  	var dest_click_listener = destination_ip_layer.addListener("click", function(event) {
+  		console.log(event.feature.getGeometry().get());
 
 
-  }
+
+  	});
 
 	 //Show destination IP info on mouseover
 	 var dest_hover_listener = destination_ip_layer.addListener('mouseover', function(event) {
@@ -110,13 +122,12 @@ function add_destination_ip_layer(gmap){
 
 	 });
 
+}
 
-	}
 
-
-	function add_measurement_layer(){
-		$.getJSON("/data/test_measurement_1.json", function(json1) {
-	    $.each(json1, function(key, data) { //Loop through all the json fields
+function add_measurement_layer(){
+	$.getJSON("/data/test_measurement_1.json", function(json1) {
+		$.each(json1, function(key, data) { //Loop through all the json fields
 	    	console.log(data.prb_id);
 	    	if (data.prb_id == 13114){
 	    		$.each(data.result, function(key, data){ //Loop through the results field 
