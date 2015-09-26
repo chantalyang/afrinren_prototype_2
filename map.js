@@ -71,7 +71,7 @@ function add_measurement_layer(){
 function add_fibre_layer(gmap){
 	fibre_data_layer = new google.maps.Data();
 	fibre_data_layer.loadGeoJson("/data/fibre.json");
-	fibre_data_layer.setStyle({strokeWeight: 1, strokeColor:"#e8702a", strokeOpacity:0.5});
+	fibre_data_layer.setStyle({strokeWeight: 2, strokeColor:"purple", strokeOpacity:0.5});
 	fibre_data_layer.setMap(gmap);  
 
 }
@@ -84,7 +84,7 @@ function add_probe_layer(gmap){
 		fillColor: '#0ea7b5',
 		fillOpacity: 1,
 		strokeColor: "black",
-		strokeWeight:1,
+		strokeWeight:2,
 	};
 
 	probe_layer = new google.maps.Data();
