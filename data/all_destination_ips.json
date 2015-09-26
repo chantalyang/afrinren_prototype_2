@@ -161,18 +161,6 @@
     "type": "Feature",
     "geometry": {
        "type": "Point",
-       "coordinates":  [  -0.130000, 51.500000 ]
-    },
-    "properties": {
-    "ip_address":"194.201.253.8",
-    "asn":"AS25568",
-    "name":"KENYAWEB"
-    }
-  },
-  {
-    "type": "Feature",
-    "geometry": {
-       "type": "Point",
        "coordinates":  [  38.000000, 1.000000 ]
     },
     "properties": {
