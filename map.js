@@ -27,12 +27,30 @@ function add_fibre_layer(gmap){
 
 function add_destination_ip_layer(gmap){
 	
+	var country_colour = {
+		"AO": "#a6cee3", 
+		"BW": "#1f78b4", 
+		"CD": "#b2df8a",
+		"ET": "#33a02c",
+		"KE": "#fb9a99",
+		"MG": "#e31a1c",
+		"MW" : "#fdbf6f",
+		"MZ" : "#ff7f00",
+		"NA": "#cab2d6",
+		"RW": "#6a3d9a",
+		"ZA": "#ffff99",
+		"TZ": "#b15928" ,
+		"UG": "#8c510a",
+		"ZM": "#878787",
+		"ZW": "#bababa"	
+					}	
+
 	var dest_ip_symbol = {
 		path: google.maps.SymbolPath.CIRCLE,
 		scale:6,
-		fillColor: 'white',
+		fillColor: country_colour["AO"],
 		fillOpacity: 1,
-		strokeColor: "red",
+		strokeColor: "black",
 		strokeWeight:2,
 	};
 
@@ -42,8 +60,33 @@ function add_destination_ip_layer(gmap){
 
 	destination_ip_layer = new google.maps.Data();
 	destination_ip_layer.loadGeoJson("/data/all_destination_ips.json");
-	//destination_ip_layer.setStyle({icon: dest_ip_symbol, clickable:true});
+	destination_ip_layer.setStyle(style_ip);
 	destination_ip_layer.setMap(gmap); 
+
+	function style_ip(feature){
+
+		for (var key in country_colour){
+			if (feature.getProperty("country") == key){
+				colour = country_colour[key];
+			}
+
+		}
+
+		return {
+			icon: {
+				path: google.maps.SymbolPath.CIRCLE,
+				scale: 6,
+				fillColor: colour,
+				fillOpacity:1,
+				strokeWeight:1,
+				strokeColor: "black",
+			},
+      
+      
+  };
+
+
+  }
 
 	 //Show destination IP info on mouseover
 	 var dest_hover_listener = destination_ip_layer.addListener('mouseover', function(event) {
@@ -61,18 +104,18 @@ function add_destination_ip_layer(gmap){
 	 //Automatically close info window after 3 seconds
 	 var dest_mouseout_listener = destination_ip_layer.addListener("mouseout",function(event) {
 
-	    if (infoWindow) {
-    		setTimeout(function () { infoWindow.close(); }, 2500);
-	    }
+	 	if (infoWindow) {
+	 		setTimeout(function () { infoWindow.close(); }, 3000);
+	 	}
 
-});
-
-
-}
+	 });
 
 
-function add_measurement_layer(){
-	$.getJSON("/data/test_measurement_1.json", function(json1) {
+	}
+
+
+	function add_measurement_layer(){
+		$.getJSON("/data/test_measurement_1.json", function(json1) {
 	    $.each(json1, function(key, data) { //Loop through all the json fields
 	    	console.log(data.prb_id);
 	    	if (data.prb_id == 13114){
@@ -117,9 +160,9 @@ function add_measurement_layer(){
 	    			}
 
 	    		})
-}
+	    	}
 
-});
+	    });
 });}
 
 
@@ -190,9 +233,9 @@ function add_probe_layer(gmap){
 
 	}
 
-function addLine(polyline){
+	function addLine(polyline){
 		polyline.setMap(map)
-}
+	}
 
 	function changeLayer(selected_layer){
 
