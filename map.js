@@ -84,36 +84,7 @@ function initMap() {
 	//add_probe_layer(map);
 	add_destination_ip_layer(map);
 
-	var dest_click_listener = destination_ip_layer.addListener("click", function(event) {
-  		
-  		var selected_marker = event.feature;
-  		
-  		destination_ip_layer.setMap(null);
-  		
-  		var ip_address = event.feature.getProperty("ip_address");
-  		var coords = event.feature.getGeometry().get();
-  		var selected_icon_style = {
-  			path: google.maps.SymbolPath.CIRCLE,
-			scale: 8,
-			fillColor: this.style(selected_marker).icon.fillColor,
-			fillOpacity:1,
-			strokeWeight:2,
-			strokeColor: "black",
-  		}
-
-  		//console.log(coords);
-
-  		 clicked_ip = new google.maps.Marker({
-           	icon: selected_icon_style, //Keep styling of selected icon
-            position: coords,
-            map: map,
-            clickable: true
-  			});
-
-  		 clicked_ip.addListener("click", function(event){console.log("Clicked");})
-
-
-  	});
+	
 
 
 }//Add init map function
@@ -219,6 +190,41 @@ function add_destination_ip_layer(gmap){
 	 	}
 
 	 });
+
+var dest_click_listener = destination_ip_layer.addListener("click", function(event) {
+  		
+  		var selected_marker = event.feature;
+  		
+  		destination_ip_layer.setMap(null);
+  		
+  		var ip_address = event.feature.getProperty("ip_address");
+  		var coords = event.feature.getGeometry().get();
+  		var selected_icon_style = {
+  			path: google.maps.SymbolPath.CIRCLE,
+			scale: 8,
+			fillColor: this.style(selected_marker).icon.fillColor,
+			fillOpacity:1,
+			strokeWeight:2,
+			strokeColor: "black",
+  		}
+
+  		//console.log(coords);
+
+  		 clicked_ip = new google.maps.Marker({
+           	icon: selected_icon_style, //Keep styling of selected icon
+            position: coords,
+            map: map,
+            clickable: true
+  			});
+
+  		 clicked_ip.addListener("click", function(event){
+  			clicked_ip.setMap(null);
+  		 	add_destination_ip_layer(map);
+  		 	console.log("Clicked");
+
+  		 })
+  	});
+
 
 }
 
