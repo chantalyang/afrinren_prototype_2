@@ -68,27 +68,20 @@ function initMap() {
 	
 
 	map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 0.070959, lng: 23.923482}, //0.070959, 23.923482
-    zoom: 3,
-    styles: map_style_2,
-    streetViewControl: false,
-    zoomControl: true,
-   	 zoomControlOptions: {
-        position: google.maps.ControlPosition.LEFT_CENTER
-    }
-}
-
-	 
-
-
+	    center: {lat: 0.070959, lng: 23.923482}, //0.070959, 23.923482
+	    zoom: 3,
+	    styles: map_style_1,
+	    streetViewControl: false,
+	    zoomControl: true,
+	   	 zoomControlOptions: {
+	        position: google.maps.ControlPosition.LEFT_CENTER
+	    	}
+	}
 );
-
-	
 
 	add_fibre_layer(map);
 	//add_probe_layer(map);
 	add_destination_ip_layer(map);
-
 
 }
 
@@ -168,8 +161,25 @@ function add_destination_ip_layer(gmap){
   		};
   	}
 
+  	add_geojson_to_array("/data/all_destination_ips.json");
+
   	var dest_click_listener = destination_ip_layer.addListener("click", function(event) {
-  		console.log(event.feature.getGeometry().get());
+  		
+  		var selected_marker = event.feature;
+  		
+  		destination_ip_layer.setMap(null);
+  		var ip_address = event.feature.getProperty("ip_address");
+  		var coords = event.feature.getGeometry().get();
+  		
+  		//console.log(coords);
+
+  		 var marker = new google.maps.Marker({
+           	icon: this.style(selected_marker).icon, //Keep styling of selected icon
+            position: coords,
+            map: map
+  			});
+  		 
+  			//console.log(this.style(selected_marker).icon);
 
 
 
@@ -199,6 +209,12 @@ function add_destination_ip_layer(gmap){
 
 }
 
+function add_geojson_to_array(file){	
+  	 $.getJSON(file)
+	    .done(function (data) {
+	    all_destination_ips = data.features;
+	    });
+}
 
 function add_measurement_layer(){
 	$.getJSON("/data/test_measurement_1.json", function(json1) {
