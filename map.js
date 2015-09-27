@@ -2,6 +2,7 @@ var map;
 var all_hops = [];
 var all_destination_ips = [];
 var hop_path = [];
+var probes = [];
 var clicked_ip;
 
 function initMap() {
@@ -23,7 +24,6 @@ function initMap() {
 	    ]
 	  },{
 	  },
-	 
 	]
 
 	var map_style_2 = [
@@ -68,6 +68,7 @@ function initMap() {
 	    "featureType": "poi",
 	    "elementType":"geometry",
 	    "stylers": [
+	    { "visibility": "off" },
 	      { "color": "#CCCCCC"},
 	      { "saturation": -4 }
 	    ]
@@ -89,7 +90,6 @@ function initMap() {
 );
 
 	add_fibre_layer(map);
-	//add_probe_layer(map);
 	add_destination_ip_layer(map);
 
 	
@@ -107,7 +107,7 @@ function add_fibre_layer(gmap){
 }
 
 //Set colours for each ip per country
-	function style_ip(feature){
+function style_ip(feature){
 
 	var country_colour_1 = {
 		"AO": "white", 
@@ -145,28 +145,10 @@ function add_fibre_layer(gmap){
       
     	  
   		};
-  	}
+}
 
 
 function add_destination_ip_layer(gmap){
-	
-	// var country_colour_2 = {				
-	// 	"AO": "#9e0142", 
-	// 	"BW": "#d53e4f", 
-	// 	"CD": "#f46d43",
-	// 	"ET": "#fdae61",
-	// 	"KE": "#ffffbf",
-	// 	"MG": "#e6f598",
-	// 	"MW" : "#abdda4",
-	// 	"MZ" : "#66c2a5",
-	// 	"NA": "#3288bd",
-	// 	"RW": "#5e4fa2",
-	// 	"ZA": "#ffff99",
-	// 	"TZ": "#b15928" ,
-	// 	"UG": "#8c510a",
-	// 	"ZM": "#dfc27d",
-	// 	"ZW": "#bababa"		
-	// 		}
 
 	var  infoWindow = new google.maps.InfoWindow({
 		content: "",
@@ -188,7 +170,9 @@ function add_destination_ip_layer(gmap){
         var anchor = new google.maps.MVCObject();
         anchor.set("position",event.latLng);
         infoWindow.open(map,anchor);
-
+        if (infoWindow) {
+	 		setTimeout(function () { infoWindow.close(); }, 5000);
+	 	}
       });//End event listener
 
 	 //Automatically close info window after 3 seconds
@@ -209,7 +193,7 @@ var dest_click_listener = destination_ip_layer.addListener("click", function(eve
   		var coords = event.feature.getGeometry().get();
   		var selected_icon_style = {
   			path: google.maps.SymbolPath.CIRCLE,
-			scale: 8,
+			scale: 9,
 			fillColor: this.style(selected_marker).icon.fillColor,
 			fillOpacity:1,
 			strokeWeight:2,
@@ -218,11 +202,10 @@ var dest_click_listener = destination_ip_layer.addListener("click", function(eve
 
   		//Show info window when ip_address clicked
   		renderInfoWindow(infoWindow, selected_marker);
-
   		if (infoWindow) {
-	 		setTimeout(function () { infoWindow.close(); }, 3000);
+	 		setTimeout(function () { infoWindow.close(); }, 5000);
 	 	}
-
+  		
 	 	//Make new marker for chosen ip
   		 clicked_ip = new google.maps.Marker({
            	icon: selected_icon_style, //Keep styling of selected icon
@@ -242,9 +225,7 @@ var dest_click_listener = destination_ip_layer.addListener("click", function(eve
   		 //Allow mouseover for new marker
   		 clicked_ip.addListener("mouseover", function(event){
   			renderInfoWindow(infoWindow, selected_marker)
-  			if (infoWindow) {
-	 		setTimeout(function () { infoWindow.close(); }, 3000);
-	 		}
+  			
   		 	
   		 })
 
@@ -286,10 +267,27 @@ function remove_hops (){
 }
 
 function add_hops_to_map(selected_ip_address){
+
 	var jsonFile = "/data/measurements/hops_to_" + selected_ip_address + ".json";
+	
+	var line_symbol = {
+	    path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+	    fillColor: 'red',
+	    fillOpacity:1,
+	    scale: 4,
+	    strokeWeight: 1,
+	    strokeColor: 'black'
+  	};	
+
+	hop_path = [];
+
 	$.getJSON(jsonFile, function(json1) {
 		$.each(json1, function(key, data) { //Loop through all the json fields
-	    	console.log(data.prb_id);
+	    	var probe_id = data.prb_id;
+	    	var protocol = data.proto;
+	    	console.log(probe_id);
+	    	console.log(protocol);
+	    	if (data.prb_id == 4518)
 	    		$.each(data.result, function(key, data){ //Loop through the results field 
 	    			try{
 
@@ -298,95 +296,86 @@ function add_hops_to_map(selected_ip_address){
 	    				var latLng = new google.maps.LatLng(lati, lngi); 
 	    				var hop_num = data.hop.toString();
 
+
 	    				console.log("Hop:" + hop_num + " coords: " + data.result.coordinates);
+
+	    				hop_path.push({lat: parseFloat(lati), lng: parseFloat(lngi)});
 
 	    				var hop_sym = {
 	    					path: google.maps.SymbolPath.CIRCLE,
 	    					scale:4,
-	    					fillColor: 'black',
+	    					fillColor: "#18bc9c",
 	    					fillOpacity: 1,
-	    					strokeColor: "black",
-	    					strokeWeight:2
+	    					strokeColor: "#4575b4",
+	    					strokeWeight:1
 	    				}
 
-	    				var icon_string = "numbers3/number_"+hop_num+".png"
+	    				//var icon_string = "numbers3/number_"+hop_num+".png"
 
 	    				var marker = new google.maps.Marker({
 	    					position: latLng,
 	    					map: map,
-			            	icon: icon_string,
+			            	icon: hop_sym,
 			            	clickable: true
 			        })
 
 	    				all_hops.push(marker);
+
 	    				
 
 	    			}
 	    			catch(err){
 
-	    			}
+	    			}//End catch
 
-	    		})
+	    		})//End inner each
 	    	
 
-	    });
-});}
+	    });//End outer each
 
-function add_measurement_layer(){
-	$.getJSON("/data/test_measurement_1.json", function(json1) {
-		$.each(json1, function(key, data) { //Loop through all the json fields
-	    	console.log(data.prb_id);
-	    	if (data.prb_id == 13114){
-	    		$.each(data.result, function(key, data){ //Loop through the results field 
-	    			try{
+		//Draw lines 
+       var traceroute_path = new google.maps.Polyline({
+        path: hop_path,
+        icons: [{
+          icon: line_symbol,
+          offset: '100%'
+        }],
+        geodesic: true,
+        strokeColor: 'black',
+        strokeOpacity: 1.0,
+        strokeWeight: 3
+      });
 
-	    				var lati = data.result.coordinates[0];
-	    				var lngi = data.result.coordinates[1];
-	    				var latLng = new google.maps.LatLng(lati, lngi); 
-	    				var hop_num = data.hop.toString();
+      addLine(traceroute_path);
+      animateArrow(traceroute_path);
 
+});}//End add_hop_measurement
 
-	    				
+function addLine(polyline){
+  polyline.setMap(map)
+}
 
-	    				console.log("Hop:" + hop_num + " coords: " + data.result.coordinates);
+function removeLine(polyline){
+  polyline.setMap(null)
+}
 
-	    				var hop_sym = {
-	    					path: google.maps.SymbolPath.CIRCLE,
-	    					scale:6,
-	    					fillColor: 'white',
-	    					fillOpacity: 1,
-	    					strokeColor: "blue",
-	    					strokeWeight:2
-	    				}
+function animateArrow(line) {
+// Use the DOM setInterval() function to change the offset of the symbol at fixed intervals.
 
-	    				var icon_string = "numbers3/number_"+hop_num+".png"
+  var count = 0;
+  window.setInterval(function() {
+      count = (count + 0.5) % 100; //change count number to make arrow slower
 
-	    				var marker = new google.maps.Marker({
-	    					position: latLng,
-	    					map: map,
-			            //label: hop_num,
-			            icon: icon_string,
-			            clickable: true
-			        })
+      var icons = line.get('icons');
+      icons[0].offset = (count / 2) + '%';
+      line.set('icons', icons);
+    }, 20);
 
-	    				all_hops.push(marker);
-	    				
-
-	    			}
-	    			catch(err){
-
-	    			}
-
-	    		})
-	    	}
-
-	    });
-});}
-
-
+}
 
 function add_probe_layer(gmap){
-var probe_svg_path = "M16,3.5c-4.142,0-7.5,3.358-7.5,7.5c0,4.143,7.5,18.121,7.5,18.121S23.5,15.143,23.5,11C23.5,6.858,20.143,3.5,16,3.5z M16,14.584c-1.979,0-3.584-1.604-3.584-3.584S14.021,7.416,16,7.416S19.584,9.021,19.584,11S17.979,14.584,16,14.584z";
+	
+	var probe_svg_path = "M16,3.5c-4.142,0-7.5,3.358-7.5,7.5c0,4.143,7.5,18.121,7.5,18.121S23.5,15.143,23.5,11C23.5,6.858,20.143,3.5,16,3.5z M16,14.584c-1.979,0-3.584-1.604-3.584-3.584S14.021,7.416,16,7.416S19.584,9.021,19.584,11S17.979,14.584,16,14.584z";
 
 	var probe_symbol = {
 		path: probe_svg_path,
@@ -451,37 +440,34 @@ var probe_svg_path = "M16,3.5c-4.142,0-7.5,3.358-7.5,7.5c0,4.143,7.5,18.121,7.5,
 	 });
 
 
-	}
+}
 
-	function addLine(polyline){
-		polyline.setMap(map)
-	}
+function addLine(polyline){
+	polyline.setMap(map)
+}
 
-	function changeLayer(selected_layer){
-
-		//Fibre
-		if (selected_layer == "fibre"){
-			if (document.getElementById("fibre_layer").checked == true){
-				fibre_data_layer.setMap(map);
-			}
-
-
-			if (document.getElementById("fibre_layer").checked == false){
-				fibre_data_layer.setMap(null);
-			}
-		}
-
-		//Probes
-		if (selected_layer == "probes"){
-			if (document.getElementById("probe_layer").checked == true){
-				probe_layer.setMap(map);
-			}
-
-
-			if (document.getElementById("probe_layer").checked == false){
-				probe_layer.setMap(null);
-			}
+function changeLayer(selected_layer){
+	//Fibre
+	if (selected_layer == "fibre"){
+		if (document.getElementById("fibre_layer").checked == true){
+			fibre_data_layer.setMap(map);
 		}
 
 
+		if (document.getElementById("fibre_layer").checked == false){
+			fibre_data_layer.setMap(null);
+		}
 	}
+
+	//Probes
+	if (selected_layer == "probes"){
+		if (document.getElementById("probe_layer").checked == true){
+			probe_layer.setMap(map);
+		}
+
+
+		if (document.getElementById("probe_layer").checked == false){
+			probe_layer.setMap(null);
+		}
+	}
+}

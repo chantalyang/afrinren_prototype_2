@@ -24,7 +24,23 @@
 
 
       <div id ="info" class="col-md-4">
+
         <h3>List of Destination IPs</h3>
+
+          <div class="row">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" value="fibre" id="fibre_layer" onclick="changeLayer(this.value);" checked> Terrestrial Fibre*
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" value="probes" id="probe_layer" onclick="changeLayer(this.value);"> Probes
+            </label>
+          </div>
+          </div>
+
+
         <table class = "table table-hover">
         <table class="table table-hover">
       <thead>
@@ -32,7 +48,7 @@
           <th>#</th>
           <th>Column heading</th>
           <th>Column heading</th>
-          <th>Column heading</th>
+          <th>Column heading</th>å
         </tr>
       </thead>
       <tbody>
@@ -72,20 +88,8 @@
       </div>
     </div>
 
-        <div class = "row">
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" value="fibre" id="fibre_layer" onclick="changeLayer(this.value);" checked> Terrestrial Fibre*
-            </label>
-          </div>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" value="probes" id="probe_layer" onclick="changeLayer(this.value);" checked> Probes
-            </label>
-          </div>
-          </div>
 
 
         </body>
-        <footer>*Fibre data courtesy of Steve Song at <a href="https://manypossibilities.net/afterfibre/">afterfibre.net</a></footer>
+        <footer>*Fibre data courtesy of Steve Song at <a href="https://manypossibilities.net/afterfibre/">afterfibre.net</a>.</footer>
         </html>
