@@ -98,8 +98,9 @@ function add_fibre_layer(gmap){
 
 }
 
-function add_destination_ip_layer(gmap){
-	
+//Set colours for each ip per country
+	function style_ip(feature){
+
 	var country_colour_1 = {
 		"AO": "white", 
 		"BW": "#1f78b4", 
@@ -117,6 +118,30 @@ function add_destination_ip_layer(gmap){
 		"ZM": "#bf812d",
 		"ZW": "#bababa"	
 					}
+
+		for (var key in country_colour_1){
+			if (feature.getProperty("country") == key){
+				colour = country_colour_1[key];
+			}
+		}
+
+		return {
+			icon: {
+				path: google.maps.SymbolPath.CIRCLE,
+				scale: 6,
+				fillColor: colour,
+				fillOpacity:1,
+				strokeWeight:2,
+				strokeColor: "black",
+			},
+      
+    	  
+  		};
+  	}
+
+
+function add_destination_ip_layer(gmap){
+	
 	// var country_colour_2 = {				
 	// 	"AO": "#9e0142", 
 	// 	"BW": "#d53e4f", 
@@ -142,32 +167,8 @@ function add_destination_ip_layer(gmap){
 	destination_ip_layer = new google.maps.Data();
 	destination_ip_layer.loadGeoJson("/data/all_destination_ips.json");
 	destination_ip_layer.setStyle(style_ip);
-	destination_ip_layer.setMap(gmap); 
-
-	//Set colours for each ip per country
-	function style_ip(feature){
-		for (var key in country_colour_1){
-			if (feature.getProperty("country") == key){
-				colour = country_colour_1[key];
-			}
-		}
-
-		return {
-			icon: {
-				path: google.maps.SymbolPath.CIRCLE,
-				scale: 6,
-				fillColor: colour,
-				fillOpacity:1,
-				strokeWeight:2,
-				strokeColor: "black",
-			},
-      
-    	  
-  		};
-  	}
 
   	add_geojson_to_array("/data/all_destination_ips.json");
-
 	
 	 //Show destination IP info on mouseover
 	 var dest_hover_listener = destination_ip_layer.addListener('mouseover', function(event) {
@@ -208,23 +209,52 @@ var dest_click_listener = destination_ip_layer.addListener("click", function(eve
 			strokeColor: "black",
   		}
 
-  		//console.log(coords);
+  		//Show info window when ip_address clicked
+  		renderInfoWindow(infoWindow, selected_marker);
 
+  		if (infoWindow) {
+	 		setTimeout(function () { infoWindow.close(); }, 3000);
+	 	}
+
+	 	//Make new marker for chosen ip
   		 clicked_ip = new google.maps.Marker({
            	icon: selected_icon_style, //Keep styling of selected icon
             position: coords,
             map: map,
-            clickable: true
+            clickable: true,
   			});
 
+  		 //When marker clicked, remove current marker + add destination IP layer
   		 clicked_ip.addListener("click", function(event){
-  			clicked_ip.setMap(null);
+  			clicked_ip.setMap(null);  
   		 	add_destination_ip_layer(map);
-  		 	console.log("Clicked");
-
   		 })
+
+  		 //Allow mouseover for new marker
+  		 clicked_ip.addListener("mouseover", function(event){
+  			renderInfoWindow(infoWindow, selected_marker)
+  			if (infoWindow) {
+	 		setTimeout(function () { infoWindow.close(); }, 3000);
+	 		}
+  		 	
+  		 })
+
+  		
   	});
 
+	destination_ip_layer.setMap(gmap); 
+
+}
+
+function renderInfoWindow(window, marker){
+	var  infoWindow = window; 
+
+	infoWindow.setContent("<b>" + marker.getProperty("name") + "</b>" +
+        	"<br>" + "<b>ASN: </b> " + marker.getProperty("asn") +
+        	"<br>" + " <b>IP Address:</b>" + marker.getProperty("ip_address"));
+     var anchor = new google.maps.MVCObject();
+     anchor.set("position",event.latLng);
+     infoWindow.open(map,anchor);
 
 }
 
