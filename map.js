@@ -2,6 +2,7 @@ var map;
 var all_hops = [];
 var all_destination_ips = [];
 var hop_path = [];
+var clicked_ip;
 
 function initMap() {
 	
@@ -83,7 +84,40 @@ function initMap() {
 	//add_probe_layer(map);
 	add_destination_ip_layer(map);
 
-}
+	var dest_click_listener = destination_ip_layer.addListener("click", function(event) {
+  		
+  		var selected_marker = event.feature;
+  		
+  		destination_ip_layer.setMap(null);
+  		
+  		var ip_address = event.feature.getProperty("ip_address");
+  		var coords = event.feature.getGeometry().get();
+  		var selected_icon_style = {
+  			path: google.maps.SymbolPath.CIRCLE,
+			scale: 8,
+			fillColor: this.style(selected_marker).icon.fillColor,
+			fillOpacity:1,
+			strokeWeight:2,
+			strokeColor: "black",
+  		}
+
+  		//console.log(coords);
+
+  		 clicked_ip = new google.maps.Marker({
+           	icon: selected_icon_style, //Keep styling of selected icon
+            position: coords,
+            map: map,
+            clickable: true
+  			});
+
+  		 clicked_ip.addListener("click", function(event){console.log("Clicked");})
+
+
+  	});
+
+
+}//Add init map function
+
 
 function add_fibre_layer(gmap){
 	fibre_data_layer = new google.maps.Data();
@@ -163,38 +197,7 @@ function add_destination_ip_layer(gmap){
 
   	add_geojson_to_array("/data/all_destination_ips.json");
 
-  	var dest_click_listener = destination_ip_layer.addListener("click", function(event) {
-  		
-  		var selected_marker = event.feature;
-  		
-  		destination_ip_layer.setMap(null);
-  		
-  		var ip_address = event.feature.getProperty("ip_address");
-  		var coords = event.feature.getGeometry().get();
-  		var selected_icon_style = {
-  			path: google.maps.SymbolPath.CIRCLE,
-			scale: 8,
-			fillColor: this.style(selected_marker).icon.fillColor,
-			fillOpacity:1,
-			strokeWeight:2,
-			strokeColor: "black",
-  		}
-
-  		//console.log(coords);
-
-  		 var marker = new google.maps.Marker({
-           	icon: selected_icon_style, //Keep styling of selected icon
-            position: coords,
-            map: map,
-            clickable: true
-  			});
-  		 	
-
-
-
-
-  	});
-
+	
 	 //Show destination IP info on mouseover
 	 var dest_hover_listener = destination_ip_layer.addListener('mouseover', function(event) {
 
@@ -276,8 +279,6 @@ function add_measurement_layer(){
 
 	    });
 });}
-
-
 
 
 
