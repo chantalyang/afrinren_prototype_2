@@ -4,11 +4,86 @@ var all_destination_ips = [];
 var hop_path = [];
 
 function initMap() {
+	
+	//Define style of base map - http://gmaps-samples-v3.googlecode.com/svn/trunk/styledmaps/wizard/index.html 
+	var map_style_1 = [
+	  {
+	    "featureType": "water",
+	    "stylers": [
+	      { "visibility": "on" },
+	      { "lightness": 32 },
+	      { "saturation": -5 }
+	    ]
+	  },{
+	    "featureType": "landscape.natural.landcover",
+	    "stylers": [
+	      { "saturation": -30 },
+	      { "lightness": 25 }
+	    ]
+	  },{
+	  }
+	]
+
+	var map_style_2 = [
+	  {
+	    "featureType": "water",
+	    "stylers": [
+	      { "visibility": "on" },
+	      { "saturation": -33 },
+	      { "weight": 0.1 },
+	      { "hue": "#0088ff" },
+	      { "color": "#ebf2f6" }
+	    ]
+	  },{
+	    "featureType": "landscape.natural.landcover",
+	    "stylers": [
+	      { "saturation": -14 },
+	      { "visibility": "on" }
+	    ]
+	  },{
+	  }
+	]
+
+	var grey_scale =[
+	  {
+	    "featureType": "water",
+	    "stylers": [
+	      { "visibility": "on" },
+	      { "saturation": -33 },
+	      { "weight": 0.1 },
+	      { "hue": "#0088ff" },
+	      { "color": "#fefefd" }
+	    ]
+	  },{
+	    "featureType": "landscape.natural.landcover",
+	    "stylers": [
+	      { "visibility": "on" },
+	      { "saturation": -4 },
+	      { "color": "#CCCCCC" }
+	    ]
+	  },{
+	  }
+	]
+
+	
+
 	map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 0.070959, lng: 23.923482}, //0.070959, 23.923482
     zoom: 3,
+    styles: map_style_2,
     streetViewControl: false,
-});
+    zoomControl: true,
+   	 zoomControlOptions: {
+        position: google.maps.ControlPosition.LEFT_CENTER
+    }
+}
+
+	 
+
+
+);
+
+	
 
 	add_fibre_layer(map);
 	//add_probe_layer(map);
@@ -20,7 +95,7 @@ function initMap() {
 function add_fibre_layer(gmap){
 	fibre_data_layer = new google.maps.Data();
 	fibre_data_layer.loadGeoJson("/data/fibre.json");
-	fibre_data_layer.setStyle({strokeWeight: 2, strokeColor:"purple", strokeOpacity:0.3});
+	fibre_data_layer.setStyle({strokeWeight: 2, strokeColor:"purple", strokeOpacity:0.4});
 	fibre_data_layer.setMap(gmap);  
 
 }
