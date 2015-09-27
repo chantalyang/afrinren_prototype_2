@@ -22,7 +22,8 @@ function initMap() {
 	      { "lightness": 25 }
 	    ]
 	  },{
-	  }
+	  },
+	 
 	]
 
 	var map_style_2 = [
@@ -62,7 +63,14 @@ function initMap() {
 	      { "saturation": -4 },
 	      { "color": "#CCCCCC" }
 	    ]
-	  },{
+	  },
+	  	 {
+	    "featureType": "poi",
+	    "elementType":"geometry",
+	    "stylers": [
+	      { "color": "#CCCCCC"},
+	      { "saturation": -4 }
+	    ]
 	  }
 	]
 
@@ -71,7 +79,7 @@ function initMap() {
 	map = new google.maps.Map(document.getElementById('map'), {
 	    center: {lat: 0.070959, lng: 23.923482}, //0.070959, 23.923482
 	    zoom: 3,
-	    styles: map_style_1,
+	    styles: grey_scale,
 	    streetViewControl: false,
 	    zoomControl: true,
 	   	 zoomControlOptions: {
@@ -198,7 +206,6 @@ var dest_click_listener = destination_ip_layer.addListener("click", function(eve
   		
   		destination_ip_layer.setMap(null);
   		
-  		var ip_address = event.feature.getProperty("ip_address");
   		var coords = event.feature.getGeometry().get();
   		var selected_icon_style = {
   			path: google.maps.SymbolPath.CIRCLE,
@@ -227,7 +234,9 @@ var dest_click_listener = destination_ip_layer.addListener("click", function(eve
   		 //When marker clicked, remove current marker + add destination IP layer
   		 clicked_ip.addListener("click", function(event){
   			clicked_ip.setMap(null);  
-  		 	add_destination_ip_layer(map);
+  		 	add_destination_ip_layer(map); //Re-add destination IPs
+  		 	probe_layer.setMap(null); //Remove probes from map
+  		 	remove_hops();
   		 })
 
   		 //Allow mouseover for new marker
@@ -239,12 +248,17 @@ var dest_click_listener = destination_ip_layer.addListener("click", function(eve
   		 	
   		 })
 
+  		 add_probe_layer(map);
+
+  		var ip_address = event.feature.getProperty("ip_address");
+  		add_hops_to_map(ip_address);
+
   		
-  	});
+  	});//End click listener
 
 	destination_ip_layer.setMap(gmap); 
 
-}
+}//End add destination ip
 
 function renderInfoWindow(window, marker){
 	var  infoWindow = window; 
@@ -264,6 +278,59 @@ function add_geojson_to_array(file){
 	    all_destination_ips = data.features;
 	    });
 }
+
+function remove_hops (){
+	for (var i = 0; i < all_hops.length; i++){
+		all_hops[i].setMap(null);
+	}
+}
+
+function add_hops_to_map(selected_ip_address){
+	var jsonFile = "/data/measurements/hops_to_" + selected_ip_address + ".json";
+	$.getJSON(jsonFile, function(json1) {
+		$.each(json1, function(key, data) { //Loop through all the json fields
+	    	console.log(data.prb_id);
+	    		$.each(data.result, function(key, data){ //Loop through the results field 
+	    			try{
+
+	    				var lati = data.result.coordinates[0];
+	    				var lngi = data.result.coordinates[1];
+	    				var latLng = new google.maps.LatLng(lati, lngi); 
+	    				var hop_num = data.hop.toString();
+
+	    				console.log("Hop:" + hop_num + " coords: " + data.result.coordinates);
+
+	    				var hop_sym = {
+	    					path: google.maps.SymbolPath.CIRCLE,
+	    					scale:4,
+	    					fillColor: 'black',
+	    					fillOpacity: 1,
+	    					strokeColor: "black",
+	    					strokeWeight:2
+	    				}
+
+	    				var icon_string = "numbers3/number_"+hop_num+".png"
+
+	    				var marker = new google.maps.Marker({
+	    					position: latLng,
+	    					map: map,
+			            	icon: icon_string,
+			            	clickable: true
+			        })
+
+	    				all_hops.push(marker);
+	    				
+
+	    			}
+	    			catch(err){
+
+	    			}
+
+	    		})
+	    	
+
+	    });
+});}
 
 function add_measurement_layer(){
 	$.getJSON("/data/test_measurement_1.json", function(json1) {
@@ -319,14 +386,16 @@ function add_measurement_layer(){
 
 
 function add_probe_layer(gmap){
+var probe_svg_path = "M16,3.5c-4.142,0-7.5,3.358-7.5,7.5c0,4.143,7.5,18.121,7.5,18.121S23.5,15.143,23.5,11C23.5,6.858,20.143,3.5,16,3.5z M16,14.584c-1.979,0-3.584-1.604-3.584-3.584S14.021,7.416,16,7.416S19.584,9.021,19.584,11S17.979,14.584,16,14.584z";
 
 	var probe_symbol = {
-		path: google.maps.SymbolPath.CIRCLE,
-		scale:6,
-		fillColor: '#0ea7b5',
+		path: probe_svg_path,
+		scale:1.1,
+		fillColor: '#fdb863',
 		fillOpacity: 1,
 		strokeColor: "black",
-		strokeWeight:2,
+		strokeWeight:1,
+		anchor: new google.maps.Point(15,10)
 	};
 
 	probe_layer = new google.maps.Data();
@@ -349,7 +418,9 @@ function add_probe_layer(gmap){
         anchor.set("position",event.latLng);
         infoWindow.open(map,anchor);
 
-
+        if (infoWindow) {
+	 		setTimeout(function () { infoWindow.close(); }, 3000);
+	 		}
 
 
       });//End event listener
