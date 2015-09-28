@@ -4,6 +4,7 @@ var all_destination_ips = [];
 var hop_path = [];
 var probes = [];
 var clicked_ip;
+var traceroute_path;
 
 function initMap() {
 	
@@ -220,6 +221,7 @@ var dest_click_listener = destination_ip_layer.addListener("click", function(eve
   		 	add_destination_ip_layer(map); //Re-add destination IPs
   		 	probe_layer.setMap(null); //Remove probes from map
   		 	remove_hops();
+  		 	removeLine(traceroute_path);
   		 })
 
   		 //Allow mouseover for new marker
@@ -334,7 +336,7 @@ function add_hops_to_map(selected_ip_address){
 	    });//End outer each
 
 		//Draw lines 
-       var traceroute_path = new google.maps.Polyline({
+        traceroute_path = new google.maps.Polyline({
         path: hop_path,
         icons: [{
           icon: line_symbol,
@@ -364,7 +366,7 @@ function animateArrow(line) {
 
   var count = 0;
   window.setInterval(function() {
-      count = (count + 0.5) % 100; //change count number to make arrow slower
+      count = (count + 0.5) % 200; //change count number to make arrow slower
 
       var icons = line.get('icons');
       icons[0].offset = (count / 2) + '%';
