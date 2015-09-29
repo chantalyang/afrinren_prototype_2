@@ -5,14 +5,16 @@ var hop_path = [];
 var probes = [];
 var clicked_ip;
 var traceroute_path;
+var ixp_svg_path = "M15.5,3.029l-10.8,6.235L4.7,21.735L15.5,27.971l10.8-6.235V9.265L15.5,3.029zM24.988,10.599L16,15.789v10.378c0,0.275-0.225,0.5-0.5,0.5s-0.5-0.225-0.5-0.5V15.786l-8.987-5.188c-0.239-0.138-0.321-0.444-0.183-0.683c0.138-0.238,0.444-0.321,0.683-0.183l8.988,5.189l8.988-5.189c0.238-0.138,0.545-0.055,0.684,0.184C25.309,10.155,25.227,10.461,24.988,10.599z"
+
 
 function initMap() {
 
 	map = new google.maps.Map(document.getElementById('map'), {
 	    center: {lat: 0.070959, lng: 23.923482}, //0.070959, 23.923482
 	    zoom: 3,
-	   //styles: grey_scale,
-	   styles: map_style_1,
+	    styles: grey_scale,
+	   //styles: map_style_1,
 	   streetViewControl: false,
 	   zoomControl: true,
 	   zoomControlOptions: {
@@ -21,18 +23,39 @@ function initMap() {
 	}
 	);
 
-	load_fibre_layer();
+	load_fibre_JSON();
+	load_probe_JSON();
 	add_destination_ip_layer(map);
 
 }//Add init map function
 
 
-function load_fibre_layer(){
+function load_fibre_JSON(){
 	fibre_data_layer = new google.maps.Data();
 	fibre_data_layer.loadGeoJson("/data/fibre.json");
 	fibre_data_layer.setStyle({strokeWeight: 2, strokeColor:"purple", strokeOpacity:0.4});
 }
 
+function load_probe_JSON(){
+
+	//var probe_svg_path = "M16,3.5c-4.142,0-7.5,3.358-7.5,7.5c0,4.143,7.5,18.121,7.5,18.121S23.5,15.143,23.5,11C23.5,6.858,20.143,3.5,16,3.5z M16,14.584c-1.979,0-3.584-1.604-3.584-3.584S14.021,7.416,16,7.416S19.584,9.021,19.584,11S17.979,14.584,16,14.584z";
+	//var probe_svg_path = "M3.25,6.469v19.062h25.5V6.469H3.25zM10.345,11.513l-4.331,1.926V12.44l3.124-1.288v-0.018L6.014,9.848v-1l4.331,1.927V11.513zM16.041,14.601h-5.05v-0.882h5.05V14.601z";
+	var probe_svg_path ="M23.963,20.834L17.5,9.64c-0.825-1.429-2.175-1.429-3,0L8.037,20.834c-0.825,1.429-0.15,2.598,1.5,2.598h12.926C24.113,23.432,24.788,22.263,23.963,20.834z";
+
+	var probe_symbol = {
+		path: probe_svg_path,
+		scale:1,
+		fillColor: 'blue',
+		fillOpacity: 1,
+		strokeColor: "white",
+		strokeWeight:1,
+		anchor: new google.maps.Point(15,10)
+	};
+
+	probe_layer = new google.maps.Data();
+	probe_layer.loadGeoJson("/data/all_probes.json");
+	probe_layer.setStyle({icon: probe_symbol, clickable: true});
+}
 
 function add_destination_ip_layer(gmap){
 
@@ -46,7 +69,7 @@ function add_destination_ip_layer(gmap){
 
 	add_geojson_to_array("/data/all_destination_ips.json");
 	
-//Show destination IP info on mouseover
+	//Show destination IP info on mouseover
 	destination_ip_layer.addListener('mouseover', function(event) {
         //Display infowindow
         infoWindow.setContent("<b>" + event.feature.getProperty("name") + "</b>" +
@@ -65,28 +88,21 @@ function add_destination_ip_layer(gmap){
 
 	 });
 
-//Click destination IP listener
-	 destination_ip_layer.addListener("click", function(event) {
+	//Click destination IP listener
+	destination_ip_layer.addListener("click", function(event) {
 
-	 	var selected_marker = event.feature;
+		var selected_marker = event.feature;
 
-	 	var coords = event.feature.getGeometry().get();
-	 	
-	 	var selected_icon_style = {
-	 		path: google.maps.SymbolPath.CIRCLE,
-	 		scale: 9,
-	 		fillColor: this.style(selected_marker).icon.fillColor,
-	 		fillOpacity:1,
-	 		strokeWeight:1.5,
-	 		strokeColor: "black",
-	 	}
+		var coords = event.feature.getGeometry().get();
 
-  		/*//Show info window when ip_address clicked
-  		renderInfoWindow(infoWindow, selected_marker);
-  		if (infoWindow) {
-	 		setTimeout(function () { infoWindow.close(); }, 5000);
-	 	}
-	 	*/
+		var selected_icon_style = {
+			path: google.maps.SymbolPath.CIRCLE,
+			scale: 9,
+			fillColor: this.style(selected_marker).icon.fillColor,
+			fillOpacity:1,
+			strokeWeight:1.5,
+			strokeColor: "black",
+		}
 
 	 	//Remove all IPs
 	 	destination_ip_layer.setMap(null); 
@@ -111,19 +127,21 @@ function add_destination_ip_layer(gmap){
 
   		 //Allow mouseover for new marker
   		 clicked_ip.addListener("mouseover", function(event){
-  		 	renderInfoWindow(infoWindow, selected_marker)	
+  		 	render_IPinfoWindow(infoWindow, selected_marker)	
 
   		 })
 
-  		 //Allow mouseover for new marker
+  		 //Set mouseout listener
   		 clicked_ip.addListener("mouseout", function(event){
   		 	if (infoWindow) {
-	 		setTimeout(function () { infoWindow.close(); }, 3000);
-	 		} 	 	
+  		 		setTimeout(function () { infoWindow.close(); }, 3000);
+  		 	} 	 	
   		 })
 
   		// add_probe_layer(map);
-  		console.log("Coordinates of clicked " + clicked_ip.position);
+
+  		//Add hops to map of selected IP marker
+  		//console.log("Coordinates of clicked " + clicked_ip.position);
   		clicked_ip_address = event.feature.getProperty("ip_address");
   		add_hops_to_map(clicked_ip_address);
 
@@ -134,7 +152,7 @@ destination_ip_layer.setMap(gmap);
 
 }//End add destination ip
 
-function renderInfoWindow(window, marker){
+function render_IPinfoWindow(window, marker){
 	var  infoWindow = window; 
 
 	infoWindow.setContent("<b>" + marker.getProperty("name") + "</b>" +
@@ -172,7 +190,18 @@ function add_hops_to_map(selected_ip_address){
 	    //strokeColor: 'black'
 	};
 
-	hop_path = [];
+	var hop_sym = {
+		path: google.maps.SymbolPath.CIRCLE,
+		scale:4,
+		//fillColor: "#18bc9c",
+		fillColor: "#0cd410",
+		fillOpacity: 1,
+		//strokeColor: "#4575b4",
+		strokeWeight:1
+	}
+
+
+	hop_path = []; //Clear hop path array
 
 	$.getJSON(jsonFile, function(json1) {
 		$.each(json1, function(key, data) { //Loop through all the json fields
@@ -196,15 +225,7 @@ function add_hops_to_map(selected_ip_address){
 
 	    				hop_path.push({lat: parseFloat(lati), lng: parseFloat(lngi)});
 
-	    				var hop_sym = {
-	    					path: google.maps.SymbolPath.CIRCLE,
-	    					scale:4,
-	    					fillColor: "#18bc9c",
-	    					fillOpacity: 1,
-	    					strokeColor: "#4575b4",
-	    					strokeWeight:1
-	    				}
-
+	    				
 	    				//var icon_string = "numbers3/number_"+hop_num+".png"
 
 	    				var marker = new google.maps.Marker({
@@ -215,26 +236,19 @@ function add_hops_to_map(selected_ip_address){
 	    				})
 
 	    				all_hops.push(marker);
-
-
-	    				
-
 	    			}
 	    			catch(err){
 
 	    			}//End catch
 
 	    		})//End inner each
-	    	
-
-	    				
 
 	    });//End outer each
 
-	// if (JSON.stringify(clicked_ip.position) === JSON.stringify(all_hops[all_hops.length-1].position)){ 
-	// 				     	 	console.log("True");
-	// 				     	 	all_hops[all_hops.length-1].setMap(null);
-	// 				     	}
+	if (JSON.stringify(clicked_ip.position) === JSON.stringify(all_hops[all_hops.length-1].position)){ 
+					     	 	console.log("True");
+					     	 	all_hops[all_hops.length-1].setMap(null);
+					     	}
 
 		//Draw traceroute lines lines 
 		traceroute_path = new google.maps.Polyline({
@@ -250,10 +264,9 @@ function add_hops_to_map(selected_ip_address){
 	     strokeWeight: 2
 	 });
 
-		
 
-     	addLine(traceroute_path);
-     	animateArrow(traceroute_path);
+		addLine(traceroute_path);
+		animateArrow(traceroute_path);
 
 });}//End add_hop_measurement
 
@@ -271,7 +284,7 @@ function animateArrow(line) {
 // Use the DOM setInterval() function to change the offset of the symbol at fixed intervals.
 var count = 0;
 window.setInterval(function() {
-      count = (count + 0.5) % 300; //change count number to make arrow slower
+      count = (count + 0.5) % 200; //change count number to make arrow slower
       var icons = line.get('icons');
       icons[0].offset = (count / 2) + '%';
       line.set('icons', icons);
@@ -293,24 +306,9 @@ function animate(route) { //функция анимирует каждый пе�
 	}, 40);
 }
 
+
+
 function add_probe_layer(gmap){
-	
-	var probe_svg_path = "M16,3.5c-4.142,0-7.5,3.358-7.5,7.5c0,4.143,7.5,18.121,7.5,18.121S23.5,15.143,23.5,11C23.5,6.858,20.143,3.5,16,3.5z M16,14.584c-1.979,0-3.584-1.604-3.584-3.584S14.021,7.416,16,7.416S19.584,9.021,19.584,11S17.979,14.584,16,14.584z";
-
-	var probe_symbol = {
-		path: probe_svg_path,
-		scale:1.1,
-		fillColor: '#fdb863',
-		fillOpacity: 1,
-		strokeColor: "black",
-		strokeWeight:1,
-		anchor: new google.maps.Point(15,10)
-	};
-
-	probe_layer = new google.maps.Data();
-	probe_layer.loadGeoJson("/data/all_probes.json");
-	probe_layer.setMap(gmap);
-	probe_layer.setStyle({icon: probe_symbol, clickable: true});
 
 	var  infoWindow = new google.maps.InfoWindow({
 		content: "",
@@ -362,11 +360,11 @@ function add_probe_layer(gmap){
 
 	}
 
-	function addLine(polyline){
-		polyline.setMap(map)
-	}
+function addLine(polyline){
+	polyline.setMap(map)
+}
 
-	function changeLayer(selected_layer){
+function changeLayer(selected_layer){
 	//Fibre
 	if (selected_layer == "fibre"){
 		if (document.getElementById("fibre_layer").checked == true){
