@@ -8,10 +8,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/src/markerclusterer.js"></script>
   <script src="country.js"></script>
+  <script src="map_styling.js"></script>
   </head>
   <body>
 
-    <h1>Map of ICMP Traceroute Measurements</h1>
+    <h1>Map of Traceroute Measurements</h1>
     <p>Please select a destination IP address to see traceroute measurements from probes.</p>
     
     <div class="row">
@@ -30,7 +31,7 @@
           <div class="row">
           <div class="checkbox">
             <label>
-              <input type="checkbox" value="fibre" id="fibre_layer" onclick="changeLayer(this.value);" checked> Terrestrial Fibre*
+              <input type="checkbox" value="fibre" id="fibre_layer" onclick="changeLayer(this.value);"> Terrestrial Fibre*
             </label>
           </div>
           <div class="checkbox">
