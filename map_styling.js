@@ -65,3 +65,44 @@
 		]
 	}
 	]
+	
+//Set colours for each ip per country
+function style_ip(feature){
+
+	var country_colour_1 = {
+		"AO": "white", 
+		"BW": "#1f78b4", 
+		"CD": "#35978f",
+		"ET": "#33a02c",
+		"KE": "#fb9a99",
+		"MG": "#e31a1c",
+		"MW" : "#fdbf6f",
+		"MZ" : "#ff7f00",
+		"NA": "#cab2d6",
+		"RW": "#6a3d9a",
+		"ZA": "#ffff99",
+		"TZ": "#b15928" ,
+		"UG": "#8c510a",
+		"ZM": "#bf812d",
+		"ZW": "#bababa"	
+	}
+
+	for (var key in country_colour_1){
+		if (feature.getProperty("country") == key){
+			colour = country_colour_1[key];
+		}
+	}
+
+	return {
+		icon: {
+			path: google.maps.SymbolPath.CIRCLE,
+			scale: 6,
+			fillColor: colour,
+			fillOpacity:1,
+			strokeWeight:1.5,
+			strokeColor: "black",
+		},
+
+
+	};
+}
