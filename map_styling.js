@@ -45,7 +45,8 @@
 		{ "saturation": -33 },
 		{ "weight": 0.1 },
 		{ "hue": "#0088ff" },
-		{ "color": "#fefefd" }
+		//{ "color": "#fefefd" }
+		{"color": "#fbfbfa"}
 		]
 	},{
 		"featureType": "landscape.natural.landcover",
