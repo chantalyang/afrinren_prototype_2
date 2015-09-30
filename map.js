@@ -5,7 +5,6 @@ var hop_path = [];
 var probes = [];
 var clicked_ip;
 var traceroute_path;
-var all_traceroute_polylines = [];
 var ixp_svg_path = "M15.5,3.029l-10.8,6.235L4.7,21.735L15.5,27.971l10.8-6.235V9.265L15.5,3.029zM24.988,10.599L16,15.789v10.378c0,0.275-0.225,0.5-0.5,0.5s-0.5-0.225-0.5-0.5V15.786l-8.987-5.188c-0.239-0.138-0.321-0.444-0.183-0.683c0.138-0.238,0.444-0.321,0.683-0.183l8.988,5.189l8.988-5.189c0.238-0.138,0.545-0.055,0.684,0.184C25.309,10.155,25.227,10.461,24.988,10.599z"
 var all_measurements = [];
 var dictionary = {};
@@ -128,8 +127,7 @@ function add_destination_ip_layer(gmap){
   		 	add_destination_ip_layer(map); //Re-add destination IPs
   		 	//probe_layer.setMap(null); //Remove probes from map
   		 	remove_hops();
-  		 	//removeLine(traceroute_polyline);
-  		 	remove_traceroutes();
+  		 	removeLine(traceroute_polyline);
   		 	traceroute_path = [];
   		 })
 
@@ -320,13 +318,13 @@ function draw_traceroutes(){
 	  			 }],
 	     geodesic: true,
 	     strokeColor: 'black',
-	     strokeOpacity: 0.3,
+	     strokeOpacity: 0.5,
 	     strokeWeight: 2
 		 });
 
 		addLine(traceroute_polyline);
 		animateArrow(traceroute_polyline);
-		all_traceroute_polylines.push(traceroute_polyline);
+
 	}//End for
 
 	/*//Draw traceroute lines 
@@ -347,12 +345,6 @@ function draw_traceroutes(){
 		animateArrow(traceroute_polyline);*/
 
 }
-
-function remove_traceroutes(){
-		for (k = 0; k < all_traceroute_polylines.length; k++){
-			removeLine(all_traceroute_polylines[k]);
-		}
-}			
 
 
 function addLine(polyline){
