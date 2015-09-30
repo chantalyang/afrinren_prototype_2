@@ -47,16 +47,19 @@ function load_probe_JSON(){
 
 	//var probe_svg_path = "M16,3.5c-4.142,0-7.5,3.358-7.5,7.5c0,4.143,7.5,18.121,7.5,18.121S23.5,15.143,23.5,11C23.5,6.858,20.143,3.5,16,3.5z M16,14.584c-1.979,0-3.584-1.604-3.584-3.584S14.021,7.416,16,7.416S19.584,9.021,19.584,11S17.979,14.584,16,14.584z";
 	//var probe_svg_path = "M3.25,6.469v19.062h25.5V6.469H3.25zM10.345,11.513l-4.331,1.926V12.44l3.124-1.288v-0.018L6.014,9.848v-1l4.331,1.927V11.513zM16.041,14.601h-5.05v-0.882h5.05V14.601z";
-	var probe_svg_path ="M23.963,20.834L17.5,9.64c-0.825-1.429-2.175-1.429-3,0L8.037,20.834c-0.825,1.429-0.15,2.598,1.5,2.598h12.926C24.113,23.432,24.788,22.263,23.963,20.834z";
+	var triangle_svg_path ="M23.963,20.834L17.5,9.64c-0.825-1.429-2.175-1.429-3,0L8.037,20.834c-0.825,1.429-0.15,2.598,1.5,2.598h12.926C24.113,23.432,24.788,22.263,23.963,20.834z";
+	var diamond_svg_path ="M -2,0 0,-2 2,0 0,2 z";
 
 	var probe_symbol = {
-		path: probe_svg_path,
-		scale:0.8,
+		//path: triangle_svg_path,
+		path: diamond_svg_path,
+		//scale:0.8,
+		scale:4,
 		fillColor: 'blue',
 		fillOpacity: 1,
 		strokeColor: "white",
 		strokeWeight:1,
-		anchor: new google.maps.Point(15,10)
+		//anchor: new google.maps.Point(15,16)
 	};
 
 	probe_layer = new google.maps.Data();
