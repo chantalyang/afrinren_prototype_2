@@ -1,135 +1,213 @@
 {
-   "type": "FeatureCollection",
-   "features": [
-  {
-    "type": "Feature",
-    "geometry": {
-       "type": "Point",
-       "coordinates":  [ 32.570989,0.329179 ]
-    },
-    "properties": {
-    "probe_id":15357,
-    "asn":327687,
-    "name":"RENU",
-    "type":"nren"
-    }
-  },
-  {
-    "type": "Feature",
-    "geometry": {
-       "type": "Point",
-       "coordinates":  [ 33.570989,0.329179 ]
-    },
-    "properties": {
-    "probe_id":14900,
-    "asn":327687,
-    "name":"RENU",
-    "type":"nren"
-    }
-  },
-  {
-    "type": "Feature",
-    "geometry": {
-       "type": "Point",
-       "coordinates":  [ 36.816352,-1.280702 ]
-    },
-    "properties": {
-    "probe_id":13218,
-    "asn":36914,
-    "name":"KENET",
-    "type":"nren"
-    }
-  },
-  {
-    "type": "Feature",
-    "geometry": {
-       "type": "Point",
-       "coordinates":  [ 37.868172,-1.235795 ]
-    },
-    "properties": {
-    "probe_id":13114,
-    "asn":36914,
-    "name":"KENET",
-    "type":"nren"
-    }
-  },
-  {
-    "type": "Feature",
-    "geometry": {
-       "type": "Point",
-       "coordinates":  [ 47.528323,-18.942708 ]
-    },
-    "properties": {
-    "probe_id":19592,
-    "asn":37608,
-    "name":"iRENALA",
-    "type":"nren"
-    }
-  },
-  {
-    "type": "Feature",
-    "geometry": {
-       "type": "Point",
-       "coordinates":  [ 48.528323,-18.942708 ]
-    },
-    "properties": {
-    "probe_id":14712,
-    "asn":37608,
-    "name":"iRENALA",
-    "type":"nren"
-    }
-  },
-  {
-    "type": "Feature",
-    "geometry": {
-       "type": "Point",
-       "coordinates":  [ 32.541700,15.609327 ]
-    },
-    "properties": {
-    "probe_id":4061,
-    "asn":37197,
-    "name":"SudREN",
-    "type":"nren"
-    }
-  },
-  {
-    "type": "Feature",
-    "geometry": {
-       "type": "Point",
-       "coordinates":  [ 26.521345,-33.295427 ]
-    },
-    "properties": {
-    "probe_id":4518,
-    "asn":2018,
-    "name":"TENET",
-    "type":"nren"
-    }
-  },
-  {
-    "type": "Feature",
-    "geometry": {
-       "type": "Point",
-       "coordinates":  [ 27.516308,-33.313596 ]
-    },
-    "properties": {
-    "probe_id":18169,
-    "asn":37520,
-    "name":"Rhodes",
-    "type":"university"
-    }
-  },
-  {
-    "type": "Feature",
-    "geometry": {
-       "type": "Point",
-       "coordinates":  [39.00, 2.00]
-    },
-    "properties": {
-    "probe_id":13100,
-    "asn":327687,
-    "name":"KENET",
-    "type":"nren"
-    }
-  }
-]
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    21.4205,
+                    -30.7625
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "type": "NREN",
+                "asn": 2018,
+                "probe_id": 3461,
+                "name": "TENET"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    32.5305,
+                    15.5875
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "type": "NREN",
+                "asn": 37197,
+                "probe_id": 4061,
+                "name": "SudRen"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    32.5305,
+                    15.0005
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "type": "NREN",
+                "asn": 37197,
+                "probe_id": 4096,
+                "name": "SudRen"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    21.4205,
+                    -33.3085
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "type": "NREN",
+                "asn": 2018,
+                "probe_id": 4518,
+                "name": "TENET"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    34.7475,
+                    -0.1125
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "type": "NREN",
+                "asn": 36914,
+                "probe_id": 13100,
+                "name": "KENET"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    34.7475,
+                    -1.2205
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "type": "NREN",
+                "asn": 36914,
+                "probe_id": 13114,
+                "name": "KENET"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    46.5685,
+                    -18.5725
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "type": "NREN",
+                "asn": 37054,
+                "probe_id": 13721,
+                "name": "iRENALA"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    31.9985,
+                    1.0015
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "type": "NREN",
+                "asn": 327687,
+                "probe_id": 14539,
+                "name": "RENU"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    46.8685,
+                    -18.9415
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "type": "NREN",
+                "asn": 37054,
+                "probe_id": 14712,
+                "name": "iRENALA"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    32.5415,
+                    15.6085
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "type": "NREN",
+                "asn": 33788,
+                "probe_id": 14893,
+                "name": "SudRen"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    31.9985,
+                    0.3275
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "type": "NREN",
+                "asn": 327687,
+                "probe_id": 14900,
+                "name": "RENU"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    18.4575,
+                    -33.9605
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "type": "University",
+                "asn": 36982,
+                "probe_id": 18114,
+                "name": "University of Cape Town"
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    26.5205,
+                    -33.3085
+                ]
+            },
+            "type": "Feature",
+            "properties": {
+                "type": "University",
+                "asn": 37520,
+                "probe_id": 18169,
+                "name": "Rhodes University"
+            }
+        }
+    ]
 }

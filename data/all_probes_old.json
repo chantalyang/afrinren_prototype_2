@@ -1,0 +1,135 @@
+{
+   "type": "FeatureCollection",
+   "features": [
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 32.570989,0.329179 ]
+    },
+    "properties": {
+    "probe_id":15357,
+    "asn":327687,
+    "name":"RENU",
+    "type":"nren"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 33.570989,0.329179 ]
+    },
+    "properties": {
+    "probe_id":14900,
+    "asn":327687,
+    "name":"RENU",
+    "type":"nren"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 36.816352,-1.280702 ]
+    },
+    "properties": {
+    "probe_id":13218,
+    "asn":36914,
+    "name":"KENET",
+    "type":"nren"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 37.868172,-1.235795 ]
+    },
+    "properties": {
+    "probe_id":13114,
+    "asn":36914,
+    "name":"KENET",
+    "type":"nren"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 47.528323,-18.942708 ]
+    },
+    "properties": {
+    "probe_id":19592,
+    "asn":37608,
+    "name":"iRENALA",
+    "type":"nren"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 48.528323,-18.942708 ]
+    },
+    "properties": {
+    "probe_id":14712,
+    "asn":37608,
+    "name":"iRENALA",
+    "type":"nren"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 32.541700,15.609327 ]
+    },
+    "properties": {
+    "probe_id":4061,
+    "asn":37197,
+    "name":"SudREN",
+    "type":"nren"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 26.521345,-33.295427 ]
+    },
+    "properties": {
+    "probe_id":4518,
+    "asn":2018,
+    "name":"TENET",
+    "type":"nren"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 27.516308,-33.313596 ]
+    },
+    "properties": {
+    "probe_id":18169,
+    "asn":37520,
+    "name":"Rhodes",
+    "type":"university"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [39.00, 2.00]
+    },
+    "properties": {
+    "probe_id":13100,
+    "asn":327687,
+    "name":"KENET",
+    "type":"nren"
+    }
+  }
+]
+}
