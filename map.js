@@ -147,13 +147,17 @@ function add_destination_ip_layer(gmap){
   		 		setTimeout(function () { infoWindow.close(); }, 3000);
   		 	} 	 	
   		 })
-
-  		// add_probe_layer(map);
+  		
+  		//console.log("Coordinates of clicked " + clicked_ip.position);
 
   		//Add hops to map of selected IP marker
-  		//console.log("Coordinates of clicked " + clicked_ip.position);
   		clicked_ip_address = event.feature.getProperty("ip_address");
   		add_hops_to_map(clicked_ip_address);
+  		
+  		//Show probes
+  		document.getElementById("probe_layer").checked = true; //Set probe checkbox to true
+  		probe_layer.setMap(map);
+		activate_probe_listeners();
 
   		
   	});//End click listener
