@@ -16,12 +16,17 @@ function initMap() {
 	    styles: grey_scale,
 	   //styles: map_style_1,
 	   streetViewControl: false,
+	   panControl:true,
 	   zoomControl: true,
 	   zoomControlOptions: {
-	   	position: google.maps.ControlPosition.LEFT_CENTER
+	   	position: google.maps.ControlPosition.LEFT_CENTER,
+	   	
 	   }
+	   
 	}
 	);
+
+
 
 	load_fibre_JSON();
 	load_probe_JSON();
@@ -245,10 +250,16 @@ function add_hops_to_map(selected_ip_address){
 
 	    });//End outer each
 
-	if (JSON.stringify(clicked_ip.position) === JSON.stringify(all_hops[all_hops.length-1].position)){ 
-					     	 	console.log("True");
-					     	 	all_hops[all_hops.length-1].setMap(null);
-					     	}
+function remove_extra_markers(hops){
+	
+	for (var i = 0; i < hops.length; i++){
+		if (JSON.stringify(clicked_ip.position) === JSON.stringify(all_hops[i].position)){ 
+						     	 	console.log("True");
+						     	 	all_hops[i].setMap(null);
+						     	}
+					     }
+}
+	
 
 		//Draw traceroute lines lines 
 		traceroute_path = new google.maps.Polyline({
@@ -264,7 +275,7 @@ function add_hops_to_map(selected_ip_address){
 	     strokeWeight: 2
 	 });
 
-
+		remove_extra_markers(all_hops);
 		addLine(traceroute_path);
 		animateArrow(traceroute_path);
 
