@@ -2,7 +2,7 @@ var map;
 var all_hops = [];
 var all_destination_ips = [];
 var hop_path = [];
-var probes = [];
+var all_probes = [];
 var clicked_ip;
 var traceroute_path;
 var ixp_svg_path = "M15.5,3.029l-10.8,6.235L4.7,21.735L15.5,27.971l10.8-6.235V9.265L15.5,3.029zM24.988,10.599L16,15.789v10.378c0,0.275-0.225,0.5-0.5,0.5s-0.5-0.225-0.5-0.5V15.786l-8.987-5.188c-0.239-0.138-0.321-0.444-0.183-0.683c0.138-0.238,0.444-0.321,0.683-0.183l8.988,5.189l8.988-5.189c0.238-0.138,0.545-0.055,0.684,0.184C25.309,10.155,25.227,10.461,24.988,10.599z"
@@ -62,6 +62,9 @@ function load_probe_JSON(){
 	probe_layer = new google.maps.Data();
 	probe_layer.loadGeoJson("/data/all_probes.json");
 	probe_layer.setStyle({icon: probe_symbol, clickable: true});
+
+	add_probes_to_array("/data/all_probes.json");
+
 }
 
 function add_destination_ip_layer(gmap){
@@ -74,7 +77,7 @@ function add_destination_ip_layer(gmap){
 	destination_ip_layer.loadGeoJson("/data/all_destination_ips.json");
 	destination_ip_layer.setStyle(style_ip);
 
-	add_geojson_to_array("/data/all_destination_ips.json");
+	add_ips_to_array("/data/all_destination_ips.json");
 	
 	//Show destination IP info on mouseover
 	destination_ip_layer.addListener('mouseover', function(event) {
@@ -171,10 +174,17 @@ function render_IPinfoWindow(window, marker){
 
 }
 
-function add_geojson_to_array(file){	
+function add_ips_to_array(file){	
 	$.getJSON(file)
 	.done(function (data) {
 		all_destination_ips = data.features;
+	});
+}
+
+function add_probes_to_array(file){	
+	$.getJSON(file)
+	.done(function (data) {
+		all_probes = data.features;
 	});
 }
 
@@ -218,10 +228,15 @@ function add_hops_to_map(selected_ip_address){
 			probe_id = data.prb_id;
 			var protocol = data.proto;
 	    	var hop_coordinates = " "
-	    	//console.log(probe_id);
+	 		var probe_coords = get_probe_coordinates();
+	    	
 	    	hop_path = [];
-	    	//console.log("Empty hop path" + hop_path.length)
+
+	    	//Add probe coordinates as first location
+			hop_path.push({lat: parseFloat(probe_coords[1]), lng: parseFloat(probe_coords[0]) });
+
 	    	//if (data.prb_id == 4518){
+	    	
 	    		$.each(data.result, function(key, data){ //Loop through the results field 
 	    			try{
 
@@ -230,9 +245,11 @@ function add_hops_to_map(selected_ip_address){
 	    				var latLng = new google.maps.LatLng(lati, lngi); 
 	    				var hop_num = data.hop.toString();
 	    				var country_name = getCountryName(data.result.country);
+	    				
 
 
 	    				//console.log("Hop:" + hop_num + " coords: " + data.result.coordinates);
+
 	    				hop_path.push({lat: parseFloat(lati), lng: parseFloat(lngi)});
 	    				//console.log(hop_path)
 	    				
@@ -263,12 +280,26 @@ function add_hops_to_map(selected_ip_address){
 								     	}
 							     }
 		}
-
+	
 	remove_extra_markers(all_hops);
 	draw_traceroutes(selected_ip_address);
 	
 
 }); //End get json
+
+function get_probe_coordinates(){
+ //Add probes to front of path
+	for (var i = 0; i < all_probes.length; i++){
+		if (all_probes[i].properties.probe_id == probe_id){
+			var probe_coords = all_probes[i].geometry.coordinates;
+			return probe_coords;
+		}
+	}
+	    				
+
+}
+
+
 
 }//End add_hop_measurement
 
@@ -303,6 +334,19 @@ function draw_traceroutes(ip_addr){
 	     strokeOpacity: 0.3,
 	     strokeWeight: 2
 		 });
+
+		/*traceroute_polyline.addListener("mouseover", function(event) {
+			traceroute_polyline.setOptions({strokeColor:'red', strokeWeight:4})
+			addLine(traceroute_polyline);
+			animateArrow(traceroute_polyline);
+		})
+*/
+		google.maps.event.addListener(traceroute_polyline, 'mouseover', function(latlng) {
+	          
+	        traceroute_polyline.setOptions({strokeColor: '#00FFAA'});
+
+        });
+		
 
 		addLine(traceroute_polyline);
 		animateArrow(traceroute_polyline);
@@ -360,7 +404,8 @@ function activate_probe_listeners(){
 	});
 
 	 //Mouseover events listener
-	 var probe_mousover_listener = probe_layer.addListener('mouseover', function(event) {
+	 probe_layer.addListener('mouseover', function(event) {
+
 
         //Display infowindow
         infoWindow.setContent("<font color=blue> <b>" + event.feature.getProperty("name") + "</b></font>" + 
@@ -378,7 +423,7 @@ function activate_probe_listeners(){
       });//End event listener
 
 	 var probe_click_listener = probe_layer.addListener("click", function(event){
-	 	
+	 	var coordinates
 
 	 
 
