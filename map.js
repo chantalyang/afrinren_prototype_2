@@ -9,6 +9,7 @@ var ixp_svg_path = "M15.5,3.029l-10.8,6.235L4.7,21.735L15.5,27.971l10.8-6.235V9.
 //var all_measurements = [];
 var dictionary = {};
 var all_traceroute_polylines = [];
+var line_symbol;
 
 function initMap() {
 
@@ -54,7 +55,7 @@ function load_probe_JSON(){
 		//path: triangle_svg_path,
 		path: diamond_svg_path,
 		//scale:0.8,
-		scale:4,
+		scale:3.5,
 		fillColor: 'blue',
 		fillOpacity: 1,
 		strokeColor: "white",
@@ -301,9 +302,7 @@ function get_probe_coordinates(){
 			var probe_coords = all_probes[i].geometry.coordinates;
 			return probe_coords;
 		}
-	}
-	    				
-
+	}  				
 }
 
 
@@ -311,15 +310,10 @@ function get_probe_coordinates(){
 }//End add_hop_measurement
 
 function draw_traceroutes(ip_addr){
-	
-	var line_symbol = {
+	line_symbol = {
 		path: google.maps.SymbolPath.FORWARD_OPEN_ARROW,
-		//fillColor: 'red',
-	    //fillOpacity:1,
-	    //scale: 3,
-	    //strokeWeight: 1,
-	    //strokeColor: 'black'
 	};
+	
 	console.log(ip_addr);
 	//Where probe is a key and all_measurements is a dictionary of measurements with hops
 	for (var probe in all_measurements){
@@ -350,7 +344,7 @@ function draw_traceroutes(ip_addr){
 */
 		google.maps.event.addListener(traceroute_polyline, 'mouseover', function(latlng) {
 	          
-	        traceroute_polyline.setOptions({strokeColor: '#00FFAA'});
+	        //traceroute_polyline.setOptions({strokeColor: '#00FFAA'});
 
         });
 		
@@ -410,6 +404,11 @@ function activate_probe_listeners(){
 		content: "",
 	});
 
+	line_symbol = {
+		path: google.maps.SymbolPath.FORWARD_OPEN_ARROW,
+		strokeColor: "red"
+	};
+
 	 //Mouseover events listener
 	 probe_layer.addListener('mouseover', function(event) {
 
@@ -430,10 +429,24 @@ function activate_probe_listeners(){
       });//End event listener
 
 	 var probe_click_listener = probe_layer.addListener("click", function(event){
-	 	var coordinates
+	 	clicked_probe = event.feature.getProperty("probe_id");
+	 	//console.log(all_measurements[clicked_probe][0]);
 
-	 
+	 	selected_traceroute_polyline = new google.maps.Polyline({
+			path: all_measurements[clicked_probe][0],
+			icons: [{
+				icon: line_symbol,
+				offset: '100%',
+	         // repeat: "100px"
+	  			 }],
+	     geodesic: true,
+	     strokeColor: '#d7191c',
+	     strokeOpacity: 1,
+	     strokeWeight: 3
+		 });
 
+	 addLine(selected_traceroute_polyline)
+	 animateArrow(selected_traceroute_polyline)		
 
 
 
