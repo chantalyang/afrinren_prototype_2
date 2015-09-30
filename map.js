@@ -6,7 +6,8 @@ var probes = [];
 var clicked_ip;
 var traceroute_path;
 var ixp_svg_path = "M15.5,3.029l-10.8,6.235L4.7,21.735L15.5,27.971l10.8-6.235V9.265L15.5,3.029zM24.988,10.599L16,15.789v10.378c0,0.275-0.225,0.5-0.5,0.5s-0.5-0.225-0.5-0.5V15.786l-8.987-5.188c-0.239-0.138-0.321-0.444-0.183-0.683c0.138-0.238,0.444-0.321,0.683-0.183l8.988,5.189l8.988-5.189c0.238-0.138,0.545-0.055,0.684,0.184C25.309,10.155,25.227,10.461,24.988,10.599z"
-
+var all_measurements = [];
+var dictionary = {};
 
 function initMap() {
 
@@ -49,7 +50,7 @@ function load_probe_JSON(){
 
 	var probe_symbol = {
 		path: probe_svg_path,
-		scale:1,
+		scale:0.8,
 		fillColor: 'blue',
 		fillOpacity: 1,
 		strokeColor: "white",
@@ -126,7 +127,7 @@ function add_destination_ip_layer(gmap){
   		 	add_destination_ip_layer(map); //Re-add destination IPs
   		 	//probe_layer.setMap(null); //Remove probes from map
   		 	remove_hops();
-  		 	removeLine(traceroute_path);
+  		 	removeLine(traceroute_polyline);
   		 	traceroute_path = [];
   		 })
 
@@ -182,18 +183,21 @@ function remove_hops (){
 	}
 }
 
+function insertIntoDic(key, value) {
+ // If key is not initialized or some bad structure
+ if (!dictionary[key] || !(dictionary[key] instanceof Array)) {
+    dictionary[key] = [];
+ }
+ // All arguments, exept first push as valuses to the dictonary
+ dictionary[key] = dictionary[key].concat(Array.prototype.slice.call(arguments, 1));
+ return dictionary;
+}
+
 function add_hops_to_map(selected_ip_address){
 
 	var jsonFile = "/data/measurements/best_of_protocols/hops_to_" + selected_ip_address + ".json";
 	
-	var line_symbol = {
-		path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
-		//fillColor: 'red',
-	    //fillOpacity:1,
-	    //scale: 3,
-	    //strokeWeight: 1,
-	    //strokeColor: 'black'
-	};
+	
 
 	var hop_sym = {
 		path: google.maps.SymbolPath.CIRCLE,
@@ -205,16 +209,21 @@ function add_hops_to_map(selected_ip_address){
 		strokeWeight:1
 	}
 
-
+	var probe_id = " ";
 	hop_path = []; //Clear hop path array
 
+
+
 	$.getJSON(jsonFile, function(json1) {
+		
 		$.each(json1, function(key, data) { //Loop through all the json fields
-			var probe_id = data.prb_id;
+			probe_id = data.prb_id;
 			var protocol = data.proto;
+	    	var hop_coordinates = " "
 	    	//console.log(probe_id);
 	    	//console.log(protocol);
-	    	if (data.prb_id == 4518)
+	    	hop_path = [];
+	    	//if (data.prb_id == 4518){
 	    		$.each(data.result, function(key, data){ //Loop through the results field 
 	    			try{
 
@@ -223,13 +232,11 @@ function add_hops_to_map(selected_ip_address){
 	    				var latLng = new google.maps.LatLng(lati, lngi); 
 	    				var hop_num = data.hop.toString();
 	    				var country_name = getCountryName(data.result.country);
-	    				console.log(country_name);
 
 
-	    				console.log("Hop:" + hop_num + " coords: " + data.result.coordinates);
-
+	    				//console.log("Hop:" + hop_num + " coords: " + data.result.coordinates);
 	    				hop_path.push({lat: parseFloat(lati), lng: parseFloat(lngi)});
-
+	    				//console.log(hop_path)
 	    				
 	    				//var icon_string = "numbers3/number_"+hop_num+".png"
 
@@ -245,24 +252,27 @@ function add_hops_to_map(selected_ip_address){
 	    			catch(err){
 
 	    			}//End catch
-
+					
 	    		})//End inner each
-
+	    	
+	    	//}//End if
+	    	all_measurements =  insertIntoDic(probe_id, hop_path);
 	    });//End outer each
+
+
 
 function remove_extra_markers(hops){
 	
 	for (var i = 0; i < hops.length; i++){
 		if (JSON.stringify(clicked_ip.position) === JSON.stringify(all_hops[i].position)){ 
-						     	 	console.log("True");
 						     	 	all_hops[i].setMap(null);
 						     	}
 					     }
 }
-	
-
-		//Draw traceroute lines lines 
-		traceroute_path = new google.maps.Polyline({
+	remove_extra_markers(all_hops);
+	draw_traceroutes();
+	/*	//Draw traceroute lines
+		traceroute_polyline = new google.maps.Polyline({
 			path: hop_path,
 			icons: [{
 				icon: line_symbol,
@@ -275,12 +285,66 @@ function remove_extra_markers(hops){
 	     strokeWeight: 2
 	 });
 
-		remove_extra_markers(all_hops);
-		addLine(traceroute_path);
-		animateArrow(traceroute_path);
+		
+		addLine(traceroute_polyline);
+		animateArrow(traceroute_polyline);*/
 
 });}//End add_hop_measurement
 
+function draw_traceroutes(){
+	
+	var line_symbol = {
+		path: google.maps.SymbolPath.FORWARD_OPEN_ARROW,
+		//fillColor: 'red',
+	    //fillOpacity:1,
+	    //scale: 3,
+	    //strokeWeight: 1,
+	    //strokeColor: 'black'
+	};
+
+	//Where probe is a key and all_measurements is a dictionary of measurements with hops
+	for (var probe in all_measurements){
+		var number_of_hops = all_measurements[probe][0].length
+		var hops_per_probe = all_measurements[probe][0]
+		//console.log(probe + " " + all_measurements[probe][0].length);
+
+
+		traceroute_polyline = new google.maps.Polyline({
+			path: hops_per_probe,
+			icons: [{
+				icon: line_symbol,
+				offset: '100%',
+	         // repeat: "100px"
+	  			 }],
+	     geodesic: true,
+	     strokeColor: 'black',
+	     strokeOpacity: 1.0,
+	     strokeWeight: 2
+		 });
+
+		addLine(traceroute_polyline);
+		animateArrow(traceroute_polyline);
+
+	}//End for
+
+	/*//Draw traceroute lines 
+		traceroute_polyline = new google.maps.Polyline({
+			path: hop_path,
+			icons: [{
+				icon: line_symbol,
+				offset: '100%',
+	         // repeat: "100px"
+	     }],
+	     geodesic: true,
+	     strokeColor: 'black',
+	     strokeOpacity: 1.0,
+	     strokeWeight: 2
+	 });
+
+		addLine(traceroute_polyline);
+		animateArrow(traceroute_polyline);*/
+
+}
 
 
 function addLine(polyline){
@@ -319,7 +383,7 @@ function animate(route) { //функция анимирует каждый пе�
 
 
 
-function add_probe_layer(gmap){
+function activate_probe_listeners(){
 
 	var  infoWindow = new google.maps.InfoWindow({
 		content: "",
@@ -329,7 +393,7 @@ function add_probe_layer(gmap){
 	 var probe_mousover_listener = probe_layer.addListener('mouseover', function(event) {
 
         //Display infowindow
-        infoWindow.setContent(event.feature.getProperty("name") + 
+        infoWindow.setContent("<font color=blue> <b>" + event.feature.getProperty("name") + "</b></font>" + 
         	"<br>" + "<b>Probe ID: </b> " + event.feature.getProperty("probe_id") +
         	"<br>" + " <b>ASN:</b>" + event.feature.getProperty("asn"));
         var anchor = new google.maps.MVCObject();
@@ -344,24 +408,9 @@ function add_probe_layer(gmap){
       });//End event listener
 
 	 var probe_click_listener = probe_layer.addListener("click", function(event){
-	 	probe_layer.revertStyle();
+	 	
 
-
-	 	if (event.feature.getProperty("probe_id") == 13114) {
-	 		add_measurement_layer(map);
-	 	}
-
-	 	probe_layer.overrideStyle(event.feature,
-	 		{icon: {
-	 			path: google.maps.SymbolPath.CIRCLE,
-	 			fillColor: "#0ece4b",
-	 			fillOpacity: 1,
-	 			scale: 6,
-	 			strokeColor: "black",
-	 			strokeWeight:1,
-	 		}, 
-	 	});
-
+	 
 
 
 
@@ -392,6 +441,7 @@ function changeLayer(selected_layer){
 	if (selected_layer == "probes"){
 		if (document.getElementById("probe_layer").checked == true){
 			probe_layer.setMap(map);
+			activate_probe_listeners();
 		}
 
 

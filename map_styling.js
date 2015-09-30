@@ -97,7 +97,7 @@ function style_ip(feature){
 	return {
 		icon: {
 			path: google.maps.SymbolPath.CIRCLE,
-			scale: 6,
+			scale: 5,
 			fillColor: colour,
 			fillOpacity:1,
 			strokeWeight:1.5,
