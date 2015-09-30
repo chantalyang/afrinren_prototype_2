@@ -8,8 +8,11 @@ var traceroute_path;
 var ixp_svg_path = "M15.5,3.029l-10.8,6.235L4.7,21.735L15.5,27.971l10.8-6.235V9.265L15.5,3.029zM24.988,10.599L16,15.789v10.378c0,0.275-0.225,0.5-0.5,0.5s-0.5-0.225-0.5-0.5V15.786l-8.987-5.188c-0.239-0.138-0.321-0.444-0.183-0.683c0.138-0.238,0.444-0.321,0.683-0.183l8.988,5.189l8.988-5.189c0.238-0.138,0.545-0.055,0.684,0.184C25.309,10.155,25.227,10.461,24.988,10.599z"
 //var all_measurements = [];
 var dictionary = {};
+var dict = {};
 var all_traceroute_polylines = [];
 var line_symbol;
+var probe_traceroutes = {};
+var probe_id;
 
 function initMap() {
 
@@ -204,12 +207,22 @@ function remove_hops (){
 
 function insertIntoDic(key, value) {
  // If key is not initialized or some bad structure
- if (!dictionary[key] || !(dictionary[key] instanceof Array)) {
+ if (!dict[key] || !([key] instanceof Array)) {
     dictionary[key] = [];
  }
  // All arguments, exept first push as valuses to the dictonary
  dictionary[key] = dictionary[key].concat(Array.prototype.slice.call(arguments, 1));
  return dictionary;
+}
+
+function insertIntoDic2(key, value) {
+ // If key is not initialized or some bad structure
+ if (!dict[key] || !(dict[key] instanceof Array)) {
+    dict[key] = [];
+ }
+ // All arguments, exept first push as valuses to the dictonary
+ dict[key] = dict[key].concat(Array.prototype.slice.call(arguments, 1));
+ return dict;
 }
 
 function add_hops_to_map(selected_ip_address){
@@ -232,6 +245,7 @@ function add_hops_to_map(selected_ip_address){
 	$.getJSON(jsonFile, function(json1) {
 		all_measurements = {};
 		dictionary = {};
+		dict = {};
 		$.each(json1, function(key, data) { //Loop through all the json fields
 			probe_id = data.prb_id;
 			var protocol = data.proto;
@@ -352,6 +366,7 @@ function draw_traceroutes(ip_addr){
 		addLine(traceroute_polyline);
 		animateArrow(traceroute_polyline);
 		all_traceroute_polylines.push(traceroute_polyline);
+		probe_traceroutes = insertIntoDic2(probe, traceroute_polyline);
 	}//End for
 
 }
@@ -432,6 +447,7 @@ function activate_probe_listeners(){
 	 	clicked_probe = event.feature.getProperty("probe_id");
 	 	//console.log(all_measurements[clicked_probe][0]);
 
+	 	//Draw new line
 	 	selected_traceroute_polyline = new google.maps.Polyline({
 			path: all_measurements[clicked_probe][0],
 			icons: [{
@@ -445,8 +461,10 @@ function activate_probe_listeners(){
 	     strokeWeight: 3
 		 });
 
-	 addLine(selected_traceroute_polyline)
-	 animateArrow(selected_traceroute_polyline)		
+	 addLine(selected_traceroute_polyline);
+	 removeLine(probe_traceroutes[clicked_probe][0])
+	 //remove_traceroutes();
+	 animateArrow(selected_traceroute_polyline);		
 
 
 
