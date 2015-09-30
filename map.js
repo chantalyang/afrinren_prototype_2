@@ -6,8 +6,9 @@ var probes = [];
 var clicked_ip;
 var traceroute_path;
 var ixp_svg_path = "M15.5,3.029l-10.8,6.235L4.7,21.735L15.5,27.971l10.8-6.235V9.265L15.5,3.029zM24.988,10.599L16,15.789v10.378c0,0.275-0.225,0.5-0.5,0.5s-0.5-0.225-0.5-0.5V15.786l-8.987-5.188c-0.239-0.138-0.321-0.444-0.183-0.683c0.138-0.238,0.444-0.321,0.683-0.183l8.988,5.189l8.988-5.189c0.238-0.138,0.545-0.055,0.684,0.184C25.309,10.155,25.227,10.461,24.988,10.599z"
-var all_measurements = [];
+//var all_measurements = [];
 var dictionary = {};
+var all_traceroute_polylines = [];
 
 function initMap() {
 
@@ -127,7 +128,7 @@ function add_destination_ip_layer(gmap){
   		 	add_destination_ip_layer(map); //Re-add destination IPs
   		 	//probe_layer.setMap(null); //Remove probes from map
   		 	remove_hops();
-  		 	removeLine(traceroute_polyline);
+  		 	remove_traceroutes();
   		 	traceroute_path = [];
   		 })
 
@@ -196,8 +197,6 @@ function insertIntoDic(key, value) {
 function add_hops_to_map(selected_ip_address){
 
 	var jsonFile = "/data/measurements/best_of_protocols/hops_to_" + selected_ip_address + ".json";
-	
-	
 
 	var hop_sym = {
 		path: google.maps.SymbolPath.CIRCLE,
@@ -212,17 +211,16 @@ function add_hops_to_map(selected_ip_address){
 	var probe_id = " ";
 	hop_path = []; //Clear hop path array
 
-
-
 	$.getJSON(jsonFile, function(json1) {
-		
+		all_measurements = {};
+		dictionary = {};
 		$.each(json1, function(key, data) { //Loop through all the json fields
 			probe_id = data.prb_id;
 			var protocol = data.proto;
 	    	var hop_coordinates = " "
 	    	//console.log(probe_id);
-	    	//console.log(protocol);
 	    	hop_path = [];
+	    	//console.log("Empty hop path" + hop_path.length)
 	    	//if (data.prb_id == 4518){
 	    		$.each(data.result, function(key, data){ //Loop through the results field 
 	    			try{
@@ -238,8 +236,6 @@ function add_hops_to_map(selected_ip_address){
 	    				hop_path.push({lat: parseFloat(lati), lng: parseFloat(lngi)});
 	    				//console.log(hop_path)
 	    				
-	    				//var icon_string = "numbers3/number_"+hop_num+".png"
-
 	    				var marker = new google.maps.Marker({
 	    					position: latLng,
 	    					map: map,
@@ -259,39 +255,24 @@ function add_hops_to_map(selected_ip_address){
 	    	all_measurements =  insertIntoDic(probe_id, hop_path);
 	    });//End outer each
 
+		function remove_extra_markers(hops){
+			
+			for (var i = 0; i < hops.length; i++){
+				if (JSON.stringify(clicked_ip.position) === JSON.stringify(all_hops[i].position)){ 
+								     	 	all_hops[i].setMap(null);
+								     	}
+							     }
+		}
 
-
-function remove_extra_markers(hops){
-	
-	for (var i = 0; i < hops.length; i++){
-		if (JSON.stringify(clicked_ip.position) === JSON.stringify(all_hops[i].position)){ 
-						     	 	all_hops[i].setMap(null);
-						     	}
-					     }
-}
 	remove_extra_markers(all_hops);
-	draw_traceroutes();
-	/*	//Draw traceroute lines
-		traceroute_polyline = new google.maps.Polyline({
-			path: hop_path,
-			icons: [{
-				icon: line_symbol,
-				offset: '100%',
-	         // repeat: "100px"
-	     }],
-	     geodesic: true,
-	     strokeColor: 'black',
-	     strokeOpacity: 1.0,
-	     strokeWeight: 2
-	 });
+	draw_traceroutes(selected_ip_address);
+	
 
-		
-		addLine(traceroute_polyline);
-		animateArrow(traceroute_polyline);*/
+}); //End get json
 
-});}//End add_hop_measurement
+}//End add_hop_measurement
 
-function draw_traceroutes(){
+function draw_traceroutes(ip_addr){
 	
 	var line_symbol = {
 		path: google.maps.SymbolPath.FORWARD_OPEN_ARROW,
@@ -301,12 +282,13 @@ function draw_traceroutes(){
 	    //strokeWeight: 1,
 	    //strokeColor: 'black'
 	};
-
+	console.log(ip_addr);
 	//Where probe is a key and all_measurements is a dictionary of measurements with hops
 	for (var probe in all_measurements){
 		var number_of_hops = all_measurements[probe][0].length
 		var hops_per_probe = all_measurements[probe][0]
-		//console.log(probe + " " + all_measurements[probe][0].length);
+		
+		console.log(probe + " " + all_measurements[probe][0].length);
 
 
 		traceroute_polyline = new google.maps.Polyline({
@@ -318,34 +300,22 @@ function draw_traceroutes(){
 	  			 }],
 	     geodesic: true,
 	     strokeColor: 'black',
-	     strokeOpacity: 0.5,
+	     strokeOpacity: 0.3,
 	     strokeWeight: 2
 		 });
 
 		addLine(traceroute_polyline);
 		animateArrow(traceroute_polyline);
-
+		all_traceroute_polylines.push(traceroute_polyline);
 	}//End for
-
-	/*//Draw traceroute lines 
-		traceroute_polyline = new google.maps.Polyline({
-			path: hop_path,
-			icons: [{
-				icon: line_symbol,
-				offset: '100%',
-	         // repeat: "100px"
-	     }],
-	     geodesic: true,
-	     strokeColor: 'black',
-	     strokeOpacity: 1.0,
-	     strokeWeight: 2
-	 });
-
-		addLine(traceroute_polyline);
-		animateArrow(traceroute_polyline);*/
 
 }
 
+function remove_traceroutes(){
+		for (k = 0; k < all_traceroute_polylines.length; k++){
+			removeLine(all_traceroute_polylines[k]);
+		}
+}			
 
 function addLine(polyline){
 	polyline.setMap(map)
