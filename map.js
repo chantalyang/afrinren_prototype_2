@@ -13,6 +13,7 @@ var all_traceroute_polylines = [];
 var line_symbol;
 var probe_traceroutes = {};
 var probe_id;
+var selected_traceroute_polyline;
 
 function initMap() {
 
@@ -71,6 +72,7 @@ function load_probe_JSON(){
 	probe_layer.setStyle({icon: probe_symbol, clickable: true});
 
 	add_probes_to_array("/data/all_probes.json");
+
 
 }
 
@@ -139,6 +141,7 @@ function add_destination_ip_layer(gmap){
   		 	//probe_layer.setMap(null); //Remove probes from map
   		 	remove_hops();
   		 	remove_traceroutes();
+  		 	removeLine(selected_traceroute_polyline);
   		 	traceroute_path = [];
   		 })
 
@@ -164,7 +167,8 @@ function add_destination_ip_layer(gmap){
   		//Show probes
   		document.getElementById("probe_layer").checked = true; //Set probe checkbox to true
   		probe_layer.setMap(map);
-		activate_probe_listeners();
+		activate_probe_mouseover_listener();
+		activate_probe_click_listener();
 
   		
   	});//End click listener
@@ -413,7 +417,7 @@ function animate(route) { //функция анимирует каждый пе�
 
 
 
-function activate_probe_listeners(){
+function activate_probe_mouseover_listener(){
 
 	var  infoWindow = new google.maps.InfoWindow({
 		content: "",
@@ -443,9 +447,19 @@ function activate_probe_listeners(){
 
       });//End event listener
 
+	
+
+
+	}
+
+function activate_probe_click_listener(){
 	 var probe_click_listener = probe_layer.addListener("click", function(event){
+	 	
 	 	clicked_probe = event.feature.getProperty("probe_id");
-	 	//console.log(all_measurements[clicked_probe][0]);
+	 	
+	 	if (selected_traceroute_polyline != null){
+	 		removeLine(selected_traceroute_polyline)//Remove previously drawn line
+	 	}
 
 	 	//Draw new line
 	 	selected_traceroute_polyline = new google.maps.Polyline({
@@ -469,9 +483,7 @@ function activate_probe_listeners(){
 
 
 	 });
-
-
-	}
+}
 
 function addLine(polyline){
 	polyline.setMap(map)
@@ -494,7 +506,7 @@ function changeLayer(selected_layer){
 	if (selected_layer == "probes"){
 		if (document.getElementById("probe_layer").checked == true){
 			probe_layer.setMap(map);
-			activate_probe_listeners();
+			activate_probe_mouseover_listener();
 		}
 
 
