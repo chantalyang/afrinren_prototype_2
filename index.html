@@ -6,9 +6,9 @@
     <link rel="stylesheet" type="text/css" href="customstyles.css">
     <link href="bootstrap.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  <script src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/src/markerclusterer.js"></script>
-  <script src="country.js"></script>
-  <script src="map_styling.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="country.js"></script>
+    <script src="map_styling.js"></script>
   </head>
   <body>
 
@@ -27,72 +27,88 @@
       <div id ="info" class="col-md-4">
 
        <h3>Traceroute Information</h3>
-       <label>Protocol:</label>
-       <label>Complete:</label>
-          <div class="row">
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" value="fibre" id="fibre_layer" onclick="changeLayer(this.value);"> Terrestrial Fibre*
-            </label>
-          </div>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" value="probes" id="probe_layer" onclick="changeLayer(this.value);"> Probes
-            </label>
-          </div>
-          </div>
+       <form class="form-inline well" >
 
-           <h3>List of Destination IPs</h3>
+        <div class="form-group">
+          <label class="control-label">Protocol</label>
 
-        <table class = "table table-hover">
+          <select id ="protocol_dropdown" class="form-control">
+            <option value="best_protocol">Best for each Protocol</option>
+            <option value="icmp">ICMP</option>
+            <option value="tcp">TCP</option>
+            <option value="udp">UDP</option>
+          </select>
+        </div>
+      </form>
+
+
+
+
+
+
+      <table class = "table table-hover">
         <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Column heading</th>
-          <th>Column heading</th>
-          <th>Column heading</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="active">
-          <th scope="row">1</th>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
-        </tr>
-        <tr class="success">
-          <th scope="row">3</th>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
-        </tr>
-        <tr>
-          <th scope="row">4</th>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
-        </tr>
-        <tr class="info">
-          <th scope="row">5</th>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
-        </tr>
-       
-      </tbody>
-    </table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Column heading</th>
+              <th>Column heading</th>
+              <th>Column heading</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="active">
+              <th scope="row">1</th>
+              <td>Column content</td>
+              <td>Column content</td>
+              <td>Column content</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Column content</td>
+              <td>Column content</td>
+              <td>Column content</td>
+            </tr>
+            <tr class="success">
+              <th scope="row">3</th>
+              <td>Column content</td>
+              <td>Column content</td>
+              <td>Column content</td>
+            </tr>
+            <tr>
+              <th scope="row">4</th>
+              <td>Column content</td>
+              <td>Column content</td>
+              <td>Column content</td>
+            </tr>
+            <tr class="info">
+              <th scope="row">5</th>
+              <td>Column content</td>
+              <td>Column content</td>
+              <td>Column content</td>
+            </tr>
+
+          </tbody>
+        </table>
       </div>
     </div>
 
+    <div class="row">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" value="fibre" id="fibre_layer" onclick="changeLayer(this.value);"> Terrestrial Fibre*
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" value="probes" id="probe_layer" onclick="changeLayer(this.value);"> Probes
+        </label>
+      </div>
+    </div>
 
+      <script src="sidebar.js"></script>
 
-        </body>
-        <footer>*Fibre data courtesy of Steve Song at <a href="https://manypossibilities.net/afterfibre/">afterfibre.net</a>.</footer>
-        </html>
+  </body>
+
+  <footer>*Fibre data courtesy of Steve Song at <a href="https://manypossibilities.net/afterfibre/">afterfibre.net</a>.</footer>
+  </html>

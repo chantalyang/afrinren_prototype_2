@@ -11,7 +11,7 @@
 }
 
 #checkbox-row{
-	float:left ;
+	float:right ;
 }
 
 
@@ -19,6 +19,10 @@
     
     height:600px;
     text-align: center;
+}
+
+#protocol_dropdown{
+	: 150px;
 }
 
 
