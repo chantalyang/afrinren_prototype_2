@@ -14,6 +14,7 @@ var line_symbol;
 var probe_traceroutes = {};
 var probe_id;
 var selected_traceroute_polyline;
+var used_probes = [];
 
 function initMap() {
 
@@ -139,9 +140,12 @@ function add_destination_ip_layer(gmap){
   		 	clicked_ip.setMap(null);  
   		 	add_destination_ip_layer(map); //Re-add destination IPs
   		 	//probe_layer.setMap(null); //Remove probes from map
-  		 	remove_hops();
-  		 	remove_traceroutes();
-  		 	removeLine(selected_traceroute_polyline);
+  		 	load_probe_JSON(); //Reload probes
+  		 	probe_layer.setMap(map); //Set probes to map
+  		 	remove_hops(); //Remove hops
+  		 	remove_traceroutes(); //Remove all selected traceroutes
+  		 	if (selected_traceroute_polyline != null)
+  		 		removeLine(selected_traceroute_polyline);
   		 	traceroute_path = [];
   		 })
 
@@ -167,8 +171,9 @@ function add_destination_ip_layer(gmap){
   		//Show probes
   		document.getElementById("probe_layer").checked = true; //Set probe checkbox to true
   		probe_layer.setMap(map);
-		activate_probe_mouseover_listener();
-		activate_probe_click_listener();
+		mouseover_probe();
+		click_probe();
+
 
   		
   	});//End click listener
@@ -247,9 +252,12 @@ function add_hops_to_map(selected_ip_address){
 	hop_path = []; //Clear hop path array
 
 	$.getJSON(jsonFile, function(json1) {
+
 		all_measurements = {};
 		dictionary = {};
 		dict = {};
+		used_probes = []; //Clear used probes each time measurement is loaded
+
 		$.each(json1, function(key, data) { //Loop through all the json fields
 			probe_id = data.prb_id;
 			var protocol = data.proto;
@@ -257,6 +265,8 @@ function add_hops_to_map(selected_ip_address){
 	 		var probe_coords = get_probe_coordinates();
 	    	
 	    	hop_path = [];
+
+	    	used_probes.push(probe_id);
 
 	    	//Add probe coordinates as first location
 			hop_path.push({lat: parseFloat(probe_coords[1]), lng: parseFloat(probe_coords[0]) });
@@ -287,6 +297,8 @@ function add_hops_to_map(selected_ip_address){
 	    				})
 
 	    				all_hops.push(marker);
+
+
 	    			}
 	    			catch(err){
 
@@ -309,7 +321,8 @@ function add_hops_to_map(selected_ip_address){
 	
 	remove_extra_markers(all_hops);
 	draw_traceroutes(selected_ip_address);
-	
+	remove_extra_probes();
+
 
 }); //End get json
 
@@ -332,13 +345,13 @@ function draw_traceroutes(ip_addr){
 		path: google.maps.SymbolPath.FORWARD_OPEN_ARROW,
 	};
 	
-	console.log(ip_addr);
+	//console.log(ip_addr);
 	//Where probe is a key and all_measurements is a dictionary of measurements with hops
 	for (var probe in all_measurements){
 		var number_of_hops = all_measurements[probe][0].length
 		var hops_per_probe = all_measurements[probe][0]
 		
-		console.log(probe + " " + all_measurements[probe][0].length);
+		//console.log(probe + " " + all_measurements[probe][0].length);
 
 
 		traceroute_polyline = new google.maps.Polyline({
@@ -354,15 +367,9 @@ function draw_traceroutes(ip_addr){
 	     strokeWeight: 2
 		 });
 
-		/*traceroute_polyline.addListener("mouseover", function(event) {
-			traceroute_polyline.setOptions({strokeColor:'red', strokeWeight:4})
-			addLine(traceroute_polyline);
-			animateArrow(traceroute_polyline);
-		})
-*/
+
 		google.maps.event.addListener(traceroute_polyline, 'mouseover', function(latlng) {
 	          
-	        //traceroute_polyline.setOptions({strokeColor: '#00FFAA'});
 
         });
 		
@@ -371,8 +378,16 @@ function draw_traceroutes(ip_addr){
 		animateArrow(traceroute_polyline);
 		all_traceroute_polylines.push(traceroute_polyline);
 		probe_traceroutes = insertIntoDic2(probe, traceroute_polyline);
+
 	}//End for
 
+}
+
+function click_traceroute_path(){
+	traceroute_polyline.addListener("clicked", function(event){
+		console.log("I was clicked!");
+
+	})
 }
 
 function remove_traceroutes(){
@@ -401,7 +416,7 @@ window.setInterval(function() {
 
 }
 
-function animate(route) { //функция анимирует каждый первый символ каждой полилинии
+function animate(route) {
 	var count = 0;
 	icons = null;
 	var lnght=route.length;
@@ -415,9 +430,22 @@ function animate(route) { //функция анимирует каждый пе�
 	}, 40);
 }
 
+function remove_extra_probes(){
+
+	probe_layer.forEach(function(feature){ 
+		var all_probe_ids = feature.getProperty("probe_id");
+		console.log(all_probe_ids);
+		var found = used_probes.indexOf(all_probe_ids);
+		if (found === -1){
+			probe_layer.remove(feature);
+		}
+
+    });
+}
 
 
-function activate_probe_mouseover_listener(){
+
+function mouseover_probe(){
 
 	var  infoWindow = new google.maps.InfoWindow({
 		content: "",
@@ -452,7 +480,7 @@ function activate_probe_mouseover_listener(){
 
 	}
 
-function activate_probe_click_listener(){
+function click_probe(){
 	 var probe_click_listener = probe_layer.addListener("click", function(event){
 	 	
 	 	clicked_probe = event.feature.getProperty("probe_id");
@@ -506,7 +534,7 @@ function changeLayer(selected_layer){
 	if (selected_layer == "probes"){
 		if (document.getElementById("probe_layer").checked == true){
 			probe_layer.setMap(map);
-			activate_probe_mouseover_listener();
+			mouseover_probe();
 		}
 
 
