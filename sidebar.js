@@ -25,17 +25,24 @@ function display_data(dataSet){
 	    	}]
 	    } );
 
+var infoWindow;
 
 	$('#hop_info_table tbody').on('click', 'tr', function () {
+       
         var data = table.row( this ).data();
         var ip = data[2];
         var coordinates;
+        if (infoWindow){	
+        	infoWindow.close();
+		}
 
-        var  infoWindow = new google.maps.InfoWindow({
+        infoWindow = new google.maps.InfoWindow({
 		content: "",
 		});
 
-        console.log(ip);
+ 		$('#hop_info_table').find('tr.highlight').removeClass('highlight');
+ 		 $(this).addClass('highlight');
+
         for (var i = 0; i < all_destination_ips.length; i++){
         	if (all_destination_ips[i].properties.ip_address == ip){
         		coordinates = all_destination_ips[i].geometry.coordinates;
