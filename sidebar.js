@@ -9,22 +9,62 @@ dropdown.onchange = function(){
 
 function display_data(dataSet){
     $(document).ready(function() {
-    $('#hop_info_table').DataTable( {
-        data: dataSet,
-        "bSort": false,
-        columns: [
-            { title: "Country" },
-            { title: "ASN" },
-            { title: "IP Address" },
-            { title: "Name" },
-        ],
-        "columnDefs":[{
-        	"targets": 0,
-        	"orderable": "false",
-    	}]
+	    
+	    var table = $('#hop_info_table').DataTable( {
+	        data: dataSet,
+	        "bSort": false,
+	        columns: [
+	            { title: "Country" },
+	            { title: "ASN" },
+	            { title: "IP Address" },
+	            { title: "Name" },
+	        ],
+	        "columnDefs":[{
+	        	"targets": 0,
+	        	"orderable": "false",
+	    	}]
+	    } );
+
+
+	$('#hop_info_table tbody').on('click', 'tr', function () {
+        var data = table.row( this ).data();
+        var ip = data[2];
+        var coordinates;
+
+        var  infoWindow = new google.maps.InfoWindow({
+		content: "",
+		});
+
+        console.log(ip);
+        for (var i = 0; i < all_destination_ips.length; i++){
+        	if (all_destination_ips[i].properties.ip_address == ip){
+        		coordinates = all_destination_ips[i].geometry.coordinates;
+        		lat = coordinates[1];
+        		lng = coordinates[0];
+        		var latLng = new google.maps.LatLng(lat, lng); 
+        		map.setZoom(6);
+				map.panTo(latLng);
+
+
+				infoWindow.setContent("<b>" + all_destination_ips[i].properties.name + "</b>" +
+					"<br>" + "<b>ASN: </b> " + all_destination_ips[i].properties.asn  +
+					"<br>" + " <b>IP Address:</b>" + all_destination_ips[i].properties.ip_address );
+				var anchor = new google.maps.MVCObject();
+				anchor.set("position",latLng);
+				infoWindow.open(map,anchor);
+
+        	}
+        }
+
+
+
+        
+        // alert( 'You clicked on '+data[0]+'\'s row' );
     } );
+
 } );
-}
+
+}//End display data
 
 display_data(ip_address_data)
 
