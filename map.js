@@ -43,6 +43,7 @@ function initMap() {
 }//Add init map function
 
 
+
 function load_fibre_JSON(){
 	fibre_data_layer = new google.maps.Data();
 	fibre_data_layer.loadGeoJson("/data/fibre.json");
@@ -543,3 +544,8 @@ function changeLayer(selected_layer){
 		}
 	}
 }
+
+
+
+
+
