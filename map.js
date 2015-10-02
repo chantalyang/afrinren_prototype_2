@@ -9,12 +9,15 @@ var ixp_svg_path = "M15.5,3.029l-10.8,6.235L4.7,21.735L15.5,27.971l10.8-6.235V9.
 //var all_measurements = [];
 var dictionary = {};
 var dict = {};
+var nested_dictionary = {};
 var all_traceroute_polylines = [];
 var line_symbol;
 var probe_traceroutes = {};
 var probe_id;
 var selected_traceroute_polyline;
 var used_probes = [];
+var selected_traceroute_data = [];
+var all_measurements_data;
 
 function initMap() {
 
@@ -171,6 +174,8 @@ function add_destination_ip_layer(gmap){
   		//Add hops to map of selected IP marker
   		clicked_ip_address = event.feature.getProperty("ip_address");
   		add_hops_to_map(clicked_ip_address);
+
+  		extract_hop_data(clicked_ip_address);
   		
   		//Show probes
   		document.getElementById("probe_layer").checked = true; //Set probe checkbox to true
@@ -238,6 +243,16 @@ function insertIntoDic2(key, value) {
  return dict;
 }
 
+function insertIntoDic3(key, value) {
+ // If key is not initialized or some bad structure
+ if (!nested_dictionary[key] || !(nested_dictionary[key] instanceof Array)) {
+    nested_dictionary[key] = [];
+ }
+ // All arguments, exept first push as valuses to the dictonary
+ nested_dictionary[key] = nested_dictionary[key].concat(Array.prototype.slice.call(arguments, 1));
+ return nested_dictionary;
+}
+
 function add_hops_to_map(selected_ip_address){
 
 	var jsonFile = "/data/measurements/best_of_protocols/hops_to_" + selected_ip_address + ".json";
@@ -261,6 +276,7 @@ function add_hops_to_map(selected_ip_address){
 		dictionary = {};
 		dict = {};
 		used_probes = []; //Clear used probes each time measurement is loaded
+		all_measurements_data = {};
 
 		$.each(json1, function(key, data) { //Loop through all the json fields
 			probe_id = data.prb_id;
@@ -302,7 +318,6 @@ function add_hops_to_map(selected_ip_address){
 
 	    				all_hops.push(marker);
 
-
 	    			}
 	    			catch(err){
 
@@ -343,6 +358,56 @@ function get_probe_coordinates(){
 
 
 }//End add_hop_measurement
+
+function extract_hop_data(selected_ip){
+	var jsonFile = "/data/measurements/best_of_protocols/hops_to_" + selected_ip + ".json";
+
+		$.getJSON(jsonFile, function(json1) {
+
+		all_measurements_data = {};
+		var probe_hops = [];
+
+		$.each(json1, function(key, data) { //Loop through all the json fields
+			var probe = data.prb_id;
+			console.log(probe);
+			var protocol = data.proto;
+			var hop_obj = {};
+			probe_hops = [];
+	    		$.each(data.result, function(key, data){ //Loop through the results field 
+	    				lost_hop = "{\"x\":\"*\"}";
+	    				var hop_num = data.hop.toString();
+
+
+	    				console.log(JSON.stringify(data.result));
+	    				if (data.result.public == false){
+	    					hop_obj = {hop: hop_num, country: "N/A", ip_address: data.result.from, public: "false", rtt: data.result.rtt}
+
+	    				}
+	    				
+	    				else if (JSON.stringify(data.result) == lost_hop){
+	    					//console.log("true");
+	    					hop_obj = {hop: hop_num, country: "*", ip_address: "*", rtt: "*"}
+	    				 }
+	    				else{
+		    				var country_name = getCountryName(data.result.country);
+		    				var ip_address = data.result.from;
+		    				var rtt = data.result.rtt;
+
+		    				hop_obj = {hop: hop_num, country: country_name, ip_address: ip_address, public: "true", rtt: rtt}
+	    					}
+
+					probe_hops.push(hop_obj)
+
+	    		})//End inner each
+	    	
+	    	//}//End if
+	    	all_measurements_data = insertIntoDic3 (probe, probe_hops);
+	    });//End outer each
+
+
+});
+
+}
 
 function draw_traceroutes(ip_addr){
 	line_symbol = {
@@ -510,7 +575,9 @@ function click_probe(){
 	 addLine(selected_traceroute_polyline);
 	 removeLine(probe_traceroutes[clicked_probe][0])
 	 //remove_traceroutes();
-	 animateArrow(selected_traceroute_polyline);		
+	 animateArrow(selected_traceroute_polyline);
+
+	 console.log(all_measurements[clicked_probe]);
 
 
 
