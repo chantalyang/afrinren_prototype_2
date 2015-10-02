@@ -25,22 +25,37 @@ function display_data(dataSet){
 	    } );
 
 var infoWindow;
+var highlighted = false;
+var current_row = " ";
+var data;
+var row_index = " ";
 
 	$('#hop_info_table tbody').on('click', 'tr', function () {
-       
-        var data = table.row( this ).data();
+
+        data = table.row( this ).data();
         var ip = data[2];
         var coordinates;
+
+		var tr = $(this).closest("tr");
+    	console.log(row_index)
+
         if (infoWindow){	
         	infoWindow.close();
 		}
 
+		if ((highlighted == true) && (row_index == tr.index())){
+			$('#hop_info_table').find('tr.highlight').removeClass('highlight');
+			map.setZoom(3);
+			map.setCenter( {lat: 0.070959, lng: 23.923482})
+			highlighted = false;
+		}
+		else{
         infoWindow = new google.maps.InfoWindow({
 		content: "",
 		});
 
  		$('#hop_info_table').find('tr.highlight').removeClass('highlight');
- 		 $(this).addClass('highlight');
+ 		$(this).addClass('highlight');
 
         for (var i = 0; i < all_destination_ips.length; i++){
         	if (all_destination_ips[i].properties.ip_address == ip){
@@ -60,8 +75,12 @@ var infoWindow;
 				infoWindow.open(map,anchor);
 
         	}
-        }
+        }//End for
 
+        highlighted = true;
+        row_index = tr.index();
+
+    }
 
 
         
