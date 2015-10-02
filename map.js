@@ -280,7 +280,6 @@ function add_hops_to_map(selected_ip_address){
 
 		$.each(json1, function(key, data) { //Loop through all the json fields
 			probe_id = data.prb_id;
-			var protocol = data.proto;
 	    	var hop_coordinates = " "
 	 		var probe_coords = get_probe_coordinates();
 	    	
@@ -369,7 +368,7 @@ function extract_hop_data(selected_ip){
 
 		$.each(json1, function(key, data) { //Loop through all the json fields
 			var probe = data.prb_id;
-			console.log(probe);
+			//console.log(probe);
 			var protocol = data.proto;
 			var hop_obj = {};
 			probe_hops = [];
@@ -378,22 +377,22 @@ function extract_hop_data(selected_ip){
 	    				var hop_num = data.hop.toString();
 
 
-	    				console.log(JSON.stringify(data.result));
+	    				//console.log(JSON.stringify(data.result));
 	    				if (data.result.public == false){
-	    					hop_obj = {hop: hop_num, country: "N/A", ip_address: data.result.from, public: "false", rtt: data.result.rtt}
+	    					hop_obj = {hop: hop_num, country: "N/A", ip_address: data.result.from, public: "false", rtt: data.result.rtt, protocol: protocol}
 
 	    				}
 	    				
 	    				else if (JSON.stringify(data.result) == lost_hop){
 	    					//console.log("true");
-	    					hop_obj = {hop: hop_num, country: "*", ip_address: "*", rtt: "*"}
+	    					hop_obj = {hop: hop_num, country: "*", ip_address: "*", public: "*", rtt: "*", protocol: protocol}
 	    				 }
 	    				else{
 		    				var country_name = getCountryName(data.result.country);
 		    				var ip_address = data.result.from;
 		    				var rtt = data.result.rtt;
 
-		    				hop_obj = {hop: hop_num, country: country_name, ip_address: ip_address, public: "true", rtt: rtt}
+		    				hop_obj = {hop: hop_num, country: country_name, ip_address: ip_address, public: "true", rtt: rtt, protocol:protocol}
 	    					}
 
 					probe_hops.push(hop_obj)
@@ -549,10 +548,19 @@ function mouseover_probe(){
 
 	}
 
+//var example = [["1","Sudan","41.67.49.1","true","2.2013333333333334"],["2","Sudan","196.29.167.153","true","5.083666666666667"],["3","EU","62.115.50.125","true","124.98066666666666"],["4","EU","62.115.112.242","true","124.75866666666667"],["5","EU","213.155.135.191","true","129.05633333333333"],["6","United States","4.68.111.193","true","88.28466666666668"],["7","United States","4.69.168.72","true","78.28833333333333"],["8","United Kingdom","212.73.200.174","true","79.48466666666667"],["9","Madagascar","41.188.24.158","true","78.31633333333333"],["10","Madagascar","41.188.24.157","true","99.718"],["11","Madagascar","41.188.60.242","true","268.49533333333335"],["12","Madagascar","41.188.60.237","true","261.17800000000005"],["13","Madagascar","41.188.60.133","true","280.61133333333333"],["14","*","*","*","*"],["15","*","*","*","*"],["16","Madagascar","41.188.60.78","true","292.78366666666665"],["17","*","*","*","*"],["18","Madagascar","41.188.60.78","true","1685.454"]];
+
+var measurement_protocol;
+var hop_row = [];
+var hop_data_set = [];
+
 function click_probe(){
 	 var probe_click_listener = probe_layer.addListener("click", function(event){
 	 	
 	 	clicked_probe = event.feature.getProperty("probe_id");
+	 	hop_data_set = [];
+	 	
+	 	format_measurements(all_measurements_data[clicked_probe]);
 	 	
 	 	if (selected_traceroute_polyline != null){
 	 		removeLine(selected_traceroute_polyline)//Remove previously drawn line
@@ -577,12 +585,70 @@ function click_probe(){
 	 //remove_traceroutes();
 	 animateArrow(selected_traceroute_polyline);
 
-	 console.log(all_measurements[clicked_probe]);
+	 //console.log(all_measurements_data[clicked_probe]);
+	 orig_table = $('#hop_info_table').dataTable();
+	 destroy_old_datatable(orig_table);
+	 console.log(JSON.stringify(hop_data_set));
 
+	// if (hop_data_set.length != 0){
+	// 	console.log("Create new data table!")
+	 create_new_datatable(hop_data_set);
+	// }
+	 
+});
 
-
-	 });
 }
+
+
+function format_measurements(meas_data){
+
+	for (var j = 0; j < meas_data[0].length; j++){	
+		
+		hop_row = [];//Every hop has unique fields
+
+		var hop_number = meas_data[0][j].hop;
+		hop_row.push(hop_number);
+		var country = meas_data[0][j].country;
+		hop_row.push(country);
+		var ip_address = meas_data[0][j].ip_address;
+		hop_row.push(ip_address);
+		// var public_ip = meas_data[0][j].public;
+		// hop_row.push(public_ip);
+		var rtt = meas_data[0][j].rtt.toString();
+		hop_row.push(rtt);
+		measurement_protocol = meas_data[0][j].protocol;
+
+		hop_data_set.push(hop_row)
+
+	}
+}
+
+function create_new_datatable(data_set){
+	var table = $('#hop_info_table').DataTable( {
+	        data: data_set,
+	        "bSort": false,
+	        
+	    	  columns: [
+	            { title: "Hop Number" },
+	            { title: "Country" },
+	            { title: "IP Address" },
+	            { title: "RTT" },
+	        ],
+	        
+	    } );
+}
+
+function destroy_old_datatable(data_table){
+		total_rows = $('#hop_info_table tr').length;		
+		
+		for (var i=0; i<= total_rows; i++){
+		 	data_table.fnDeleteRow(0,null,false);
+		}
+		data_table.fnClearTable();
+		data_table.fnDestroy();
+
+ }
+
 
 function addLine(polyline){
 	polyline.setMap(map)

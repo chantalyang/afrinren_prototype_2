@@ -6,23 +6,23 @@
 
 // }
 
-function display_data(dataSet){
+function display_ip_data(dataSet){
     $(document).ready(function() {
 	    
 	    var table = $('#hop_info_table').DataTable( {
 	        data: dataSet,
 	        "bSort": false,
+
 	        columns: [
 	            { title: "Country" },
 	            { title: "ASN" },
 	            { title: "IP Address" },
 	            { title: "Name" },
 	        ],
-	        "columnDefs":[{
-	        	"targets": 0,
-	        	"orderable": "false",
-	    	}]
+	        
 	    } );
+
+
 
 var infoWindow;
 var highlighted = false;
@@ -83,13 +83,10 @@ var row_index = " ";
     }
 
 
-        
-        // alert( 'You clicked on '+data[0]+'\'s row' );
-    } );
+            } );
 
 } );
 
 }//End display data
 
-display_data(ip_address_data)
-
+display_ip_data(ip_address_data)
