@@ -1,11 +1,10 @@
 
-var dropdown = document.getElementById("protocol_dropdown");
-dropdown.onchange = function(){
-    var protocol = dropdown.options[dropdown.selectedIndex].text;
-    //alert(selectedString);
-    console.log(protocol);
+// var dropdown = document.getElementById("protocol_dropdown");
+// dropdown.onchange = function(){
+//     var protocol = dropdown.options[dropdown.selectedIndex].text;
+//     console.log(protocol);
 
-}
+// }
 
 function display_data(dataSet){
     $(document).ready(function() {

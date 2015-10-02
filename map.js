@@ -136,6 +136,9 @@ function add_destination_ip_layer(gmap){
            	clickable: true,
            });
 
+	 	map.setZoom(3);
+	 	map.setCenter( {lat: 0.070959, lng: 23.923482})
+
   		 //When marker clicked, remove current marker + add destination IP layer
   		 clicked_ip.addListener("click", function(event){
   		 	clicked_ip.setMap(null);  
