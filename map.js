@@ -196,8 +196,15 @@ function add_destination_ip_layer(gmap){
   		//Show probes
   		document.getElementById("probe_layer").checked = true; //Set probe checkbox to true
   		probe_layer.setMap(map);
+		format_probe_data(all_probes);
 		mouseover_probe();
 		click_probe();
+
+		//Create probe data table
+		p_table = $('#hop_info_table').dataTable();
+  		destroy_old_datatable(p_table);
+		create_probe_datatable(probe_table_data);
+
 
 
   		
@@ -241,7 +248,7 @@ function remove_hops (){
 
 function insertIntoDic(key, value) {
  // If key is not initialized or some bad structure
- if (!dict[key] || !([key] instanceof Array)) {
+ if (!dictionary[key] || !([key] instanceof Array)) {
     dictionary[key] = [];
  }
  // All arguments, exept first push as valuses to the dictonary
@@ -292,7 +299,6 @@ function add_hops_to_map(selected_ip_address){
 		dictionary = {};
 		dict = {};
 		used_probes = []; //Clear used probes each time measurement is loaded
-		all_measurements_data = {};
 
 		$.each(json1, function(key, data) { //Loop through all the json fields
 			probe_id = data.prb_id;
@@ -380,6 +386,7 @@ function extract_hop_data(selected_ip){
 		$.getJSON(jsonFile, function(json1) {
 
 		all_measurements_data = {};
+		nested_dictionary = {};
 		var probe_hops = [];
 
 		$.each(json1, function(key, data) { //Loop through all the json fields
@@ -576,6 +583,7 @@ var clicked_probe_asn;
 var clicked_probe_name;
 
 function click_probe(){
+		dict = {}
 	 var probe_click_listener = probe_layer.addListener("click", function(event){
 	 	
 	 	clicked_probe = event.feature.getProperty("probe_id");
@@ -608,7 +616,13 @@ function click_probe(){
 	     strokeOpacity: 1,
 	     strokeWeight: 3
 		 });
+	 var back_button_probes = document.getElementById("show_ips_probes");
 
+	 if (back_button_probes != null){
+	     var parent_div_2 = document.getElementById("btn_div");
+	     parent_div_2.removeChild(back_button_probes);
+	 }	
+	
 	 addLine(selected_traceroute_polyline);
 	 removeLine(probe_traceroutes[clicked_probe][0])
 	 remove_traceroutes();
@@ -647,9 +661,93 @@ function format_measurements(meas_data){
 	}
 }
 
+var probe_table_data = [];
+var probe_row;
+
+function format_probe_data(probe_data){
+	probe_table_data = []
+	for (var j = 0; j < probe_data.length; j++){	
+		
+		probe_row = [];//Every probe has unique fields
+
+		var prb_id = probe_data[j].properties.probe_id;
+		probe_row.push(prb_id);
+		var asn = probe_data[j].properties.asn;
+		probe_row.push(asn);
+		var type = probe_data[j].properties.type;
+		probe_row.push(type);
+		var probe_organisation = probe_data[j].properties.name;
+		probe_row.push(probe_organisation);
+
+		probe_table_data.push(probe_row);
+
+	}
+
+}
+var probe_table;
+
+function create_probe_datatable(probe_dataset){
+
+	change_text(sidebar_heading, "Probe Information")
+
+	probe_table = $('#hop_info_table').DataTable( {
+	        data: probe_dataset,
+	        "bSort": false,
+	        
+	    	  columns: [
+	            { title: "Probe ID" },
+	            { title: "ASN" },
+	            { title: "Type" },
+	            { title: "Name" },
+	        ],
+	        
+	    } );
+
+	btn_div = document.getElementById("btn_div");
+	btn_div.className = "btn-group";
+
+	btn_show_ips_probes =  document.createElement("button");
+	btn_show_ips_probes.className = "btn btn-success";
+	btn_show_ips_probes.id = "show_ips_probes";
+	btn_show_ips_probes.innerHTML = "Back to destination IPs";
+
+	btn_div.appendChild(btn_show_ips_probes);		 	
+
+	btn_show_ips_probes.onclick = function(event){
+			clicked_ip.setMap(null); //Remove current marker 
+  		 	add_destination_ip_layer(map); //Re-add destination IPs
+  		 	
+  		 	probe_layer.setMap(null); //Remove probes from map
+  		 	document.getElementById("probe_layer").checked = false;
+  		 	load_probe_JSON(); //Reload probes
+
+  		 	remove_hops(); //Remove hops
+  		 	remove_traceroutes(); //Remove all selected traceroutes
+  		 	
+  		 	if (selected_traceroute_polyline != null)
+  		 		removeLine(selected_traceroute_polyline);
+  		 	traceroute_path = [];
+
+  		 	if (rendered_table != null){
+  		 		p_table = $('#hop_info_table').dataTable();
+  		 		destroy_old_datatable(p_table);
+  		 		display_ip_data(ip_address_data);
+  		 	}
+
+
+}
+
+
+
+
+}//End create_probe_table
+
+
+
 function change_text(el_id, text) {
     el_id.innerHTML = text;
 }
+
 var form; 
 var para_id;
 var para_asn;

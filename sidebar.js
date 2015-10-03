@@ -9,21 +9,31 @@ var rendered_table;
 
 function display_ip_data(dataSet){
 
-	change_text(sidebar_heading, "IP Destination Information");
+	change_text(sidebar_heading, "Destination IP Information");
+	var back_button_probes = document.getElementById("show_ips_probes")
+	var parent_div_2 = document.getElementById("btn_div");
+
 
 	if (form != null){
 	var inline_form = document.getElementById("probe_details");
 	var parent_div = document.getElementById("probe_info");
 	parent_div.removeChild(inline_form);
 	
-	var parent_div_2 = document.getElementById("btn_div");
 	var trace_buton = document.getElementById("show_all_traces");
 	var back_button = document.getElementById("show_ips");
+	var back_button_probes = document.getElementById("show_ips_probes")
 	parent_div_2.removeChild(trace_buton);
 	parent_div_2.removeChild(back_button);
 
+
+
 	form = null
 	}
+
+	if (back_button_probes != null){
+		parent_div_2.removeChild(back_button_probes);
+	}
+
 
     $(document).ready(function() {
 	    
