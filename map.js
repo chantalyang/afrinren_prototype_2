@@ -655,6 +655,10 @@ function create_new_datatable(data_set){
 	        
 	    } );
 
+	 var highlight = false;
+	 var row_index = " ";
+
+
 	table.on('click', 'tr', function () {
 	 
 	 	data = table.row( this ).data();
@@ -665,6 +669,18 @@ function create_new_datatable(data_set){
         var coordinates;
         //console.log(clicked_probe);
 
+        var tr = $(this).closest("tr");
+
+        $('#hop_info_table').find('tr.highlight').removeClass('highlight');
+ 		$(this).addClass('highlight');
+
+ 		if ((highlight == true) && (row_index == tr.index())){
+			$('#hop_info_table').find('tr.highlight').removeClass('highlight');
+			map.setZoom(3);
+			map.setCenter( {lat: 0.070959, lng: 23.923482})
+			highlighted = false;
+		}
+		else{
         for (var i = 0; i < all_measurements_data[clicked_probe][0].length; i++){
         	if (ip == all_measurements_data[clicked_probe][0][i].ip_address){
         		lat = all_measurements_data[clicked_probe][0][i].lat;
@@ -678,6 +694,9 @@ function create_new_datatable(data_set){
 				map.panTo(latLng);
         }
 
+    }//End else
+        highlight = true;
+        row_index = tr.index();
 
 	});
 
