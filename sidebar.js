@@ -5,24 +5,34 @@
 //     console.log(protocol);
 
 // }
+var rendered_table;
 
 function display_ip_data(dataSet){
     $(document).ready(function() {
 	    
-	    var table = $('#hop_info_table').DataTable( {
+	     rendered_table = $('#hop_info_table').DataTable( {
 	        data: dataSet,
 	        "bSort": false,
+	        "bDestroy":true,
 
 	        columns: [
 	            { title: "Country" },
 	            { title: "ASN" },
-	            { title: "IP Address" },
+	            { title: "IP ,Address" },
 	            { title: "Name" },
 	        ],
 	        
 	    } );
 
+	    ip_data_click();
 
+
+
+} );
+
+}//End display data
+
+function ip_data_click(){
 
 var infoWindow;
 var highlighted = false;
@@ -30,14 +40,14 @@ var current_row = " ";
 var data;
 var row_index = " ";
 
-	$('#hop_info_table tbody').on('click', 'tr', function () {
+	rendered_table.on('click', 'tr', function () {
 
-        data = table.row( this ).data();
+        data = rendered_table.row( this ).data();
         var ip = data[2];
         var coordinates;
 
 		var tr = $(this).closest("tr");
-    	console.log(row_index)
+    	//console.log(row_index)
 
         if (infoWindow){	
         	infoWindow.close();
@@ -84,9 +94,6 @@ var row_index = " ";
 
 
             } );
+}
 
-} );
-
-}//End display data
-
-display_ip_data(ip_address_data)
+display_ip_data(ip_address_data);

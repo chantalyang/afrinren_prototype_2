@@ -630,7 +630,7 @@ function format_measurements(meas_data){
 }
 
 function create_new_datatable(data_set){
-	var table = $('#hop_info_table').DataTable( {
+	 table = $('#hop_info_table').DataTable( {
 	        data: data_set,
 	        "bSort": false,
 	        
@@ -643,21 +643,29 @@ function create_new_datatable(data_set){
 	        
 	    } );
 
-	$('#hop_info_table tbody').on('click', 'tr', function () {
+	table.on('click', 'tr', function () {
 		console.log("New click!");
 	});
 
 }
 
 function destroy_old_datatable(data_table){
+
 		total_rows = $('#hop_info_table tr').length;		
 		
-		for (var i=0; i<= total_rows; i++){
-		 	data_table.fnDeleteRow(0,null,false);
-		}
+		// for (var i=0; i<= total_rows; i++){
+		//  	data_table.fnDeleteRow(0,null,false);
+		// }
 
-		data_table.fnClearTable();
-		data_table.fnDestroy();
+		// data_table.fnClearTable();
+		// data_table.fnDestroy();
+		//data_table.destroy(true);
+		//data_table.off("zoom_row");
+		if ($.fn.DataTable.isDataTable("#hop_info_table")){
+			$('#hop_info_table').DataTable().clear().destroy();
+			 $('#hop_info_table').unbind('click');
+
+		}
 
  }
 
