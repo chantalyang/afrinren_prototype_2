@@ -8,6 +8,16 @@
 var rendered_table;
 
 function display_ip_data(dataSet){
+
+	change_text(sidebar_heading, "IP Destination Information");
+
+	if (form != null){
+	var inline_form = document.getElementById("probe_details");
+	var parent_div = document.getElementById("probe_info");
+	parent_div.removeChild(inline_form);
+	form = null
+	}
+
     $(document).ready(function() {
 	    
 	     rendered_table = $('#hop_info_table').DataTable( {

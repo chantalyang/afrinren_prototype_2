@@ -571,11 +571,15 @@ function mouseover_probe(){
 var measurement_protocol;
 var hop_row = [];
 var hop_data_set = [];
+var clicked_probe_asn;
+var clicked_probe_name;
 
 function click_probe(){
 	 var probe_click_listener = probe_layer.addListener("click", function(event){
 	 	
 	 	clicked_probe = event.feature.getProperty("probe_id");
+	 	clicked_probe_asn = event.feature.getProperty("asn");
+	 	clicked_probe_name = event.feature.getProperty("name");
 	 	hop_data_set = [];
 
 	 	format_measurements(all_measurements_data[clicked_probe]);
@@ -603,15 +607,10 @@ function click_probe(){
 	 //remove_traceroutes();
 	 animateArrow(selected_traceroute_polyline);
 
-	 //console.log(all_measurements_data[clicked_probe]);
 	 orig_table = $('#hop_info_table').dataTable();
 	 destroy_old_datatable(orig_table);
-	 console.log(JSON.stringify(hop_data_set));
-
-	// if (hop_data_set.length != 0){
-	// 	console.log("Create new data table!")
+	 
 	 create_new_datatable(hop_data_set);
-	// }
 	 
 });
 
@@ -641,7 +640,56 @@ function format_measurements(meas_data){
 	}
 }
 
+function change_text(el_id, text) {
+    el_id.innerHTML = text;
+}
+var form; 
+var para_id;
+var para_asn;
+var para_name;
+
 function create_new_datatable(data_set){
+	
+	change_text(sidebar_heading, "Traceroute Information")
+
+	// <form id="probe_info" class="form-inline well" >
+ //      <span>
+ //          <p id="probe_id" style="display:inline-block; float:left" >Probe ID:</p>
+ //          <p id="probe_asn" style="display:inline-block" >Probe ASN:</p>
+ //          <p id="probe_org"style="display:inline-block; float:right">Organisation:</p>
+ //       </span>
+ //       </form>
+
+ 	if (form != null){
+ 		change_text(prob_id, "<b> Probe ID: </b>" + clicked_probe.toString());
+ 		change_text(probe_asn, "<b> Probe ASN: </b>" + clicked_probe_asn.toString());
+ 		change_text(org_name, "<b> Name: </b>" + clicked_probe_name.toString());
+ 	}
+
+ 	else{
+	form = document.createElement("form");
+	form.className = "form-inline well";
+	form.id = "probe_details";
+	document.getElementById("probe_info").appendChild(form);
+
+	para_id = document.createElement("p");
+	para_id.id = "prob_id";
+	para_id.innerHTML = "<b> Probe ID: </b>" + clicked_probe.toString();
+	document.getElementById("probe_details").appendChild(para_id);
+
+	para_asn = document.createElement("p");
+	para_asn.id ="probe_asn";
+	para_asn.innerHTML = "<b> Probe ASN: </b>" + clicked_probe_asn.toString();
+	document.getElementById("probe_details").appendChild(para_asn);
+
+	para_name = document.createElement("p");
+	para_name.id="org_name";
+	para_name.innerHTML = "<b> Name: </b>" + clicked_probe_name.toString();
+	document.getElementById("probe_details").appendChild(para_name);
+}
+
+
+
 	 table = $('#hop_info_table').DataTable( {
 	        data: data_set,
 	        "bSort": false,
