@@ -20,6 +20,7 @@
     
     height:600px;
     text-align: center;
+    float:left;
 }
 
 #protocol_dropdown{
