@@ -15,6 +15,11 @@ function display_ip_data(dataSet){
 	var inline_form = document.getElementById("probe_details");
 	var parent_div = document.getElementById("probe_info");
 	parent_div.removeChild(inline_form);
+	
+	var parent_div_2 = document.getElementById("btn_div");
+	var trace_buton = document.getElementById("show_all_traces");
+	parent_div_2.removeChild(trace_buton)
+
 	form = null
 	}
 

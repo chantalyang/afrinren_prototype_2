@@ -588,6 +588,12 @@ function click_probe(){
 	 	if (selected_traceroute_polyline != null){
 	 		removeLine(selected_traceroute_polyline)//Remove previously drawn line
 	 	}
+	 	console.log(show_traces_clicked);
+	 	if (show_traces_clicked == true){
+	 		change_text(show_all_traces, "Show All Traceroutes");
+	 		show_traces_clicked = false;
+	 		override_btn_click()
+	 	}
 
 	 	//Draw new line
 	 	selected_traceroute_polyline = new google.maps.Polyline({
