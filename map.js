@@ -528,7 +528,7 @@ function remove_extra_probes(){
 
 	probe_layer.forEach(function(feature){ 
 		var all_probe_ids = feature.getProperty("probe_id");
-		console.log(all_probe_ids);
+		//console.log(all_probe_ids);
 		var found = used_probes.indexOf(all_probe_ids);
 		if (found === -1){
 			probe_layer.remove(feature);
@@ -703,6 +703,8 @@ function create_probe_datatable(probe_dataset){
 	        
 	    } );
 
+	var infoWindow;
+
 	btn_div = document.getElementById("btn_div");
 	btn_div.className = "btn-group";
 
@@ -735,12 +737,74 @@ function create_probe_datatable(probe_dataset){
   		 	}
 
 
-}
+	}
+
+	 var highlight = false;
+	 var row_index = " ";
+
+
+	probe_table.on('click', 'tr', function () {
+	 
+	 	data_cell = probe_table.row( this ).data();
+        var p_id = data_cell[0];
+        //console.log(p_id);
+        var lat;
+        var lng;
+        var coordinates;
+        //console.log(clicked_probe);
+
+        var tr = $(this).closest("tr");
+
+
+        if (infoWindow){	
+        	infoWindow.close();
+		}
+
+        $('#hop_info_table').find('tr.highlight').removeClass('highlight');
+ 		$(this).addClass('highlight');
+
+ 		if ((highlight == true) && (row_index == tr.index())){
+			$('#hop_info_table').find('tr.highlight').removeClass('highlight');
+			map.setZoom(3);
+			map.setCenter( {lat: 0.070959, lng: 23.923482})
+			highlighted = false;
+		}
+		else{
+			infoWindow = new google.maps.InfoWindow({
+			content: "",
+			});	
+
+			for (var i=0; i < all_probes.length; i++){
+				if (p_id == all_probes[i].properties.probe_id){
+					console.log(all_probes[i].properties.probe_id);
+					var coordinates = all_probes[i].geometry.coordinates;
+	        		var latitude = coordinates[1];
+	        		var longitude = coordinates[0];
+	        		var latLong = new google.maps.LatLng(latitude, longitude); 
+	        		map.setZoom(5);
+					map.panTo(latLong);
+
+
+				//Display infowindow
+		        infoWindow.setContent("<font color=blue> <b>" + all_probes[i].properties.name + "</b></font>" + 
+		        	"<br>" + "<b>Probe ID: </b> " + all_probes[i].properties.probe_id +
+		        	"<br>" + " <b>ASN:</b>" + all_probes[i].properties.asn);
+		        var anchor = new google.maps.MVCObject();
+		        anchor.set("position",latLong);
+		        infoWindow.open(map,anchor);
+
+				}
+			}
+		}
+
+		highlighted = true;
+        row_index = tr.index();
+	}
 
 
 
 
-}//End create_probe_table
+)}//End create_probe_table
 
 
 
