@@ -18,6 +18,7 @@ var selected_traceroute_polyline;
 var used_probes = [];
 var selected_traceroute_data = [];
 var all_measurements_data;
+// selected_dest_ip;
 
 function initMap() {
 
@@ -604,7 +605,7 @@ function click_probe(){
 
 	 addLine(selected_traceroute_polyline);
 	 removeLine(probe_traceroutes[clicked_probe][0])
-	 //remove_traceroutes();
+	 remove_traceroutes();
 	 animateArrow(selected_traceroute_polyline);
 
 	 orig_table = $('#hop_info_table').dataTable();
@@ -647,18 +648,12 @@ var form;
 var para_id;
 var para_asn;
 var para_name;
+var show_traces_clicked = false;
 
 function create_new_datatable(data_set){
 	
 	change_text(sidebar_heading, "Traceroute Information")
 
-	// <form id="probe_info" class="form-inline well" >
- //      <span>
- //          <p id="probe_id" style="display:inline-block; float:left" >Probe ID:</p>
- //          <p id="probe_asn" style="display:inline-block" >Probe ASN:</p>
- //          <p id="probe_org"style="display:inline-block; float:right">Organisation:</p>
- //       </span>
- //       </form>
 
  	if (form != null){
  		change_text(prob_id, "<b> Probe ID: </b>" + clicked_probe.toString());
@@ -686,9 +681,28 @@ function create_new_datatable(data_set){
 	para_name.id="org_name";
 	para_name.innerHTML = "<b> Name: </b>" + clicked_probe_name.toString();
 	document.getElementById("probe_details").appendChild(para_name);
-}
 
+	btn_div = document.getElementById("btn_div");
+	//btn_div.className = "btn-group btn-group-justified";	
 
+	btn_show_all_traceroutes =  document.createElement("button");
+	btn_show_all_traceroutes.className = "btn btn-info";
+	btn_show_all_traceroutes.id = "show_all_traces";
+	btn_show_all_traceroutes.innerHTML = "Show all traceroutes";
+
+	btn_div.appendChild(btn_show_all_traceroutes);
+
+}//End else
+
+		btn_show_all_traceroutes.onclick = function(event){
+			show_traces_clicked = true;
+			console.log(show_traces_clicked);
+			draw_traceroutes(clicked_ip_address);
+			change_text(show_all_traces, "Hide traceroutes");
+			override_btn_click();
+
+	
+	}
 
 	 table = $('#hop_info_table').DataTable( {
 	        data: data_set,
@@ -801,7 +815,31 @@ function changeLayer(selected_layer){
 	}
 }
 
+function override_btn_click(){
 
+	if (show_traces_clicked == false){
+		document.getElementById("show_all_traces").onclick = function(event){
+		draw_traceroutes(clicked_ip_address);
+		change_text(show_all_traces, "Hide traceroutes");
+		show_traces_clicked = true;
+		console.log(show_traces_clicked)
+		override_btn_click();
+
+		}
+	}
+	else if (show_traces_clicked == true) {
+		document.getElementById("show_all_traces").onclick = function(event){
+		remove_traceroutes();
+		change_text(show_all_traces, "Show all traceroutes");
+		show_traces_clicked = false;
+		console.log(show_traces_clicked)
+
+		override_btn_click();
+
+	}
+	
+}
+}
 
 
 
