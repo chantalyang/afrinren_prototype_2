@@ -154,7 +154,13 @@ function add_destination_ip_layer(gmap){
   		 	if (selected_traceroute_polyline != null)
   		 		removeLine(selected_traceroute_polyline);
   		 	traceroute_path = [];
-  		 })
+
+  		 	destroy_old_datatable(orig_table);
+  		 	display_ip_data(ip_address_data);
+
+  		 })//End click event
+
+
 
   		 //Allow mouseover for new marker
   		 clicked_ip.addListener("mouseover", function(event){
@@ -559,7 +565,7 @@ function click_probe(){
 	 	
 	 	clicked_probe = event.feature.getProperty("probe_id");
 	 	hop_data_set = [];
-	 	
+
 	 	format_measurements(all_measurements_data[clicked_probe]);
 	 	
 	 	if (selected_traceroute_polyline != null){
@@ -629,13 +635,18 @@ function create_new_datatable(data_set){
 	        "bSort": false,
 	        
 	    	  columns: [
-	            { title: "Hop Number" },
+	            { title: "Hop #" },
 	            { title: "Country" },
 	            { title: "IP Address" },
 	            { title: "RTT" },
 	        ],
 	        
 	    } );
+
+	$('#hop_info_table tbody').on('click', 'tr', function () {
+		console.log("New click!");
+	});
+
 }
 
 function destroy_old_datatable(data_table){
@@ -644,6 +655,7 @@ function destroy_old_datatable(data_table){
 		for (var i=0; i<= total_rows; i++){
 		 	data_table.fnDeleteRow(0,null,false);
 		}
+
 		data_table.fnClearTable();
 		data_table.fnDestroy();
 
