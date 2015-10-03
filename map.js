@@ -81,6 +81,8 @@ function load_probe_JSON(){
 
 }
 
+var ip_mouseover;
+
 function add_destination_ip_layer(gmap){
 
 	var  infoWindow = new google.maps.InfoWindow({
@@ -94,7 +96,7 @@ function add_destination_ip_layer(gmap){
 	add_ips_to_array("/data/all_destination_ips.json");
 	
 	//Show destination IP info on mouseover
-	destination_ip_layer.addListener('mouseover', function(event) {
+	ip_mouseover = destination_ip_layer.addListener('mouseover', function(event) {
         //Display infowindow
         infoWindow.setContent("<b>" + event.feature.getProperty("name") + "</b>" +
         	"<br>" + "<b>ASN: </b> " + event.feature.getProperty("asn") +
@@ -144,19 +146,26 @@ function add_destination_ip_layer(gmap){
 
   		 //When marker clicked, remove current marker + add destination IP layer
   		 clicked_ip.addListener("click", function(event){
-  		 	clicked_ip.setMap(null);  
+  		 	
+  		 	clicked_ip.setMap(null); //Remove current marker 
   		 	add_destination_ip_layer(map); //Re-add destination IPs
-  		 	//probe_layer.setMap(null); //Remove probes from map
+  		 	
+  		 	probe_layer.setMap(null); //Remove probes from map
+  		 	document.getElementById("probe_layer").checked = false;
   		 	load_probe_JSON(); //Reload probes
-  		 	probe_layer.setMap(map); //Set probes to map
+
   		 	remove_hops(); //Remove hops
   		 	remove_traceroutes(); //Remove all selected traceroutes
+  		 	
   		 	if (selected_traceroute_polyline != null)
   		 		removeLine(selected_traceroute_polyline);
   		 	traceroute_path = [];
 
-  		 	destroy_old_datatable(orig_table);
-  		 	display_ip_data(ip_address_data);
+  		 	if (rendered_table != null){
+  		 		destroy_old_datatable();
+  		 		display_ip_data(ip_address_data);
+  		 	}
+  		 	
 
   		 })//End click event
 
@@ -381,24 +390,27 @@ function extract_hop_data(selected_ip){
 	    		$.each(data.result, function(key, data){ //Loop through the results field 
 	    				lost_hop = "{\"x\":\"*\"}";
 	    				var hop_num = data.hop.toString();
+	    			
 
 
 	    				//console.log(JSON.stringify(data.result));
 	    				if (data.result.public == false){
-	    					hop_obj = {hop: hop_num, country: "N/A", ip_address: data.result.from, public: "false", rtt: data.result.rtt, protocol: protocol}
+	    					hop_obj = {hop: hop_num, country: "N/A", ip_address: data.result.from, public: "false", rtt: data.result.rtt, protocol: protocol, lat:"N/A", lng:"N/A"}
 
 	    				}
 	    				
 	    				else if (JSON.stringify(data.result) == lost_hop){
 	    					//console.log("true");
-	    					hop_obj = {hop: hop_num, country: "*", ip_address: "*", public: "*", rtt: "*", protocol: protocol}
+	    					hop_obj = {hop: hop_num, country: "*", ip_address: "*", public: "*", rtt: "*", protocol: protocol, lat:"N/A", lng:"N/A" }
 	    				 }
 	    				else{
+	    					var latitude = data.result.coordinates[0];
+	    					var longi = data.result.coordinates[1];
 		    				var country_name = getCountryName(data.result.country);
 		    				var ip_address = data.result.from;
 		    				var rtt = data.result.rtt;
 
-		    				hop_obj = {hop: hop_num, country: country_name, ip_address: ip_address, public: "true", rtt: rtt, protocol:protocol}
+		    				hop_obj = {hop: hop_num, country: country_name, ip_address: ip_address, public: "true", rtt: rtt, protocol:protocol, lat:latitude, lng:longi}
 	    					}
 
 					probe_hops.push(hop_obj)
@@ -644,14 +656,35 @@ function create_new_datatable(data_set){
 	    } );
 
 	table.on('click', 'tr', function () {
-		console.log("New click!");
+	 
+	 	data = table.row( this ).data();
+        var ip = data[2];
+        //console.log(ip);
+        var lat;
+        var lng;
+        var coordinates;
+        //console.log(clicked_probe);
+
+        for (var i = 0; i < all_measurements_data[clicked_probe][0].length; i++){
+        	if (ip == all_measurements_data[clicked_probe][0][i].ip_address){
+        		lat = all_measurements_data[clicked_probe][0][i].lat;
+        		lng = all_measurements_data[clicked_probe][0][i].lng;
+        	}
+        }
+
+        if (lat != "N/A" && lng != "N/A"){
+        	var latLng = new google.maps.LatLng(lat, lng); 
+        		map.setZoom(6);
+				map.panTo(latLng);
+        }
+
+
 	});
 
 }
 
-function destroy_old_datatable(data_table){
-
-		total_rows = $('#hop_info_table tr').length;		
+function destroy_old_datatable(){
+		
 		
 		// for (var i=0; i<= total_rows; i++){
 		//  	data_table.fnDeleteRow(0,null,false);

@@ -18,7 +18,7 @@ function display_ip_data(dataSet){
 	        columns: [
 	            { title: "Country" },
 	            { title: "ASN" },
-	            { title: "IP ,Address" },
+	            { title: "IP Address" },
 	            { title: "Name" },
 	        ],
 	        
@@ -86,7 +86,7 @@ var row_index = " ";
 
         	}
         }//End for
-
+        
         highlighted = true;
         row_index = tr.index();
 
