@@ -18,7 +18,9 @@ function display_ip_data(dataSet){
 	
 	var parent_div_2 = document.getElementById("btn_div");
 	var trace_buton = document.getElementById("show_all_traces");
-	parent_div_2.removeChild(trace_buton)
+	var back_button = document.getElementById("show_ips");
+	parent_div_2.removeChild(trace_buton);
+	parent_div_2.removeChild(back_button);
 
 	form = null
 	}

@@ -689,14 +689,42 @@ function create_new_datatable(data_set){
 	document.getElementById("probe_details").appendChild(para_name);
 
 	btn_div = document.getElementById("btn_div");
-	//btn_div.className = "btn-group btn-group-justified";	
+	btn_div.className = "btn-group";	
 
 	btn_show_all_traceroutes =  document.createElement("button");
 	btn_show_all_traceroutes.className = "btn btn-info";
 	btn_show_all_traceroutes.id = "show_all_traces";
 	btn_show_all_traceroutes.innerHTML = "Show all traceroutes";
 
+	btn_show_ips =  document.createElement("button");
+	btn_show_ips.className = "btn btn-success";
+	btn_show_ips.id = "show_ips";
+	btn_show_ips.innerHTML = "Back to destination IPs";
+
+	btn_show_ips.onclick = function(event){
+			clicked_ip.setMap(null); //Remove current marker 
+  		 	add_destination_ip_layer(map); //Re-add destination IPs
+  		 	
+  		 	probe_layer.setMap(null); //Remove probes from map
+  		 	document.getElementById("probe_layer").checked = false;
+  		 	load_probe_JSON(); //Reload probes
+
+  		 	remove_hops(); //Remove hops
+  		 	remove_traceroutes(); //Remove all selected traceroutes
+  		 	
+  		 	if (selected_traceroute_polyline != null)
+  		 		removeLine(selected_traceroute_polyline);
+  		 	traceroute_path = [];
+
+  		 	if (rendered_table != null){
+  		 		destroy_old_datatable();
+  		 		display_ip_data(ip_address_data);
+  		 	}
+  		 	
+	}
+
 	btn_div.appendChild(btn_show_all_traceroutes);
+	btn_div.appendChild(btn_show_ips);
 
 }//End else
 
@@ -707,7 +735,6 @@ function create_new_datatable(data_set){
 			change_text(show_all_traces, "Hide traceroutes");
 			override_btn_click();
 
-	
 	}
 
 	 table = $('#hop_info_table').DataTable( {
