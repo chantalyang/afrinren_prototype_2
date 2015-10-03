@@ -8,7 +8,7 @@
 
 #map {
     height: 600px;
-    width: 700px;
+    width: 500px;
 }
 
 #checkbox-row{
@@ -29,6 +29,8 @@
 .highlight{
  color: #00b3e7;
 }
+
+
 
 
 
