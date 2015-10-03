@@ -718,7 +718,10 @@ function create_probe_datatable(probe_dataset){
 	btn_show_ips_probes.onclick = function(event){
 			clicked_ip.setMap(null); //Remove current marker 
   		 	add_destination_ip_layer(map); //Re-add destination IPs
-  		 	
+
+  		 	map.setZoom(3);
+			map.setCenter( {lat: 0.070959, lng: 23.923482})
+
   		 	probe_layer.setMap(null); //Remove probes from map
   		 	document.getElementById("probe_layer").checked = false;
   		 	load_probe_JSON(); //Reload probes
@@ -793,6 +796,10 @@ function create_probe_datatable(probe_dataset){
 		        anchor.set("position",latLong);
 		        infoWindow.open(map,anchor);
 
+		        	if (infoWindow) {
+  		 			setTimeout(function () { infoWindow.close(); }, 2500);
+  		 			} 	 	
+
 				}
 			}
 		}
@@ -866,6 +873,9 @@ function create_new_datatable(data_set){
 	btn_show_ips.onclick = function(event){
 			clicked_ip.setMap(null); //Remove current marker 
   		 	add_destination_ip_layer(map); //Re-add destination IPs
+  		 	
+  		 	map.setZoom(3);
+			map.setCenter( {lat: 0.070959, lng: 23.923482})
   		 	
   		 	probe_layer.setMap(null); //Remove probes from map
   		 	document.getElementById("probe_layer").checked = false;
