@@ -1,0 +1,23 @@
+Known Bugs:
+- Probes not used for particular IP measurements still display on map
+
+Data:
+- 12 IP addresses not reached at all haven't been removed from data
+
+Interactions Nice to Have (But haven’t been implemented):
+- Mouseover polyline highlights route
+- Clicking polyline selects that route
+- Mousing over destination IPs brings icon forward
+- Animation for each traceroute related to latency speed:
+	1. For a single route
+	2. On a per hop basis
+
+Representation Nice to Have (But haven’t been implemented): 
+- Dashed lines for incomplete traceroutes
+
+HTML:
+- Have heading bar for clicked destination IP info (instead of having to mouseover)
+
+Future (future) Work:
+- Display results for different protocols (ICMP, UDP, TCP)
+- Compare protocols for a single probe to a single destination (Four tiled map views or all on same map)
