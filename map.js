@@ -189,9 +189,9 @@ function add_destination_ip_layer(gmap){
 
   		//Add hops to map of selected IP marker
   		clicked_ip_address = event.feature.getProperty("ip_address");
+  		extract_hop_data(clicked_ip_address);
   		add_hops_to_map(clicked_ip_address);
 
-  		extract_hop_data(clicked_ip_address);
   		
   		//Show probes
   		document.getElementById("probe_layer").checked = true; //Set probe checkbox to true
@@ -354,6 +354,7 @@ function add_hops_to_map(selected_ip_address){
 			
 			for (var i = 0; i < hops.length; i++){
 				if (JSON.stringify(clicked_ip.position) === JSON.stringify(all_hops[i].position)){ 
+											console.log(true);
 								     	 	all_hops[i].setMap(null);
 								     	}
 							     }
@@ -393,6 +394,7 @@ function extract_hop_data(selected_ip){
 			var probe = data.prb_id;
 			//console.log(probe);
 			var protocol = data.proto;
+			var latency = data.latency;
 			var hop_obj = {};
 			probe_hops = [];
 	    		$.each(data.result, function(key, data){ //Loop through the results field 
@@ -403,13 +405,13 @@ function extract_hop_data(selected_ip){
 
 	    				//console.log(JSON.stringify(data.result));
 	    				if (data.result.public == false){
-	    					hop_obj = {hop: hop_num, country: "N/A", ip_address: data.result.from, public: "false", rtt: data.result.rtt, protocol: protocol, lat:"N/A", lng:"N/A"}
+	    					hop_obj = {hop: hop_num, country: "N/A", ip_address: data.result.from, public: "false", rtt: data.result.rtt, protocol: protocol, latency:latency, lat:"N/A", lng:"N/A"}
 
 	    				}
 	    				
 	    				else if (JSON.stringify(data.result) == lost_hop){
 	    					//console.log("true");
-	    					hop_obj = {hop: hop_num, country: "*", ip_address: "*", public: "*", rtt: "*", protocol: protocol, lat:"N/A", lng:"N/A" }
+	    					hop_obj = {hop: hop_num, country: "*", ip_address: "*", public: "*", rtt: "*", protocol: protocol, latency:latency, lat:"N/A", lng:"N/A" }
 	    				 }
 	    				else{
 	    					var latitude = data.result.coordinates[0];
@@ -418,7 +420,7 @@ function extract_hop_data(selected_ip){
 		    				var ip_address = data.result.from;
 		    				var rtt = data.result.rtt;
 
-		    				hop_obj = {hop: hop_num, country: country_name, ip_address: ip_address, public: "true", rtt: rtt, protocol:protocol, lat:latitude, lng:longi}
+		    				hop_obj = {hop: hop_num, country: country_name, ip_address: ip_address, public: "true", rtt: rtt, protocol:protocol, latency:latency, lat:latitude, lng:longi}
 	    					}
 
 					probe_hops.push(hop_obj)
@@ -443,35 +445,24 @@ function draw_traceroutes(ip_addr){
 	line_symbol = {
 		path: google.maps.SymbolPath.FORWARD_OPEN_ARROW,
 	};
-	
 	//console.log(ip_addr);
 	//Where probe is a key and all_measurements is a dictionary of measurements with hops
 	for (var probe in all_measurements){
 		var number_of_hops = all_measurements[probe][0].length
 		var hops_per_probe = all_measurements[probe][0]
 		
-		//console.log(probe + " " + all_measurements[probe][0].length);
-
-
 		traceroute_polyline = new google.maps.Polyline({
 			path: hops_per_probe,
 			icons: [{
 				icon: line_symbol,
 				offset: '100%',
-	         // repeat: "100px"
+	         	 //repeat: "1000px"
 	  			 }],
 	     geodesic: true,
 	     strokeColor: 'black',
 	     strokeOpacity: 0.3,
 	     strokeWeight: 2
 		 });
-
-
-		google.maps.event.addListener(traceroute_polyline, 'mouseover', function(latlng) {
-	          
-
-        });
-		
 
 		addLine(traceroute_polyline);
 		animateArrow(traceroute_polyline);
@@ -608,19 +599,22 @@ function click_probe(){
 	 		override_btn_click()
 	 	}
 
+		 	
+
 	 	//Draw new line
 	 	selected_traceroute_polyline = new google.maps.Polyline({
 			path: all_measurements[clicked_probe][0],
 			icons: [{
 				icon: line_symbol,
 				offset: '100%',
-	         // repeat: "100px"
+	            //repeat: "20px"
 	  			 }],
 	     geodesic: true,
 	     strokeColor: '#d7191c',
 	     strokeOpacity: 1,
 	     strokeWeight: 3
 		 });
+
 	 var back_button_probes = document.getElementById("show_ips_probes");
 
 	 if (back_button_probes != null){
