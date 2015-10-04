@@ -24,3 +24,4 @@ HTML:
 Future (future) Work:
 - Display results for different protocols (ICMP, UDP, TCP)
 - Compare protocols for a single probe to a single destination (Four tiled map views or all on same map)
+- Display trace route from a single probe to all destinations
