@@ -898,7 +898,8 @@ function create_new_datatable(data_set){
 
 	para_id = document.createElement("p");
 	para_id.id = "prob_id";
-	para_id.innerHTML = "<b> Probe ID: </b>" + clicked_probe.toString();
+	var url = "https://atlas.ripe.net/probes/" + clicked_probe+"/"
+	para_id.innerHTML = "<b> Probe ID: </b>" + "<a href=" + url + ">" + clicked_probe.toString() + "<a/>";
 	document.getElementById("probe_details").appendChild(para_id);
 
 	para_asn = document.createElement("p");
