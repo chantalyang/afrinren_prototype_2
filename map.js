@@ -434,6 +434,11 @@ function extract_hop_data(selected_ip){
 
 }
 
+function round_number(number, decimals) { // Arguments: number to round, number of decimal places
+	var newnumber = new Number(number+'').toFixed(parseInt(decimals));
+	return newnumber;
+}
+
 function draw_traceroutes(ip_addr){
 	line_symbol = {
 		path: google.maps.SymbolPath.FORWARD_OPEN_ARROW,
@@ -652,10 +657,17 @@ function format_measurements(meas_data){
 		hop_row.push(ip_address);
 		// var public_ip = meas_data[0][j].public;
 		// hop_row.push(public_ip);
-		var rtt = meas_data[0][j].rtt.toString();
+		var rtt = meas_data[0][j].rtt;
+		var not_number = isNaN(rtt); 
+		if (not_number == true){
+			rtt = rtt.toString();
+		}
+		else{
+			rtt = round_number(rtt, 3).toString();
+
+		}
 		hop_row.push(rtt);
 		measurement_protocol = meas_data[0][j].protocol;
-
 		hop_data_set.push(hop_row)
 
 	}
