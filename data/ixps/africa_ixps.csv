@@ -1,0 +1,36 @@
+exchange_point_id; country; city; long_name; organization_type;lat;long
+932; Angola; Luanda; Angola Internet Exchange; Association;-8.839988; 13.289437
+1848; Angola; Luanda; ANGONIX; Commercial;-8.839988; 13.289437
+1838; Benin; Cotonou; Benin Point dåÕÌächange Internet; Association;6.370293; 2.391236
+367; Botswana; Gaborone; Botswana Internet Exchange; Association;-24.628208; 25.923147
+546; Burundi; Bujumbura; BurundiX Internet Exchange Point; Association;-3.361378; 29.359878
+1541; Congo-Brazzaville; Brazzaville; Congo Brazzaville IX; Governmental;-4.263360; 15.242885
+479; Congo-Kinshasa; Kinshasa; Kinshasa Internet Exchange; Association;-4.441931; 15.266293
+1801; Cote D'Ivoire; Abidjan; CÌ«te d'Ivoire Internet Exchange Point; Governmental;5.359952; -4.008256
+59; Egypt; Cairo; Cairo Internet Exchange; Governmental;30.044420; 31.235712
+593; Egypt; Cairo; Middle East Internet eXchange; Commercial;30.044420; 31.235712
+1887; Gabon; Libreville; Gabon Internet Exchange; Association;0.416198; 9.467268
+1811; Gambia; Serrekunda; Serrekunda Internet Exchange Point; Association;13.450299; -16.688084
+93; Ghana; Accra; Ghana Internet Exchange; Association;5.603717; -0.186964
+143; Kenya; Nairobi; Kenya Internet Exchange Point; Association;-1.292066; 36.821946
+1897; Liberia; Monrovia; Liberia Internet Exchange Point; Association;6.290743; -10.760524
+1029; Malawi; Blantyre; Malawi IXP; Association;-15.766671; 35.016787
+156; Mauritius; Ebene; Mauritius Internet Exchange; Association;-20.241892; 57.4896
+158; Mozambique; Maputo; Mozambique Internet Exchange; University;-25.891968; 32.605135
+1784; Namibia; Windhoek; Windhoek IXP; Association;-22.560881; 17.065755
+1884; Nigeria; Abuja; IXPN - Abuja; Association;9.076479; 7.398574
+616; Nigeria; Lagos; IXPN - Lagos; Association;6.524379; 3.379206
+1885; Nigeria; Port Harcourt; IXPN - Port Harcourt; Association;4.815554;  7.049844
+765; Rwanda; Kigali; Rwanda Internet exchange; Commercial;-1.957876;  30.112735
+206; South Africa; Cape Town; Cape Town Internet Exchange; Association;-33.924869; 18.424055
+1308; South Africa; Cape Town; NAPAfrica Cape Town; Commercial;-33.924869; 18.424055
+1362; South Africa; Durban; Durban Internet eXchange; Association;-29.858680; 31.02184
+209; South Africa; Johannesburg; Johannesburg Internet Exchange; Association;-26.204103; 28.047305
+1306; South Africa; Johannesburg; NAPAfrica Johannesburg; Commercial;-26.204103; 28.047305
+1312; Sudan; Khartoum; Sudan Internet Exchange Point; Governmental;15.500654; 32.559899
+606; Tanzania; Arusha; Arusha Internet Exchange Point; Association;-3.386925; 36.682993
+242; Tanzania; Dar es Salaam; Tanzania Internet Exchange; Association;-6.792354; 39.208328
+1474; Tunisia; Tunis; Tunisian Internet Exchange Point; Governmental;33.886917; 9.537499
+248; Uganda; Kampala; Uganda Internet Exchange; Association;0.347596; 32.58252
+547; Zambia; Lusaka; Zambia Internet Exchange Point; Association;-15.387526; 28.322817
+364; Zimbabwe; Harare; Zimbabwe Internet Exchange; Association;-17.825166; 31.03351

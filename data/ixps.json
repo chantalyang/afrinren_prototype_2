@@ -1,0 +1,495 @@
+{
+   "type": "FeatureCollection",
+   "features": [
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  13.289437,-8.139988 ]
+    },
+    "properties": {
+    "exchange_point_id":932,
+    "country":" Angola",
+    "city":" Luanda",
+    "long_name":" Angola Internet Exchange",
+    "organization_type":" Association"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  13.389437,-8.839988 ]
+    },
+    "properties": {
+    "exchange_point_id":1848,
+    "country":" Angola",
+    "city":" Luanda",
+    "long_name":" ANGONIX",
+    "organization_type":" Commercial"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  2.391236,6.370293 ]
+    },
+    "properties": {
+    "exchange_point_id":1838,
+    "country":" Benin",
+    "city":" Cotonou",
+    "long_name":" Benin Point da exchange Internet",
+    "organization_type":" Association"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  25.923147,-24.628208 ]
+    },
+    "properties": {
+    "exchange_point_id":367,
+    "country":" Botswana",
+    "city":" Gaborone",
+    "long_name":" Botswana Internet Exchange",
+    "organization_type":" Association"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  29.359878,-3.361378 ]
+    },
+    "properties": {
+    "exchange_point_id":546,
+    "country":" Burundi",
+    "city":" Bujumbura",
+    "long_name":" BurundiX Internet Exchange Point",
+    "organization_type":" Association"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  15.242885,-4.263360 ]
+    },
+    "properties": {
+    "exchange_point_id":1541,
+    "country":" Congo-Brazzaville",
+    "city":" Brazzaville",
+    "long_name":" Congo Brazzaville IX",
+    "organization_type":" Governmental"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  15.266293,-4.441931 ]
+    },
+    "properties": {
+    "exchange_point_id":479,
+    "country":" Congo-Kinshasa",
+    "city":" Kinshasa",
+    "long_name":" Kinshasa Internet Exchange",
+    "organization_type":" Association"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  -4.008256,5.359952 ]
+    },
+    "properties": {
+    "exchange_point_id":1801,
+    "country":" Cote D'Ivoire",
+    "city":" Abidjan",
+    "long_name":" C̫te d'Ivoire Internet Exchange Point",
+    "organization_type":" Governmental"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  31.235712,30.044420 ]
+    },
+    "properties": {
+    "exchange_point_id":59,
+    "country":" Egypt",
+    "city":" Cairo",
+    "long_name":" Cairo Internet Exchange",
+    "organization_type":" Governmental"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  31.935712,30.544420 ]
+    },
+    "properties": {
+    "exchange_point_id":593,
+    "country":" Egypt",
+    "city":" Cairo",
+    "long_name":" Middle East Internet eXchange",
+    "organization_type":" Commercial"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  9.467268,0.416198 ]
+    },
+    "properties": {
+    "exchange_point_id":1887,
+    "country":" Gabon",
+    "city":" Libreville",
+    "long_name":" Gabon Internet Exchange",
+    "organization_type":" Association"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  -16.688084,13.450299 ]
+    },
+    "properties": {
+    "exchange_point_id":1811,
+    "country":" Gambia",
+    "city":" Serrekunda",
+    "long_name":" Serrekunda Internet Exchange Point",
+    "organization_type":" Association"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  -0.186964,5.603717 ]
+    },
+    "properties": {
+    "exchange_point_id":93,
+    "country":" Ghana",
+    "city":" Accra",
+    "long_name":" Ghana Internet Exchange",
+    "organization_type":" Association"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  36.821946,-1.292066 ]
+    },
+    "properties": {
+    "exchange_point_id":143,
+    "country":" Kenya",
+    "city":" Nairobi",
+    "long_name":" Kenya Internet Exchange Point",
+    "organization_type":" Association"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  -10.760524,6.290743 ]
+    },
+    "properties": {
+    "exchange_point_id":1897,
+    "country":" Liberia",
+    "city":" Monrovia",
+    "long_name":" Liberia Internet Exchange Point",
+    "organization_type":" Association"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  35.016787,-15.766671 ]
+    },
+    "properties": {
+    "exchange_point_id":1029,
+    "country":" Malawi",
+    "city":" Blantyre",
+    "long_name":" Malawi IXP",
+    "organization_type":" Association"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  57.4896,-20.241892 ]
+    },
+    "properties": {
+    "exchange_point_id":156,
+    "country":" Mauritius",
+    "city":" Ebene",
+    "long_name":" Mauritius Internet Exchange",
+    "organization_type":" Association"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  32.605135,-25.891968 ]
+    },
+    "properties": {
+    "exchange_point_id":158,
+    "country":" Mozambique",
+    "city":" Maputo",
+    "long_name":" Mozambique Internet Exchange",
+    "organization_type":" University"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  17.065755,-22.560881 ]
+    },
+    "properties": {
+    "exchange_point_id":1784,
+    "country":" Namibia",
+    "city":" Windhoek",
+    "long_name":" Windhoek IXP",
+    "organization_type":" Association"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  7.398574,9.076479 ]
+    },
+    "properties": {
+    "exchange_point_id":1884,
+    "country":" Nigeria",
+    "city":" Abuja",
+    "long_name":" IXPN - Abuja",
+    "organization_type":" Association"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  3.379206,6.524379 ]
+    },
+    "properties": {
+    "exchange_point_id":616,
+    "country":" Nigeria",
+    "city":" Lagos",
+    "long_name":" IXPN - Lagos",
+    "organization_type":" Association"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [   7.049844,4.815554 ]
+    },
+    "properties": {
+    "exchange_point_id":1885,
+    "country":" Nigeria",
+    "city":" Port Harcourt",
+    "long_name":" IXPN - Port Harcourt",
+    "organization_type":" Association"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [   30.112735,-1.957876 ]
+    },
+    "properties": {
+    "exchange_point_id":765,
+    "country":" Rwanda",
+    "city":" Kigali",
+    "long_name":" Rwanda Internet exchange",
+    "organization_type":" Commercial"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  18.424055,-33.924869 ]
+    },
+    "properties": {
+    "exchange_point_id":206,
+    "country":" South Africa",
+    "city":" Cape Town",
+    "long_name":" Cape Town Internet Exchange",
+    "organization_type":" Association"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  18.824055,-33.824869 ]
+    },
+    "properties": {
+    "exchange_point_id":1308,
+    "country":" South Africa",
+    "city":" Cape Town",
+    "long_name":" NAPAfrica Cape Town",
+    "organization_type":" Commercial"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  31.02184,-29.858680 ]
+    },
+    "properties": {
+    "exchange_point_id":1362,
+    "country":" South Africa",
+    "city":" Durban",
+    "long_name":" Durban Internet eXchange",
+    "organization_type":" Association"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  28.047305,-26.204103 ]
+    },
+    "properties": {
+    "exchange_point_id":209,
+    "country":" South Africa",
+    "city":" Johannesburg",
+    "long_name":" Johannesburg Internet Exchange",
+    "organization_type":" Association"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  28.547305,-26.704103 ]
+    },
+    "properties": {
+    "exchange_point_id":1306,
+    "country":" South Africa",
+    "city":" Johannesburg",
+    "long_name":" NAPAfrica Johannesburg",
+    "organization_type":" Commercial"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  32.559899,15.500654 ]
+    },
+    "properties": {
+    "exchange_point_id":1312,
+    "country":" Sudan",
+    "city":" Khartoum",
+    "long_name":" Sudan Internet Exchange Point",
+    "organization_type":" Governmental"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  36.682993,-3.386925 ]
+    },
+    "properties": {
+    "exchange_point_id":606,
+    "country":" Tanzania",
+    "city":" Arusha",
+    "long_name":" Arusha Internet Exchange Point",
+    "organization_type":" Association"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  39.208328,-6.792354 ]
+    },
+    "properties": {
+    "exchange_point_id":242,
+    "country":" Tanzania",
+    "city":" Dar es Salaam",
+    "long_name":" Tanzania Internet Exchange",
+    "organization_type":" Association"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  9.537499,33.886917 ]
+    },
+    "properties": {
+    "exchange_point_id":1474,
+    "country":" Tunisia",
+    "city":" Tunis",
+    "long_name":" Tunisian Internet Exchange Point",
+    "organization_type":" Governmental"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  32.58252,0.347596 ]
+    },
+    "properties": {
+    "exchange_point_id":248,
+    "country":" Uganda",
+    "city":" Kampala",
+    "long_name":" Uganda Internet Exchange",
+    "organization_type":" Association"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  28.322817,-15.387526 ]
+    },
+    "properties": {
+    "exchange_point_id":547,
+    "country":" Zambia",
+    "city":" Lusaka",
+    "long_name":" Zambia Internet Exchange Point",
+    "organization_type":" Association"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  31.03351,-17.825166 ]
+    },
+    "properties": {
+    "exchange_point_id":364,
+    "country":" Zimbabwe",
+    "city":" Harare",
+    "long_name":" Zimbabwe Internet Exchange",
+    "organization_type":" Association"
+    }
+  }
+]
+}

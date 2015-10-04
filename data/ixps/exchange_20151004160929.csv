@@ -1,0 +1,196 @@
+exchange_point_id; region; country; city; long_name; status; media_type; organization_type; establishment; url; member_list_url; looking_glass_url; participants; traffic; prefixes
+1849; Europe; Albania; Tirana; Albania IX; Active; Ethernet; Commercial;20110000; http://www.albtelecom.al/en/dedicated-service/infrastructure/434-alb-ix; http://www.albtelecom.al/en/dedicated-service/infrastructure/434-alb-ix; ;8;0;0
+932; Africa; Angola; Luanda; Angola Internet Exchange; Active; Ethernet; Association;20060317; http://www.angola-ixp.ao; http://www.angola-ixp.ao/membros.php; ;10;600000;0
+1848; Africa; Angola; Luanda; ANGONIX; Active; Ethernet; Commercial;20150309; http://angonix.net; http://angonix.net/customers-partners/customers/; http://lg.angonix.net;3;800000;13
+1499; Europe; Armenia; Yerevan; Armenian Internet Traffic Exchange; Active; Ethernet; Association;20100000; http://www.armix.am/; http://www.armix.am/eng/members.php; ;8;0;0
+14; Europe; Austria; Graz; Grazer Internet Exchange; Active; Ethernet; Association;20100304; http://www.grax.at/; http://www.grax.at/index.html; ;16;36365;0
+1225; Europe; Austria; Klagenfurt; Alpes Adria Internet Exchange; Active; Ethernet; Association;20100000; http://www.aaix.at/; http://www.aaix.at/; ;12;150000;245
+1896; Europe; Austria; Salzburg; SAlzburg Internet eXchange; Active; Ethernet; Association;20150515; https://www.saix.at; https://www.saix.at/members.html; https://www.saix.at/lg;13;64000;0
+15; Europe; Austria; Vienna; Vienna Internet Exchange; Active; Ethernet; University;19960400; http://www.VIX.at/; http://www.vix.at/vix_participants.html; http://www.vix.at/vix_lookingglass.html;118;312220000;145453
+1065; Europe; Bahrain; Manama; Gateway Gulf Internet Exchange Bahrain; Active; Ethernet; Commercial;20090401; http://www.gatewaygulf.bh; ; ;3;0;0
+17; Europe; Belgium; Brussels; Belgian National Internet Exchange; Active; Ethernet; Governmental;19950000; http://www.bnix.net/; http://www.bnix.net/members.php; ;51;105000000;0
+1838; Africa; Benin; Cotonou; Benin Point dåÕÌächange Internet; Active; Ethernet; Association;20131200; http://www.benin-ix.org.bj; ; ;5;673797;124
+367; Africa; Botswana; Gaborone; Botswana Internet Exchange; Active; Ethernet; Association;20051000; http://www.info.bw/bispa/binx.html; http://www.info.bw/bispa/binx.html; ;9;0;0
+1194; Europe; Bulgaria; Sofia; Balkan Internet Exchange; Active; Ethernet; Association;20100000; http://www.b-ix.net; http://www.b-ix.net/members/peers/; http://lg.b-ix.net/;35;108910000;0
+1137; Europe; Bulgaria; Sofia; Bulgarian Internet eXchange; Active; Ethernet; Commercial;20090801; http://www.bix.bg/en/; http://www.bix.bg/en/bix.bg_members.html; http://lg.bix.bg/;64;134490000;140443
+1623; Europe; Bulgaria; Sofia; NetIX; Active; Ethernet; Commercial;20130101; http://www.netix.net; http://netix.net/members; http://lg.netix.bg/;53;74140000;861633
+546; Africa; Burundi; Bujumbura; BurundiX Internet Exchange Point; Active; Ethernet; Association;20140321; http://www.burundix.bi; ; ;1;39;0
+1541; Africa; Congo-Brazzaville; Brazzaville; Congo Brazzaville IX; Active; Ethernet; Governmental;20130510; ; ; ;6;20;0
+479; Africa; Congo-Kinshasa; Kinshasa; Kinshasa Internet Exchange; Active; Ethernet; Association;20021100; http://www.ispa-drc.cd/kinix.htm; http://www.ispa-drc.cd/kinix.htm#Membres; ;6;2500;0
+1801; Africa; Cote D'Ivoire; Abidjan; CÌ«te d'Ivoire Internet Exchange Point; Active; Ethernet; Governmental;20131003; www.civix.ci; http://www.civix.ci/index.php/membres/membres-connectes; ;2;45550;0
+51; Europe; Croatia; Zagreb; Croatian Internet Exchange; Active; ; University;20050000; http://www.cix.hr/; http://www.cix.hr/cix_clanice.html; http://www.cix.hr/index.php?id=lg&L=1;28;19680000;0
+53; Europe; Cyprus; Lefkosia; Cyprus Internet Exchange; Active; Ethernet; University;19990000; http://www.cytanet.com.cy/network/cyix/; ; ;3;10000;0
+612; Europe; Czech Republic; Brno; Commercial Brno Internet Exchange; Active; Ethernet; Commercial;20070512; http://www.cbix.cz/en; http://www.cbix.cz/en/connected-networks; ;7;0;0
+613; Europe; Czech Republic; Prague; Neutral czFree eXchange; Active; Ethernet; Association;20070000; http://www.nfx.cz; http://www.nfx.cz/clenove; ;19;38990000;0
+55; Europe; Czech Republic; Prague; Neutral Internet Exchange; Active; Ethernet; Association;19960800; http://www.nix.cz; http://www.nix.cz/en/members; ;80;324350000;0
+1758; Europe; Czech Republic; Prague; Peering.cz; Active; Ethernet; Commercial;20121017; http://www.peering.cz; http://peering.cz/en/traffic; http://lg.peering.cz;74;225000000;90371
+1853; Europe; Denmark; Copenhagen; Content-IX; Active; Ethernet; Commercial;20120200; www.content-ix.dk; http://www.globalconnect.dk/produkter/internet/ip-transit/content-ix-medlemsliste; ;10;0;0
+56; Europe; Denmark; Copenhagen; Danish Internet Exchange; Active; Ethernet; University;19940500; http://www.dix.dk/; http://www.dix.dk/connectednetworks/; ;41;36000000;0
+1781; Europe; Denmark; Copenhagen; Netnod COMIX; Active; Ethernet; Association;20140500; www.netnod.se; http://www.netnod.se/ix/members; ;27;45678000;0
+59; Africa; Egypt; Cairo; Cairo Internet Exchange; Active; Ethernet; Governmental;20020500; http://www.caix.net.eg/; http://www.caix.net.eg/index.php/member-list; ;8;1390000;3891
+593; Africa; Egypt; Cairo; Middle East Internet eXchange; Active; Ethernet; Commercial;20070500; http://www.gpxglobal.net/; ; ;10;27;0
+1365; Europe; Estonia; Tallinn; Tallinn Governmental Internet Exchange; Active; Ethernet; Governmental;20090700; http://www.rtix.ee/rtix/; ; ;7;0;983
+68; Europe; Estonia; Tallinn; Tallinn Internet Exchange (TIX); Active; Ethernet; Commercial;20020000; http://tix.estpak.ee; http://tix.estpak.ee/?members; ;13;425250;0
+1516; Europe; Finland; Espoo; Finnish Communication and Internet Exchange Espoo; Active; Ethernet; Association;19930000; http://www.ficix.fi/english/main.php; http://www.ficix.fi/english/member.php; ;23;19100000;0
+69; Europe; Finland; Helsinki; Finnish Communication and Internet Exchange Helsinki; Active; Ethernet; Association;19930000; http://www.ficix.fi/english/main.php; http://www.ficix.fi/english/member.php; ;25;36000000;0
+1515; Europe; Finland; Oulu; Finnish Communication and Internet Exchange Oulu; Active; Ethernet; Association;20080000; http://www.ficix.fi/english/main.php; http://www.ficix.fi/english/member.php; ;23;900000;0
+70; Europe; Finland; Tampere; Tampere Region Exchange; Active; Ethernet; University;20030803; http://www.trex.fi/; http://www.trex.fi/members.html; ;14;1450000;1150
+712; Europe; France; Alsace; EuroGIX; Active; Ethernet; Association;20020304; http://www.eurogix.net/; http://www.eurogix.net/fr/membres-eurogix; ;6;23650;0
+1373; Europe; France; Grenoble; GrenoblIX; Active; ; Association;20130000; http://www.grenoblix.net/; http://communication.rezopole.net/participants.php?ix=grenoblix; ;2;0;0
+1854; Europe; France; Lille; Lillix; Active; Ethernet; Association;20140627; http://www.lillix.fr; http://www.lillix.fr/membres/; ;8;0;0
+1815; Europe; France; Nantes; Ouest IX; Active; Ethernet; Association;20140402; http://www.ouestix.fr; ; ;4;0;0
+1097; Europe; France; Paris; Equinix Paris; Active; Ethernet; Commercial;20080000; http://www.equinix-ix.fr; http://www.equinix-ix.fr/members.php; ;232;0;112472
+1658; Europe; France; Paris; FR-IX 75; Active; Ethernet; Association;20100505; http://www.fr-ix.fr/; https://mon.nap75.fr-ix.fr/p-liste.php; https://mon.nap75.fr-ix.fr/p-lg.php;13;0;0
+1124; Europe; France; Paris; France-IX; Active; Ethernet; Association;20101100; http://www.france-ix.fr/; https://www.franceix.net/en/members-resellers/members/; https://tools.franceix.net/lg;222;510430430;152777
+629; Europe; France; Paris; French National Internet Exchange IPv6; Active; Ethernet; Commercial;20021101; http://www.fnix6.net; http://www.fnix6.net/members/; ;20;0;0
+74; Europe; France; Paris; Mix Internet Exchange and Transit; Active; ; Commercial;19990000; http://www.mixt.net/; http://www.mixt.net/membres?PHPSESSID=d70789dd2193dfc12c377b1c95fbe580; ;7;0;0
+78; Europe; France; Paris; Service for French Internet Exchange; Active; Ethernet; Association;19950000; https://www.sfinx.fr/; https://www.sfinx.fr/; ;95;26400000;14895
+1231; Europe; France; Saint Etienne; The Saint-Etienne Internet eXchange Point; Active; Ethernet; Association;20110100; http://www.saintetix.net/; http://www.saintetix.net/en/members-area; ;2;0;0
+1230; Europe; France; Toulouse; Le GIX de la grande region Toulousaine; Active; Ethernet; Association;20090416; http://www.touix.net/; http://www.touix.net/node/6; ;11;0;0
+1375; Europe; France; Valence; The ArdÌ¬che and DrÌ«me Internet eXchange Point ; Active; Ethernet; Association;20120000; http://www.adn-ix.net/en/; http://www.adn-ix.net/en/adnix-members; https://noc.rezopole.net/lg/;2;0;0
+1887; Africa; Gabon; Libreville; Gabon Internet Exchange; Active; Ethernet; Association;0; http://www.gabix.ga; ; ;4;0;0
+1811; Africa; Gambia; Serrekunda; Serrekunda Internet Exchange Point; Active; Ethernet; Association;20130725; www.sixp.gm; http://www.sixp.gm/about.html; http://www.sixp.gm/services.html#Looking_Glass;14;24295;103
+80; Europe; Germany; Berlin; Berlin Commercial Internet Exchange; Active; Ethernet; Association;20020906; http://www.bcix.de/; http://www.bcix.de/bcix/mitglieder/; ;57;67000000;174243
+81; Europe; Germany; Berlin; European Commercial Internet Exchange Berlin; Active; Ethernet; Commercial;20030000; http://www.ecix.net/; http://www.ecix.net/about-us/members/; ;47;286000000;101755
+1855; Europe; Germany; Bremen; BREM-IX; Active; Ethernet; Commercial;20130000; http://www.brem-ix.net; ; ;4;0;0
+1856; Europe; Germany; Dortmund; Dortmund Internet exchange; Active; Ethernet; Association;20130901; https://www.do-ix.net; https://www.do-ix.net/members; ;6;0;0
+82; Europe; Germany; DÌ_sseldorf; European Commercial Internet Exchange DÌ_sseldorf; Active; Ethernet; Commercial;20030000; http://www.ecix.net/; http://www.ecix.net/about-us/members/; ;97;22930000;132403
+1667; Europe; Germany; DÌ_sseldorf; OpenCarrier e.G. Member IX Duesseldorf; Active; Ethernet; Association;20070500; http://www.opencarrier.eu/; http://www.opencarrier.eu/2-mitglieder.html; ;10;0;0
+83; Europe; Germany; Frankfurt; Deutscher Commercial Internet Exchange; Active; Ethernet; Association;19950500; https://www.de-cix.net/; https://www.de-cix.net/customers-partners/customers/de-cix-frankfurt/; http://lg.de-cix.net/;677;4843100200;899296
+1663; Europe; Germany; Frankfurt; European Commercial Internet Exchange; Active; Ethernet; Commercial;20130408; http://www.ecix.net/; http://www.ecix.net/about-us/members/; ;125;0;134001
+717; Europe; Germany; Frankfurt; Frankfurt Network Access Point; Active; ; Association;20031001; http://www.franap.net/; ; ;10;0;0
+556; Europe; Germany; Frankfurt; KleyReX Internet Exchange; Active; Ethernet; Commercial;20020900; http://www.kleyrex.net/; http://www.kleyrex.net/teilnehmer.php; ;138;3060000;0
+1670; Europe; Germany; Frankfurt; OpenCarrier e.G. Member IX Frankfort; Active; Ethernet; Association;20070500; http://www.opencarrier.eu/; http://www.opencarrier.eu/2-mitglieder.html; ;8;0;0
+88; Europe; Germany; Hamburg; DE-CIX Hamburg; Active; Ethernet; Association;20080000; http://www.de-cix.net/products-services/de-cix-hamburg/; http://www.de-cix.net/customers-partners/customers/de-cix-hamburg/; ;32;54900000;0
+1052; Europe; Germany; Hamburg; European Commercial Internet Exchange Hamburg; Active; Ethernet; Commercial;20090121; http://www.ecix.de; http://www.ecix.eu/members.shtml; ;38;0;124234
+86; Europe; Germany; Hamburg; Internet Exchange Hamburg; Active; Ethernet; Commercial;20001000; http://www.inxs.de; http://www.inxs.de/public/cgi-bin/showmembers; https://support.cw.com/prod/tools_lookingglass.html?CW=68b5b2fbf2bd809834bceba6d6519385;30;21000000;0
+87; Europe; Germany; Hamburg; XchangePoint Hamburg IPP; Active; Ethernet; Unknown;20030400; http://www.xchangepoint.net; ; ;2;0;0
+1271; Europe; Germany; Munich; DE-CIX Munich; Active; Ethernet; Association;20100400; http://www.de-cix.net/products-services/de-cix-munich/; http://www.de-cix.net/customers-partners/customers/de-cix-munich/; ;24;20000000;0
+89; Europe; Germany; Munich; Internet Exchange Service; Active; Ethernet; Commercial;19940600; http://www.inxs.de; http://www.inxs.de/public/cgi-bin/showmembers; ;40;21000000;46466
+92; Europe; Germany; Nuremberg; NÌ_rnberger Internet Exchange; Active; Ethernet; Association;20030000; http://www.n-ix.de; http://www.n-ix.net/teilnehmerliste.html?&L=2; http://www.n-ix.net/lg.html;19;4800000;8942
+705; Europe; Germany; Stuttgart; Stuttgarter Internet Exchange; Active; Ethernet; Association;20050400; http://www.s-ix.info/; http://www.s-ix.info/Teilnehmer.htm; http://six.interscholz.net/;16;1484460;0
+93; Africa; Ghana; Accra; Ghana Internet Exchange; Active; Ethernet; Association;20051018; http://www.gixa.org.gh; http://www.gixa.org.gh/?page_id=12; ;24;743100;0
+94; Europe; Greece; Athens; Greek Internet Exchange; Active; Ethernet; Association;20000000; http://www.gr-ix.gr/; http://www.gr-ix.gr/members/; ;15;32000000;0
+99; Europe; Hungary; Budapest; Budapest Internet Exchange; Active; Ethernet; Association;19960000; http://www.bix.hu/; http://www.bix.hu/index.php3?lang=en&page=members; http://www.bix.hu/lg/lg.cgi;50;131900000;0
+100; Europe; Iceland; Reykjavik; Reykjavik Internet Exchange; Active; ; Association;19990000; http://www.rix.is; http://www.rix.is/connected.html; ;21;7436369;0
+1902; Europe; Iran; Tehran; Tehran IXP; Active; MPLS; Governmental;20141000; ; ; ;6;0;0
+1105; Europe; Ireland; Cork; Cork Neutral Internet Exchange; Active; Ethernet; Association;20090717; http://www.cnix.ie; http://www.cnix.ie/members.html; ;14;0;0
+116; Europe; Ireland; Dublin; Internet Neutral Exchange Association Limited; Active; Ethernet; Association;19960000; http://www.inex.ie; https://www.inex.ie/about/memberlist; ;100;88000000;144183
+1108; Europe; Ireland; Galway; eXchange West; Active; Ethernet; Association;20090604; http://www.exwest.net; http://www.exwest.net; ;3;0;0
+117; Europe; Israel; Tel Aviv; Israeli Internet Exchange; Active; Layer-3; Association;19960000; http://www.isoc.org.il/iix/index.html; http://www.isoc.org.il/iix/2x_list.html; http://www.isoc.org.il/iix/2x_looking_glass.html;19;10300000;0
+506; Europe; Italy; Florence; Tuscany Internet Exchange; Active; Ethernet; Association;20030000; https://www.tix.it/en/web/guest/home; http://www.e.toscana.it/e-toscana/it/elenco_isp.wp; ;31;447520;0
+118; Europe; Italy; Milan; Milan Internet Exchange; Active; Ethernet; Association;20001100; http://www.mix-it.net/; http://www.mix-it.net/index.php?option=com_content&view=article&id=85&Itemid=84&lang=en; ;109;284634000;0
+1233; Europe; Italy; Milan; Milan Neutral Access Point; Active; Ethernet; University;20080000; http://www.minap.it/; http://www.minap.it/members/; ;19;0;0
+1128; Europe; Italy; Padova; VSIX NAP del Nord Est; Active; Ethernet; University;20090901; http://www.vsix.it; http://www.vsix.it/VSIX/VSIX_completo/Aderenti.html; ;23;3050000;0
+120; Europe; Italy; Rome; NaMeX - Nautilus Mediterranean Exchange Point; Active; Ethernet; Association;19960000; http://www.namex.it; http://www.namex.it/en/who/members; ;53;29197000;0
+121; Europe; Italy; Torino; Torino Piemonte Exchange Point; Active; Ethernet; Association;20020000; http://www.top-ix.org; http://www.top-ix.org/peering; ;74;48870000;7542
+1132; Europe; Italy; Udine; Friuli Venezia Giulia Internet Exchange; Active; ; Commercial;20090000; http://www.fvg-ix.net/; http://www.fvg-ix.net/index.php?option=com_content&view=article&id=63&Itemid=67&lang=en; ;7;0;0
+143; Africa; Kenya; Nairobi; Kenya Internet Exchange Point; Active; Ethernet; Association;20010200; http://www.kixp.or.ke; http://www.kixp.or.ke/index.php?option=com_content&task=view&id=41&Itemid=23; ;29;1320000;2635
+1702; Europe; Kosovo; PrishtinÌÇ; KOSIX Internet Exchange Point; Active; Ethernet; Governmental;20110623; http://www.kosix.net; http://www.kosix.net/en-us/members/listofmembers.aspx; ;4;60000;0
+1236; Europe; Latvia; Riga; Santa Monica Internet Local Exchange; Active; Ethernet; Commercial;20051011; http://www.smile-ixp.net/; ; http://lg.smile.smn.lv/cgi-bin/lg/lg.cgi;29;8900000;327
+693; Europe; Lebanon; Beirut; Beirut Internet Exchange; Active; Ethernet; Association;20071206; http://www.beirutix.net; ; ;9;63360;0
+1897; Africa; Liberia; Monrovia; Liberia Internet Exchange Point; Active; Ethernet; Association;20150804; ; ; ;6;100;0
+1859; Europe; Liechtenstein; Eschen; Rheintal Internet Exchange; Active; Ethernet; Association;20111027; http://www.rheintal-ix.net; http://www.rheintal-ix.net/rheintal_ix/participants/; ;12;167210;0
+1576; Europe; Lithuania; Vilnius; Lithuania Internet Exchange; Active; Ethernet; Commercial;20100000; http://www.litix.lt; ; ;5;3340000;0
+926; Europe; Lithuania; Vilnius; Lithuanian Internet service providers exchange unit; Active; Ethernet; Governmental;20080000; http://is.lt/; ; ;24;0;0
+1234; Europe; Luxembourg; Luxembourg; Luxembourg Commercial Internet Exchange; Active; Ethernet; Commercial;20100000; http://www.lu-cix.lu/; http://www.lu-cix.lu/members-list.html; ;44;40000000;0
+1029; Africa; Malawi; Blantyre; Malawi IXP; Active; Ethernet; Association;20081201; http://www.mispa.org.mw/mix.html; http://www.mispa.org.mw/members.html; ;21;10000;160
+155; Europe; Malta; Msida; Malta Internet Exchange; Active; Ethernet; University;19990907; http://www.mix.net.mt; http://www.mix.net.mt/participants.html; ;12;0;0
+156; Africa; Mauritius; Ebene; Mauritius Internet Exchange; Active; Ethernet; Association;20051200; http://www.mixp.org/index.html; http://www.mixp.org/index.html#members; ;8;58000;95
+158; Africa; Mozambique; Maputo; Mozambique Internet Exchange; Active; Ethernet; University;20020700; http://www.mozix.org.mz; http://www.mozix.org.mz/membros.htm; ;24;129756;0
+1784; Africa; Namibia; Windhoek; Windhoek IXP; Active; Ethernet; Association;20140307; http://www.ixp.org.na; ; ;5;50000;66
+160; Europe; Netherlands; Amsterdam; Amsterdam Internet Exchange; Active; Ethernet; Association;19971229; http://www.ams-ix.net; http://www.ams-ix.net/connected/; ;682;6098800000;843064
+572; Europe; Netherlands; Amsterdam; Neutral Internet Exchange; Active; Ethernet; Association;20020301; http://www.nl-ix.net; https://www.nl-ix.net/members/full-memberlist/; ;518;1200000000;91600
+162; Europe; Netherlands; Enschede; Nederlands-Duitse Internet Exchange; Active; Ethernet; Commercial;20010400; http://www.ndix.net; ; ;21;50000;0
+163; Europe; Netherlands; Groningen; Groningen-IX; Active; Ethernet; Association;20010000; http://www.gn-ix.net/; http://www.gn-ix.net/content/customerlist; ;51;0;0
+508; Europe; Netherlands; Leeuwarden; Friese Internet Exchange; Active; ; Association;20060126; http://www.fr-ix.nl/; http://www.fr-ix.nl/index.php?option=com_content&view=article&id=121&Itemid=107; ;38;1310000;0
+803; Europe; Netherlands; Rotterdam; Rotterdam Internet eXchange; Active; Ethernet; Association;20070000; http://www.r-ix.nl/; http://www.r-ix.nl/content/customerlist; ;63;0;0
+1884; Africa; Nigeria; Abuja; IXPN - Abuja; Active; Ethernet; Association;20110728; http://www.ixpn.net.ng; http://ixp.net.ng/abuja-member-list/; ;4;0;0
+616; Africa; Nigeria; Lagos; IXPN - Lagos; Active; Ethernet; Association;20070500; http://www.ixp.net.ng/; http://ixp.net.ng/member-list/; http://lg.ixp.net.ng/lg/;30;1550000;2496
+1885; Africa; Nigeria; Port Harcourt; IXPN - Port Harcourt; Active; Ethernet; Association;20120517; http://ixp.net.ng; ; ;2;0;0
+1507; Europe; Norway; Bergen; Bergen Internet Exchange; Active; Ethernet; University;20040000; http://www.nix.no/; http://www.uio.no/tjenester/it/nett/fastnett/nix/nix-ops.html; ;5;217967;0
+767; Europe; Norway; Oslo; Free Internet eXchange Oslo; Active; Ethernet; Association;20080116; http://www.fixo.no; http://www.fixo.no/members; ;48;0;0
+174; Europe; Norway; Oslo; Norwegian Internet Exchange Oslo 1; Active; Ethernet; University;19930300; http://www.nix.no/; http://www.uio.no/nix/nix-ops.html; ;64;51030870;0
+1506; Europe; Norway; Oslo; Norwegian Internet Exchange Oslo 2; Active; Ethernet; University;20000500; http://www.nix.no/; http://www.uio.no/tjenester/it/nett/fastnett/nix/nix-ops.html; ;21;8758192;0
+1508; Europe; Norway; Trondheim; Trondheim Internet Exchange; Active; Ethernet; University;20050000; http://www.nix.no/; http://www.uio.no/tjenester/it/nett/fastnett/nix/nix-ops.html; ;5;272549;0
+1783; Europe; Palestine; Ramallah; Palestinian Internet Exchange; Active; Layer-3; Association;20120604; http://pix.ps; http://pix.ps/index.php?option=com_content&view=article&id=54&Itemid=53; ;9;27300;271
+880; Europe; Poland; Katowice; Tysiaclecie Internet Exchange; Active; Ethernet; Association;20040400; http://www.ix.1000lecie.pl/; http://www.ix.1000lecie.pl/uczestnicy.html; ;7;0;0
+723; Europe; Poland; KrakÌ_w; Krakowski Traffic Exchange Point; Active; ; Association;20091100; http://www.ix.krakow.pl; http://www.ix.krakow.pl/?str=uczestnicy; ;28;0;0
+1238; Europe; Poland; Lodz; Lodz Internet Exchange; Active; Ethernet; Commercial;20090000; http://www.lix.net.pl/; http://www.lix.net.pl/?cms_page_id=_uczestnicy; http://www.lix.net.pl/lg;16;10500000;0
+917; Europe; Poland; Poznan; Poznan Internet Exchange; Active; Ethernet; Association;20060310; http://www.pix.net.pl/; http://www.pix.net.pl/uczestnicy.html; ;82;23480000;0
+1645; Europe; Poland; Warsaw; Krajowa Izba Komunikacji Ethernetowej; Active; Ethernet; Association;20090000; http://www.kike.pl/en/; http://tanie-lacze.pl/uczestnicy/; ;11;0;0
+509; Europe; Poland; Warsaw; Polish Internet Exchange; Active; Ethernet; Commercial;20060402; http://www.plix.pl/; http://www.plix.pl/pl/member; http://www.plix.pl/en/network/looking_glass;213;428110000;197120
+918; Europe; Poland; Warsaw; Thinx Poland; Active; Ethernet; Commercial;20060000; http://www.thinx.pl/; http://en.thinx.pl/internet_exchange/members; http://lg.atman.pl/;146;142500000;0
+1636; Europe; Poland; Warsaw; TPIX - Internet Exchange; Active; Ethernet; Commercial;20101100; http://www.tpix.pl/; http://www.tpix.pl/uczestnicy.html; http://lg.tpix.pl;120;174180000;0
+185; Europe; Poland; Warsaw; Warsaw Internet Exchange; Active; Ethernet; Association;19960000; http://www.wix.aster.pl/vxb/w/; http://www.wix.aster.pl/vxb/w/index.asp?sid=e1130c4dbcc8bf8b213df928bdc8926c&klienci_x=klienci; ;42;4860000;0
+725; Europe; Poland; Wroclaw; Wroclaw Internet eXchange; Active; Ethernet; Association;20010200; http://wrix.org; http://wrix.org/uczestnicy/; ;8;0;0
+186; Europe; Portugal; Lisbon; Gigabit Portugese Internet Exchange; Active; Ethernet; University;19950000; http://www.fccn.pt/pt/servicos/conectividade-e-infraestrutura/gigapix/; http://www.fccn.pt/pt/servicos/conectividade-e-infraestrutura/gigapix/redes-ligadas/; ;22;26200000;0
+1385; Europe; Romania; Bucharest; Balcan-IX; Active; Ethernet; Commercial;20080000; http://www.balcan-ix.net; http://www.balcan-ix.net/en/clienti_lista.php; http://www.balcan-ix.net/en/clienti_lg.php;24;30000000;0
+804; Europe; Romania; Bucharest; InterLAN-IX; Active; Ethernet; Association;20070000; http://www.interlan.ro/; http://www.interlan.ro/?t=5; http://lg.interlan.ro/summary/rs1/ipv4;48;26410000;0
+189; Europe; Romania; Bucharest; Romanian National Internet Exchange; Active; Ethernet; Association;20010907; http://www.ronix.ro/; http://www.ronix.ro/membri.php; http://www.ronix.ro/lgpublic/;32;31620000;0
+190; Europe; Russia; Ekaterinburg; Ekaterinburg Internet Exchange; Active; Ethernet; Governmental;20120901; http://www.ix.ru/eng/ekt/; http://www.ix.ru/eng/ekt/members/; http://www.ix.ru/ekt/network/lookingglass.html;40;30847000;0
+1223; Europe; Russia; Kazan; Kazan Internet Exchange; Active; Ethernet; Association;20100500; http://www.ix.ru/eng/kzn/; http://www.ix.ru/eng/kzn/members/; http://www.ix.ru/eng/kzn/lookingglass.html;11;1539000;0
+1867; Europe; Russia; Krasnodar; Sea-IX Internet exchange; Active; Ethernet; Commercial;20121008; http://sea-ix.ru; http://sea-ix.ru/participants.shtml; http://sea-ix.ru/lg.shtml;31;2300000;0
+516; Europe; Russia; Krasnoyarsk; Krasnoyarsk Internet Exchange; Active; Ethernet; Association;20060000; http://www.krs-ix.ru; http://www.krs-ix.ru/members/; ;50;62150000;0
+1270; Europe; Russia; Moscow; DataIX Moscow; Active; Ethernet; Commercial;20101020; http://www.dataix.ru/; http://www.dataix.ru/eng/members/; http://www.dataix.ru/eng/s/11/looking_glass.html;39;900000000;0
+191; Europe; Russia; Moscow; Moscow Internet Exchange; Active; Ethernet; Governmental;19950000; http://www.msk-ix.ru/eng/about/; http://www.msk-ix.ru/members/; http://www.msk-ix.ru/eng/lookingglass.html;367;1675321000;0
+192; Europe; Russia; Novosibirsk; Novosibirsk Internet Exchange; Active; Ethernet; Governmental;20100000; http://www.ix.ru/eng/nsk/; http://www.ix.ru/eng/nsk/members/; http://www.ix.ru/eng/nsk/lookingglass.html;50;16251000;0
+1863; Europe; Russia; Omsk; Omsk Internet exchange; Active; Ethernet; Commercial;20060000; http://www.omsk-ix.ru; http://www.omsk-ix.ru/members; http://www.omsk-ix.ru/looking-glass;15;28390000;0
+1046; Europe; Russia; Rostov-on-Don; Rostov-on-Don Internet Exchange; Active; Ethernet; Association;20090000; http://www.ix.ru/eng/rnd/; http://www.ix.ru/eng/rnd/members/; http://www.ix.ru/eng/rnd/lookingglass.html;17;3027000;0
+193; Europe; Russia; Samara; Samara Internet Exchange; Active; Ethernet; Association;20090000; http://www.ix.ru/eng/smr/; http://www.ix.ru/eng/smr/members/; http://www.ix.ru/eng/smr/lookingglass.html;20;5126000;0
+1383; Europe; Russia; Saratov; Saratov Internet Exchange; Active; Ethernet; Commercial;20050000; http://saratov-ix.ru/; http://saratov-ix.ru/members/; ;12;163000;0
+1241; Europe; Russia; Simferopol; Crimea Internet Exchange; Active; Ethernet; Association;20060220; http://crimea-ix.net/; http://www.crimea-ix.net/content/view/13/30/; http://lg.crimea-ix.net/;21;14200000;0
+1269; Europe; Russia; St. Petersburg; DataIX St Petersburg; Active; Ethernet; Commercial;20101020; http://www.dataix.ru/; http://www.dataix.ru/eng/members/; http://www.dataix.ru/eng/s/11/looking_glass.html;40;380000000;0
+1864; Europe; Russia; St. Petersburg; Pirix; Active; Ethernet; Commercial;20080000; http://www.pirix.ru/; http://www.pirix.ru/members/; ;50;16720000;0
+195; Europe; Russia; St. Petersburg; St. Petersburg Internet Exchange; Active; Ethernet; Association;20090000; http://www.ix.ru/eng/spb/; http://www.ix.ru/eng/spb/members/; http://www.ix.ru/eng/spb/lookingglass.html;87;55279000;0
+1384; Europe; Russia; Stavropol; Stavropol Internet Exchange; Active; Ethernet; Association;20090000; http://www.ix.ru/eng/stw/; http://www.ix.ru/eng/stw/members/; http://www.ix.ru/eng/stw/lookingglass.html;15;530000;0
+1134; Europe; Russia; Ulyanovsk; Ulyanovsk Internet Exchange; Active; Ethernet; Association;20090508; http://www.uln-ix.ru/; http://www.uln-ix.ru/partners/; http://lg.uln-ix.ru/;16;1870000;0
+1044; Europe; Russia; Vladivostok; Vladivostok Internet Exchange; Active; Ethernet; Association;20080000; http://www.ix.ru/eng/vlv/; http://www.ix.ru/eng/vlv/members/; http://www.ix.ru/eng/vlv/lookingglass.html;15;420000;457
+765; Africa; Rwanda; Kigali; Rwanda Internet exchange; Active; ; Commercial;20030000; http://www.rinex.org.rw; http://www.rinex.org.rw/member.html; ;9;867616;793
+1064; Europe; Saudi Arabia; Riyadh; Internet Exchange of Saudi Arabia; Active; Ethernet; Governmental;20090100; http://www.ix.net.sa/; ; ;4;0;0
+1350; Europe; Serbia; Belgrade; Serbian Open Exchange; Active; Ethernet; Association;20100900; http://sox.rs; http://sox.rs/?id=News&lang=en; ;30;100000000;0
+204; Europe; Slovakia; Bratislava; Slovak Internet Exchange Bratislava; Active; Ethernet; University;19961000; http://www.six.sk; http://www.six.sk/index.php?page=pripojene_siete; http://www.six.sk/lg.php;56;50339097;0
+1521; Europe; Slovakia; Koå_ice; Slovak Internet Exchange Koå_ice; Active; Ethernet; University;20080600; http://www.six.sk/index_en.shtml; http://www.six.sk/index.php?page=siete&city=ke; http://www.six.sk/lgke.php;3;138102;0
+205; Europe; Slovenia; Ljubljana; Slovenian Internet Exchange; Active; Ethernet; University;19940200; http://www.arnes.si/en/infrastructure/six-internet-exchange.html; http://www.arnes.si/en/infrastructure/six-internet-exchange/membership.html; ;27;36430000;0
+206; Africa; South Africa; Cape Town; Cape Town Internet Exchange; Active; Ethernet; Association;20090700; http://ispa.org.za/inx/cinx-information/; http://www.ispa.org.za/membership/list-of-members; ;23;4600000;4850
+1308; Africa; South Africa; Cape Town; NAPAfrica Cape Town; Active; Ethernet; Commercial;20120000; http://www.napafrica.com; http://www.napafrica.com/live/content.php?Item_ID=228; ;12;6750000;5839
+1362; Africa; South Africa; Durban; Durban Internet eXchange; Active; Ethernet; Association;20120914; http://stats.dinx.net.za; ; ;5;1850;1209
+209; Africa; South Africa; Johannesburg; Johannesburg Internet Exchange; Active; Ethernet; Association;19960600; http://www.ispa.org.za/inx/jinx-information; http://www.ispa.org.za/inx/jinx-users; ;57;29700000;5944
+1306; Africa; South Africa; Johannesburg; NAPAfrica Johannesburg; Active; Ethernet; Commercial;20120000; http://www.napafrica.com; http://www.napafrica.com/live/content.php?Item_ID=228; ;29;34350000;0
+211; Europe; Spain; Barcelona; Catalunya Neutral Internet Exchange Point; Active; Ethernet; Association;19990407; http://www.catnix.net; http://www.catnix.net/qui/participants.html; ;26;6430000;0
+212; Europe; Spain; Bilbao; Punto Neutro Vasco de Internet; Active; Ethernet; Association;20020117; http://www.euskonix.net/; http://www.euskonix.net/socios.html; ;7;1;0
+213; Europe; Spain; Madrid; Punto Neutro EspaÌ±ol de Internet; Active; Ethernet; Association;19970000; http://www.espanix.net; http://www.espanix.net/esp/peering.htm; ;65;248000000;0
+215; Europe; Spain; Madrid; Terremark NAP de las Americas - Madrid; Active; Ethernet; Commercial;20041000; http://www.terremark.es/data-centers/europe-middle-east-africa/nap-of-madrid/; ; ;2;0;0
+1312; Africa; Sudan; Khartoum; Sudan Internet Exchange Point; Active; ; Governmental;20111000; http://www.sixp.sd; http://www.sixp.sd/brtg.php; http://www.sixp.sd/ssh.php;6;16400;487
+864; Europe; Sweden; Gothenburg; Gothenburg Internet Exchange; Active; Ethernet; Association;20051221; http://www.gix.se/; http://www.gix.se/whois.php; ;15;0;0
+222; Europe; Sweden; Gothenburg; Netnod Gothenburg; Active; Ethernet; Association;19980000; http://www.netnod.se; http://www.netnod.se/connected.shtml; ;15;8126000;0
+225; Europe; Sweden; LuleÌ´; Netnod LuleÌ´; Active; Ethernet; Governmental;20040900; http://www.netnod.se; http://www.netnod.se/connected.shtml; ;6;228769;0
+879; Europe; Sweden; MalmÌ¦; Internet exchange point of the Oresund Region; Active; Ethernet; Association;20091014; http://www.ixor.se; http://www.ixor.se/members/; ;24;0;0
+227; Europe; Sweden; Stockholm; Netnod Stockholm; Active; Ethernet; Governmental;19970000; http://www.netnod.se; http://www.netnod.se/connected.shtml; ;120;529565000;0
+228; Europe; Sweden; Stockholm; SOLIX; Active; Ethernet; Commercial;20011200; http://www.solix.se/; https://apps.db.ripe.net/whois/lookup/ripe/inetnum/SOL-IX.html; ;58;20430000;0
+627; Europe; Sweden; Stockholm; Stockholm Internet Exchange; Active; Ethernet; Association;20070000; http://www.sthix.net; http://www.sthix.net/members.php; ;71;72900000;0
+229; Europe; Sweden; Sundsvall; Netnod Sundsvall; Active; Ethernet; Governmental;20000000; http://www.netnod.se; http://www.netnod.se/connected.shtml; ;14;5418000;0
+230; Europe; Sweden; UmeÌ´; NorrNod; Active; Ethernet; Municipal;19960000; http://www.norrnod.se; http://www.norrnod.se/norrnod/knutpunkt/anslutna.html; ;12;250000;0
+231; Europe; Switzerland; Geneva; CERN Internet Exchange Point; Active; Ethernet; Association;19950000; http://www.cixp.ch; http://cixp.web.cern.ch/technical/peering; http://lg.cern.ch/;41;2690000;0
+236; Europe; Switzerland; Zurich; Equinix Zurich; Active; Ethernet; Commercial;19990000; http://www.equinix.ch/; ; ;65;4600000;0
+234; Europe; Switzerland; Zurich; SwissIX; Active; Ethernet; Association;20010309; http://www.swissix.ch/; http://www.swissix.ch/participation/participants/; http://www.swissix.ch/lookinglass.php;152;68460000;98444
+606; Africa; Tanzania; Arusha; Arusha Internet Exchange Point; Active; Ethernet; Association;20060626; http://www.aixp.or.tz/; ; ;6;400;71
+242; Africa; Tanzania; Dar es Salaam; Tanzania Internet Exchange; Active; Ethernet; Association;20030700; http://www.tix.or.tz/; http://www.tix.or.tz/peers.html; ;26;1750000;1284
+1474; Africa; Tunisia; Tunis; Tunisian Internet Exchange Point; Active; Ethernet; Governmental;20110000; http://www.ati.tn/TunIXP/; http://www.ati.tn/TunIXP/tunixp4.html; ;15;67381000;878
+1187; Europe; Turkey; Istanbul; Terremark IST-IX; Active; Ethernet; Commercial;20100000; http://www.terremark.com/data-centers/europe-middle-east-africa/nap-istanbul.aspx; ; ;8;0;24
+248; Africa; Uganda; Kampala; Uganda Internet Exchange; Active; Ethernet; Association;20030700; http://www.uixp.co.ug; http://www.uixp.co.ug/index.htm; ;8;509408;0
+897; Europe; Ukraine; Donetsk ; Donetsk Internet Exchange; Active; Ethernet; Association;20011223; http://www.ix.dn.ua/; http://www.ix.dn.ua/networks/index.html; http://www.ix.dn.ua/lg;11;1300000;753
+1868; Europe; Ukraine; Khmelnytskiy; Khmelnytskiy Internet exchange point; Active; Ethernet; Association;20030809; http://ix.km.ua; http://ix.km.ua/members.html; http://ix.km.ua/cgi-bin/lgv.cgi;4;57235;0
+1240; Europe; Ukraine; Kiev; Digital Telecom Internet Exchange; Active; Ethernet; Commercial;20090000; http://dtel-ix.net/; http://dtel-ix.net/en/members; http://dtel-ix.net/index.php/en/looking-glass;115;335840000;0
+249; Europe; Ukraine; Kiev; Ukrainian Internet Exchange; Active; Ethernet; Association;20000700; http://www.ua-ix.net.ua/eng.phtml; http://www.ua-ix.net.ua/participants_en.phtml; http://lg.ix.net.ua/;150;323820000;33646
+933; Europe; Ukraine; Odessa; Odessa Internet Exchange; Active; Ethernet; Commercial;20070900; http://www.od-ix.net; http://www.od-ix.net/?page_id=43; http://lg.od-ix.net/;25;723930;0
+1341; Europe; United Arab Emirates; Dubai; UAE-IX; Active; Ethernet; Commercial;20120224; http://www.uae-ix.net/; http://www.uae-ix.net/customers-partners/customers/; http://lg.uae-ix.net;28;25500000;2438
+1889; Europe; United Kingdom; Brighton; IX Brighton; Active; Ethernet; Association;20150000; http://ixbrighton.com; http://ixbrighton.com/members/; ;4;0;0
+1701; Europe; United Kingdom; Edinburgh; IXScotland powered by LINX; Active; Ethernet; Association;20131000; https://linx.net/service/publicpeering/ixscotland.html; https://linx.net/service/publicpeering/ixscotland.html; https://stats.linx.net/cgi-pub/xlg.pl?run=true&site=IXScotland&query_type=+BGP+Summary&address=&Submit=Submit;11;95758;830
+1232; Europe; United Kingdom; Leeds; Leeds Internet Exchange; Active; Ethernet; Association;20100920; http://www.ixleeds.net/; http://www.ixleeds.net/content/members.html; http://lg.ixleeds.net/;15;2770000;4750
+62; Europe; United Kingdom; London; London Internet Exchange; Active; Ethernet; Association;19941108; http://www.linx.net; https://www.linx.net/about/member_ipasn.html; https://www.linx.net/pubtools/looking-glass.html;496;3038000800;757539
+64; Europe; United Kingdom; London; London Network Access Point; Active; Ethernet; Association;19980000; http://www.lonap.net; http://www.lonap.net/currentmembers.shtml; http://www.lonap.net/cgi-bin/mrlg.cgi;158;90682089;89149
+66; Europe; United Kingdom; London; XchangePoint London IPP; Active; Ethernet; Commercial;20010000; http://www.xchangepoint.net; ; ;166;5300000;0
+1332; Europe; United Kingdom; Manchester; IXManchester powered by LINX; Active; Ethernet; Association;20120429; https://www.linx.net/; https://www.linx.net/service/publicpeering/ixmanchester.html#Peers; https://www.linx.net/pubtools/looking-glass.html;38;20198000;4695
+547; Africa; Zambia; Lusaka; Zambia Internet Exchange Point; Active; Ethernet; Association;20060200; http://www.ispa.org.zm; http://www.ispa.org.zm/members.html; ;13;103000;0
+364; Africa; Zimbabwe; Harare; Zimbabwe Internet Exchange; Active; Ethernet; Association;20010700; http://www.zispa.org.zw/zinx.html; ; ;5;0;0
