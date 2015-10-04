@@ -715,7 +715,7 @@ function create_probe_datatable(probe_dataset){
 	btn_div.className = "btn-group";
 
 	btn_show_ips_probes =  document.createElement("button");
-	btn_show_ips_probes.className = "btn btn-success";
+	btn_show_ips_probes.className = "btn btn-info";
 	btn_show_ips_probes.id = "show_ips_probes";
 	btn_show_ips_probes.innerHTML = "Back to destination IPs";
 
@@ -867,12 +867,12 @@ function create_new_datatable(data_set){
 	btn_div.className = "btn-group";	
 
 	btn_show_all_traceroutes =  document.createElement("button");
-	btn_show_all_traceroutes.className = "btn btn-info";
+	btn_show_all_traceroutes.className = "btn btn-success";
 	btn_show_all_traceroutes.id = "show_all_traces";
 	btn_show_all_traceroutes.innerHTML = "Show all traceroutes";
 
 	btn_show_ips =  document.createElement("button");
-	btn_show_ips.className = "btn btn-success";
+	btn_show_ips.className = "btn btn-info";
 	btn_show_ips.id = "show_ips";
 	btn_show_ips.innerHTML = "Back to destination IPs";
 
