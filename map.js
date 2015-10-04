@@ -18,7 +18,7 @@ var selected_traceroute_polyline;
 var used_probes = [];
 var selected_traceroute_data = [];
 var all_measurements_data;
-// selected_dest_ip;
+var ixp_data_layer;
 
 function initMap() {
 
@@ -42,16 +42,64 @@ function initMap() {
 
 	load_fibre_JSON();
 	load_probe_JSON();
+	load_ixps_JSON();
 	add_destination_ip_layer(map);
 
 }//Add init map function
 
+function load_ixps_JSON(){
+
+	//var star_svg_path = "M16,22.375L7.116,28.83l3.396-10.438l-8.883-6.458l10.979,0.002L16.002,1.5l3.391,10.434h10.981l-8.886,6.457l3.396,10.439L16,22.375L16,22.375z";
+	var triangle_svg_path ="M23.963,20.834L17.5,9.64c-0.825-1.429-2.175-1.429-3,0L8.037,20.834c-0.825,1.429-0.15,2.598,1.5,2.598h12.926C24.113,23.432,24.788,22.263,23.963,20.834z";
+
+	var ixp_symbol = {
+		path: triangle_svg_path,
+		scale:0.8,
+		fillColor: '#dd1c77',
+		fillOpacity: 1,
+		strokeColor: "white",
+		strokeWeight:1,
+		anchor: new google.maps.Point(15,16)
+	};
+
+
+	ixp_data_layer = new google.maps.Data();
+	ixp_data_layer.loadGeoJson("/data/ixps.json");
+	ixp_data_layer.setStyle({icon: ixp_symbol, clickable: true} );
+}
+
+function ixp_mouseover(){
+
+var  infoWindow = new google.maps.InfoWindow({
+		content: "",
+	});
+
+	 //Mouseover events listener
+	 ixp_data_layer.addListener('mouseover', function(event) {
+
+
+        //Display infowindow
+        infoWindow.setContent("<font color=#dd1c77> <b>" + event.feature.getProperty("long_name") + "</b></font>" + 
+        	"<br>" + "<b>Exchange Point ID: </b> " + event.feature.getProperty("exchange_point_id") +
+        	"<br>" + " <b>Type:</b>" + event.feature.getProperty("organization_type"));
+        var anchor = new google.maps.MVCObject();
+        anchor.set("position",event.latLng);
+        infoWindow.open(map,anchor);
+
+        if (infoWindow) {
+        	setTimeout(function () { infoWindow.close(); }, 3000);
+        }
+
+
+      });//End event listener
+
+}
 
 
 function load_fibre_JSON(){
 	fibre_data_layer = new google.maps.Data();
 	fibre_data_layer.loadGeoJson("/data/fibre.json");
-	fibre_data_layer.setStyle({strokeWeight: 2, strokeColor:"purple", strokeOpacity:0.4});
+	fibre_data_layer.setStyle({strokeWeight: 2, strokeColor:"#31a354", strokeOpacity:0.5});
 }
 
 function load_probe_JSON(){
@@ -1022,6 +1070,19 @@ function changeLayer(selected_layer){
 
 		if (document.getElementById("probe_layer").checked == false){
 			probe_layer.setMap(null);
+		}
+	}
+
+	//IXPs
+	if (selected_layer == "ixps"){
+		if (document.getElementById("ixp_layer").checked == true){
+			ixp_data_layer.setMap(map);
+			ixp_mouseover();
+		}
+
+
+		if (document.getElementById("ixp_layer").checked == false){
+			ixp_data_layer.setMap(null);
 		}
 	}
 }
