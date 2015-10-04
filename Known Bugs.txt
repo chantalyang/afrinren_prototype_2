@@ -3,6 +3,7 @@ Known Bugs:
 
 Data:
 - 12 IP addresses not reached at all haven't been removed from data
+- Add information about IXPs to map (Found data as CSV)
 
 Interactions Nice to Have (But haven’t been implemented):
 - Mouseover polyline highlights route
@@ -11,9 +12,11 @@ Interactions Nice to Have (But haven’t been implemented):
 - Animation for each traceroute related to latency speed:
 	1. For a single route
 	2. On a per hop basis
+- Showing details about hops clicked (help identify IP points of congestion)
 
 Representation Nice to Have (But haven’t been implemented): 
 - Dashed lines for incomplete traceroutes
+- Different coloured lines for latencies
 
 HTML:
 - Have heading bar for clicked destination IP info (instead of having to mouseover)
