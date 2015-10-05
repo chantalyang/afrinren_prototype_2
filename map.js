@@ -229,7 +229,7 @@ function add_destination_ip_layer(gmap){
   		 //Set mouseout listener
   		 clicked_ip.addListener("mouseout", function(event){
   		 	if (infoWindow) {
-  		 		setTimeout(function () { infoWindow.close(); }, 3000);
+  		 		setTimeout(function () { infoWindow.close(); }, 2500);
   		 	} 	 	
   		 })
   		
@@ -589,6 +589,10 @@ function mouseover_probe(){
 		content: "",
 	});
 
+	 if (infoWindow){	
+        	infoWindow.close();
+		}
+
 	line_symbol = {
 		path: google.maps.SymbolPath.FORWARD_OPEN_ARROW,
 		strokeColor: "red"
@@ -640,8 +644,8 @@ function click_probe(){
 	 	if (selected_traceroute_polyline != null){
 	 		removeLine(selected_traceroute_polyline)//Remove previously drawn line
 	 	}
-	 	console.log(show_traces_clicked);
-	 	if (show_traces_clicked == true){
+	 	//console.log(show_traces_clicked);
+	 	if (form != null){
 	 		change_text(show_all_traces, "Show All Traceroutes");
 	 		show_traces_clicked = false;
 	 		override_btn_click()
@@ -681,6 +685,54 @@ function click_probe(){
 	 create_new_datatable(hop_data_set);
 	 
 });
+
+}
+
+function show_probe_info(prb_id){
+		dict = {}
+
+	 	format_measurements(all_measurements_data[prb_id]);
+	 	
+	 	if (selected_traceroute_polyline != null){
+	 		removeLine(selected_traceroute_polyline)//Remove previously drawn line
+	 	}
+	 	//console.log(show_traces_clicked);
+	 	if (form != null){
+	 		change_text(show_all_traces, "Show All Traceroutes");
+	 		show_traces_clicked = false;
+	 		override_btn_click()
+	 	}	
+
+	 	//Draw new line
+	 	selected_traceroute_polyline = new google.maps.Polyline({
+			path: all_measurements[prb_id][0],
+			icons: [{
+				icon: line_symbol,
+				offset: '100%',
+	            //repeat: "20px"
+	  			 }],
+	     geodesic: true,
+	     strokeColor: '#d7191c',
+	     strokeOpacity: 1,
+	     strokeWeight: 3
+		 });
+
+	 var back_button_probes = document.getElementById("show_ips_probes");
+
+	 if (back_button_probes != null){
+	     var parent_div_2 = document.getElementById("btn_div");
+	     parent_div_2.removeChild(back_button_probes);
+	 }	
+	
+	 addLine(selected_traceroute_polyline);
+	 removeLine(probe_traceroutes[prb_id][0])
+	 remove_traceroutes();
+	 animateArrow(selected_traceroute_polyline);
+
+	 orig_table = $('#hop_info_table').dataTable();
+	 destroy_old_datatable(orig_table);
+	 
+	 create_new_datatable(hop_data_set);
 
 }
 
@@ -804,6 +856,10 @@ function create_probe_datatable(probe_dataset){
 	 
 	 	data_cell = probe_table.row( this ).data();
         var p_id = data_cell[0];
+        clicked_probe = p_id;
+        clicked_probe_asn = data_cell[1];
+	 	clicked_probe_name = data_cell[3];
+
         //console.log(p_id);
         var lat;
         var lng;
@@ -819,6 +875,8 @@ function create_probe_datatable(probe_dataset){
 
         $('#hop_info_table').find('tr.highlight').removeClass('highlight');
  		$(this).addClass('highlight');
+
+ 		show_probe_info(p_id);
 
  		if ((highlight == true) && (row_index == tr.index())){
 			$('#hop_info_table').find('tr.highlight').removeClass('highlight');

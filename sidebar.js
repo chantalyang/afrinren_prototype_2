@@ -75,6 +75,7 @@ var row_index = " ";
 
 		var tr = $(this).closest("tr");
     	//console.log(row_index)
+    	ip_mouseover = null;
 
         if (infoWindow){	
         	infoWindow.close();
@@ -110,6 +111,11 @@ var row_index = " ";
 				var anchor = new google.maps.MVCObject();
 				anchor.set("position",latLng);
 				infoWindow.open(map,anchor);
+
+			if (infoWindow) {
+	        	setTimeout(function () { infoWindow.close(); }, 2000);
+	        }
+
 
         	}
         }//End for
