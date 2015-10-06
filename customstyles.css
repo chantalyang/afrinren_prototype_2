@@ -7,24 +7,15 @@
 }
 
 #map {
-    height: 600px;
+    height: 550px;
     width: 500px;
 }
-
-#checkbox-row{
-	float:right ;
-}
-
 
 #info{
     
     height:600px;
     text-align: center;
     float:left;
-}
-
-#protocol_dropdown{
-	: 150px;
 }
 
 .highlight{
