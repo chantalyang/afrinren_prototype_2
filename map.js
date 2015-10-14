@@ -661,6 +661,8 @@ function click_probe(){
 		create_probe_datatable(probe_table_data);
 	}
 	if (current_clicked != clicked_probe){
+		//hop_data_set = [];
+
 
 	 	//Draw new line
 	 	selected_traceroute_polyline = new google.maps.Polyline({
@@ -1005,6 +1007,10 @@ function create_probe_datatable(probe_dataset){
 			}
 		}
 	}
+
+	p_table = $('#hop_info_table').dataTable();
+	destroy_old_datatable(p_table);
+	create_probe_datatable(probe_table_data);
 
 	highlighted = true;
 	row_index = tr.index();
