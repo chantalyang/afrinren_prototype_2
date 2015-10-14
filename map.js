@@ -113,7 +113,7 @@ function load_probe_JSON(){
 		//path: triangle_svg_path,
 		path: diamond_svg_path,
 		//scale:0.8,
-		scale:3.5,
+		scale:4,
 		fillColor: 'blue',
 		fillOpacity: 1,
 		strokeColor: "white",
@@ -176,7 +176,7 @@ function add_destination_ip_layer(gmap){
 			fillColor: this.style(selected_marker).icon.fillColor,
 			fillOpacity:1,
 			strokeWeight:1.5,
-			strokeColor: "black",
+			strokeColor: "white",
 		}
 
 	 	//Remove all IPs
@@ -401,14 +401,15 @@ function add_hops_to_map(selected_ip_address){
 		function remove_extra_markers(hops){
 			
 			for (var i = 0; i < hops.length; i++){
-				if (JSON.stringify(clicked_ip.position) === JSON.stringify(all_hops[i].position)){ 
-											console.log(true);
+				if ((clicked_ip.position.lat() == all_hops[i].position.lat()) && (clicked_ip.position.lng() == all_hops[i].position.lng()) ) { 
+											
 								     	 	all_hops[i].setMap(null);
 								     	}
 							     }
 		}
 	
 	remove_extra_markers(all_hops);
+	//all_hops[all_hops.length-1].setMap(null);
 	draw_traceroutes(selected_ip_address);
 	remove_extra_probes();
 
@@ -798,7 +799,7 @@ function create_probe_datatable(probe_dataset){
 
 	probe_table = $('#hop_info_table').DataTable( {
 	        data: probe_dataset,
-	        "bSort": false,
+	        //"bSort": false,
 	        
 	    	  columns: [
 	            { title: "Probe ID" },
@@ -1024,7 +1025,7 @@ function create_new_datatable(data_set){
 
 	 table = $('#hop_info_table').DataTable( {
 	        data: data_set,
-	        "bSort": false,
+	        //"bSort": false,
 	        
 	    	  columns: [
 	            { title: "Hop #" },
