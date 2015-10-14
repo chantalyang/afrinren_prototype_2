@@ -221,6 +221,14 @@ function add_destination_ip_layer(gmap){
 	  		 	bread_crumb_dest_ip.innerHTML = "Destination IP Information";
   		 	}
 
+  		 	if (bread_crumb_traceroute != null){
+	  		 		breadcrumb.removeChild(bread_crumb_traceroute);
+	  		 		bread_crumb_traceroute = null;
+	  		 		document.getElementById("bread_crumb_ip_info").innerHTML = "Destination IP Information";
+
+	  		 }
+
+
   		 })//End click event
 
 
@@ -863,9 +871,10 @@ function create_probe_datatable(probe_dataset){
 
   		 		breadcrumb.removeChild(bread_crumb_probes)
 	  		 	bread_crumb_probes = null;
-	  		 	bread_crumb_dest_ip.innerHTML = "Destination IP Information";
-  		 	
 
+	  		 bread_crumb_dest_ip.innerHTML = "Destination IP Information";
+
+  		 	
 
   		 } //End click event
 
@@ -909,10 +918,18 @@ function create_probe_datatable(probe_dataset){
   		 		display_ip_data(ip_address_data);
   		 	}
 
-  		 	breadcrumb.removeChild(bread_crumb_probes)
-  		 	bread_crumb_probes = null;
-  		 	bread_crumb_dest_ip.innerHTML = "Destination IP Information";
+  		 	if (bread_crumb_probes != null){
+  		 		breadcrumb.removeChild(bread_crumb_probes)
+  		 		bread_crumb_probes = null;
+  		 	}
+  		 	
+  		 	 if (bread_crumb_traceroute != null){
+	  		 		breadcrumb.removeChild(bread_crumb_traceroute);
+	  		 		bread_crumb_traceroute = null;
 
+	  		 }
+
+	  		 document.getElementById("bread_crumb_ip_info").innerHTML = "Destination IP Information";
 
 
 		 	}//End click event
@@ -1007,6 +1024,7 @@ var para_id;
 var para_asn;
 var para_name;
 var show_traces_clicked = false;
+var bread_crumb_traceroute;
 
 function create_new_datatable(data_set){
 	
@@ -1049,12 +1067,13 @@ function create_new_datatable(data_set){
 		btn_show_all_traceroutes.id = "show_all_traces";
 		btn_show_all_traceroutes.innerHTML = "Show all traceroutes";
 
-		btn_show_ips =  document.createElement("button");
-		btn_show_ips.className = "btn btn-info";
-		btn_show_ips.id = "show_ips";
-		btn_show_ips.innerHTML = "Back to destination IPs";
+		if (document.getElementById("show_ips_probes") == null){
+			btn_show_ips =  document.createElement("button");
+			btn_show_ips.className = "btn btn-info";
+			btn_show_ips.id = "show_ips";
+			btn_show_ips.innerHTML = "Back to destination IPs";
 
-		btn_show_ips.onclick = function(event){
+			btn_show_ips.onclick = function(event){
 			clicked_ip.setMap(null); //Remove current marker 
   		 	add_destination_ip_layer(map); //Re-add destination IPs
   		 	
@@ -1076,11 +1095,61 @@ function create_new_datatable(data_set){
   		 		destroy_old_datatable();
   		 		display_ip_data(ip_address_data);
   		 	}
+
+  		 	if (bread_crumb_probes != null){
+	  		 	breadcrumb.removeChild(bread_crumb_probes)
+	  		 	bread_crumb_probes = null;
+	  		 	bread_crumb_dest_ip.innerHTML = "Destination IP Information";
+  		 	}
+
+  		 	if (bread_crumb_traceroute != null){
+	  		 		breadcrumb.removeChild(bread_crumb_traceroute);
+	  		 		bread_crumb_traceroute = null;
+	  		 		document.getElementById("bread_crumb_ip_info").innerHTML = "Destination IP Information";
+
+	  		 }
+
+
+
   		 	
   		 }
+  		   		 btn_div.appendChild(btn_show_ips);
+
+		}
+
+		breadcrumb = document.getElementById("bread_crumb");
+
+  		 if (bread_crumb_traceroute == null){
+  		 bread_crumb_traceroute =  document.createElement("li");
+  		 bread_crumb_traceroute.id = "bread_crumb_traceroute_info";
+		 bread_crumb_traceroute.innerHTML = "Traceroute Information";
+
+		 breadcrumb.appendChild(bread_crumb_traceroute);
+
+		 bread_probes = document.getElementById("bread_crumb_probe_info");
+		 bread_probes.innerHTML = "<a>Probe Information</a>";
+
+		 bread_probes.onclick = function(event){
+
+			//Create probe data table
+			p_table = $('#hop_info_table').dataTable();
+			destroy_old_datatable(p_table);
+			create_probe_datatable(probe_table_data);
+			 
+
+			 if (bread_crumb_traceroute != null){
+			 	breadcrumb.removeChild(bread_crumb_traceroute);
+			 	bread_crumb_traceroute = null;
+			 	bread_probes.innerHTML = "Probe Information";
+
+			 }
+			}
+
+		}//End bread crumb if
+
+		
 
   		 btn_div.appendChild(btn_show_all_traceroutes);
-  		 btn_div.appendChild(btn_show_ips);
 
 }//End else
 
