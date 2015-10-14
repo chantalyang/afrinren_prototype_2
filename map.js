@@ -961,7 +961,7 @@ function create_probe_datatable(probe_dataset){
         	infoWindow.close();
         }
 
-        $('#hop_info_table').find('tr.highlight').removeClass('highlight');
+        $('#hop_info_tshowshable').find('tr.highlight').removeClass('highlight');
         $(this).addClass('highlight');
 
         show_probe_info(p_id);
@@ -1117,41 +1117,49 @@ function create_new_datatable(data_set){
 
 		}
 
-		breadcrumb = document.getElementById("bread_crumb");
-
-  		 if (bread_crumb_traceroute == null){
-  		 bread_crumb_traceroute =  document.createElement("li");
-  		 bread_crumb_traceroute.id = "bread_crumb_traceroute_info";
-		 bread_crumb_traceroute.innerHTML = "Traceroute Information";
-
-		 breadcrumb.appendChild(bread_crumb_traceroute);
-
-		 bread_probes = document.getElementById("bread_crumb_probe_info");
-		 bread_probes.innerHTML = "<a>Probe Information</a>";
-
-		 bread_probes.onclick = function(event){
-
-			//Create probe data table
-			p_table = $('#hop_info_table').dataTable();
-			destroy_old_datatable(p_table);
-			create_probe_datatable(probe_table_data);
-			 
-
-			 if (bread_crumb_traceroute != null){
-			 	breadcrumb.removeChild(bread_crumb_traceroute);
-			 	bread_crumb_traceroute = null;
-			 	bread_probes.innerHTML = "Probe Information";
-
-			 }
-			}
-
-		}//End bread crumb if
+		
 
 		
 
   		 btn_div.appendChild(btn_show_all_traceroutes);
 
 }//End else
+
+breadcrumb = document.getElementById("bread_crumb");
+
+  		 if (bread_crumb_traceroute == null){
+	  		 bread_crumb_traceroute =  document.createElement("li");
+	  		 bread_crumb_traceroute.id = "bread_crumb_traceroute_info";
+			 bread_crumb_traceroute.innerHTML = "Traceroute Information";
+
+			 breadcrumb.appendChild(bread_crumb_traceroute);
+
+			 bread_probes = document.getElementById("bread_crumb_probe_info");
+			 bread_probes.innerHTML = "<a>Probe Information</a>";
+
+			 bread_probes.onclick = function(event){
+
+				//Create probe data table
+				p_table = $('#hop_info_table').dataTable();
+				destroy_old_datatable(p_table);
+				create_probe_datatable(probe_table_data);
+				 
+
+				 if (bread_crumb_traceroute != null){
+				 	breadcrumb.removeChild(bread_crumb_traceroute);
+				 	bread_crumb_traceroute = null;
+				 	bread_probes.innerHTML = "Probe Information";
+
+				 }
+
+				 map.setZoom(3);
+        		map.setCenter( {lat: 0.070959, lng: 23.923482})
+
+				} //End bread crumb click
+
+
+
+		}//End bread crumb if
 
 btn_show_all_traceroutes.onclick = function(event){
 	show_traces_clicked = true;
