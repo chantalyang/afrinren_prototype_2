@@ -19,6 +19,7 @@ var used_probes = [];
 var selected_traceroute_data = [];
 var all_measurements_data;
 var ixp_data_layer;
+var infoWindow;
 
 function initMap() {
 
@@ -38,7 +39,9 @@ function initMap() {
 	}
 	);
 
-
+	infoWindow = new google.maps.InfoWindow({
+		content: "",
+	});
 
 	load_fibre_JSON();
 	load_probe_JSON();
@@ -57,7 +60,7 @@ function load_ixps_JSON(){
 		scale:0.8,
 		fillColor: '#dd1c77',
 		fillOpacity: 1,
-		strokeColor: "black",
+		strokeColor: "white",
 		strokeWeight:1,
 		anchor: new google.maps.Point(15,16)
 	};
@@ -70,9 +73,7 @@ function load_ixps_JSON(){
 
 function ixp_mouseover(){
 
-	var  infoWindow = new google.maps.InfoWindow({
-		content: "",
-	});
+	infoWindow.content = "";
 
 	 //Mouseover events listener
 	 ixp_data_layer.addListener('mouseover', function(event) {
@@ -86,12 +87,20 @@ function ixp_mouseover(){
         anchor.set("position",event.latLng);
         infoWindow.open(map,anchor);
 
-        if (infoWindow) {
-        	setTimeout(function () { infoWindow.close(); }, 3000);
-        }
 
 
       });//End event listener
+
+	 destination_ip_layer.addListener("mousemove",function(event) {
+        if (infoWindow) {
+         infoWindow.close();
+
+                 }
+    });
+
+	 if (infoWindow) {
+	 		setTimeout(function () { infoWindow.close(); }, 1000);
+	 	}
 
 	}
 
@@ -134,9 +143,7 @@ var ip_mouseover;
 
 function add_destination_ip_layer(gmap){
 
-	var  infoWindow = new google.maps.InfoWindow({
-		content: "",
-	});
+	infoWindow.content = "";
 
 	destination_ip_layer = new google.maps.Data();
 	destination_ip_layer.loadGeoJson("/data/all_destination_ips.json");
@@ -176,7 +183,7 @@ function add_destination_ip_layer(gmap){
 			fillColor: this.style(selected_marker).icon.fillColor,
 			fillOpacity:1,
 			strokeWeight:1.5,
-			strokeColor: "white",
+			strokeColor: "black",
 		}
 
 	 	//Remove all IPs
@@ -208,6 +215,7 @@ function add_destination_ip_layer(gmap){
   		 	
   		 	if (selected_traceroute_polyline != null)
   		 		removeLine(selected_traceroute_polyline);
+  		 	
   		 	traceroute_path = [];
 
   		 	if (rendered_table != null){
@@ -235,7 +243,12 @@ function add_destination_ip_layer(gmap){
 
   		 //Allow mouseover for new marker
   		 clicked_ip.addListener("mouseover", function(event){
-  		 	render_IPinfoWindow(infoWindow, selected_marker)	
+  		 	infoWindow.setContent("<b>" + selected_marker.getProperty("name") + "</b>" +
+				"<br>" + "<b>ASN: </b> " + selected_marker.getProperty("asn") +
+				"<br>" + " <b>IP Address:</b>" + selected_marker.getProperty("ip_address"));
+			var anchor = new google.maps.MVCObject();
+			anchor.set("position",event.latLng);
+			infoWindow.open(map,anchor);
 
   		 })
 
@@ -275,17 +288,6 @@ destination_ip_layer.setMap(gmap);
 
 }//End add destination ip
 
-function render_IPinfoWindow(window, marker){
-	var  infoWindow = window; 
-
-	infoWindow.setContent("<b>" + marker.getProperty("name") + "</b>" +
-		"<br>" + "<b>ASN: </b> " + marker.getProperty("asn") +
-		"<br>" + " <b>IP Address:</b>" + marker.getProperty("ip_address"));
-	var anchor = new google.maps.MVCObject();
-	anchor.set("position",event.latLng);
-	infoWindow.open(map,anchor);
-
-}
 
 function add_ips_to_array(file){	
 	$.getJSON(file)
@@ -593,9 +595,8 @@ function remove_extra_probes(){
 
 function mouseover_probe(){
 
-	var  infoWindow = new google.maps.InfoWindow({
-		content: "",
-	});
+	infoWindow.content = "";
+
 
 	if (infoWindow){	
 		infoWindow.close();
@@ -829,7 +830,7 @@ function create_probe_datatable(probe_dataset){
 	        
 	    } );
 
-	var infoWindow;
+	
 
 	btn_div = document.getElementById("btn_div");
 	btn_div.className = "btn-group";
@@ -1042,6 +1043,11 @@ function create_new_datatable(data_set){
 		form.className = "form-inline well";
 		form.id = "probe_details";
 		document.getElementById("probe_info").appendChild(form);
+
+		h_id = document.createElement("p");
+		h_id.id = "heading_id";
+		h_id.innerHTML = "Traceroute from Probe " + clicked_probe.toString() + " to " + clicked_ip_address;
+		document.getElementById("probe_details").appendChild(h_id);
 
 		para_id = document.createElement("p");
 		para_id.id = "prob_id";
