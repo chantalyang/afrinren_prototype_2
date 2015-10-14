@@ -692,6 +692,7 @@ function click_probe(){
 	 	destroy_old_datatable(orig_table);
 
 	 	create_new_datatable(hop_data_set);
+
 	 }
 
 	 	//console.log(show_traces_clicked);
@@ -835,7 +836,7 @@ function create_probe_datatable(probe_dataset){
 	btn_div = document.getElementById("btn_div");
 	btn_div.className = "btn-group";
 
-	if (document.getElementById("show_ips") == null){
+	if ((document.getElementById("show_ips") == null) && (document.getElementById("show_ips_probes") == null)){ 
 
 
 		btn_show_ips_probes =  document.createElement("button");
