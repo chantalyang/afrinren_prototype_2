@@ -39,7 +39,7 @@ function display_ip_data(dataSet){
 	    
 	     rendered_table = $('#hop_info_table').DataTable( {
 	        data: dataSet,
-	        //"bSort": false,
+	        "bSortable": true,
 	        "bDestroy":true,
 
 	        columns: [

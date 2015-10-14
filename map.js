@@ -713,6 +713,7 @@ function click_probe(){
 
 function show_probe_info(prb_id){
 	dict = {}
+	hop_data_set = [];
 
 	format_measurements(all_measurements_data[prb_id]);
 
@@ -1008,10 +1009,6 @@ function create_probe_datatable(probe_dataset){
 		}
 	}
 
-	p_table = $('#hop_info_table').dataTable();
-	destroy_old_datatable(p_table);
-	create_probe_datatable(probe_table_data);
-
 	highlighted = true;
 	row_index = tr.index();
 }
@@ -1035,7 +1032,6 @@ var show_traces_clicked = false;
 var bread_crumb_traceroute;
 
 function create_new_datatable(data_set){
-	
 	change_text(sidebar_heading, "Traceroute Information")
 
 
@@ -1201,9 +1197,11 @@ var row_index = " ";
 
 
 table.on('click', 'tr', function () {
-
+	var ip;
 	data = table.row( this ).data();
-	var ip = data[2];
+		 ip = data[2];
+
+		
         //console.log(ip);
         var lat;
         var lng;
