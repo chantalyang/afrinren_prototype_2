@@ -57,7 +57,7 @@ function load_ixps_JSON(){
 		scale:0.8,
 		fillColor: '#dd1c77',
 		fillOpacity: 1,
-		strokeColor: "white",
+		strokeColor: "black",
 		strokeWeight:1,
 		anchor: new google.maps.Point(15,16)
 	};
@@ -214,7 +214,12 @@ function add_destination_ip_layer(gmap){
   		 		destroy_old_datatable();
   		 		display_ip_data(ip_address_data);
   		 	}
-  		 	
+
+  		 	if (bread_crumb_probes != null){
+	  		 	breadcrumb.removeChild(bread_crumb_probes)
+	  		 	bread_crumb_probes = null;
+	  		 	bread_crumb_dest_ip.innerHTML = "Destination IP Information";
+  		 	}
 
   		 })//End click event
 
@@ -522,12 +527,6 @@ function draw_traceroutes(ip_addr){
 
 }
 
-function click_traceroute_path(){
-	traceroute_polyline.addListener("clicked", function(event){
-		console.log("I was clicked!");
-
-	})
-}
 
 function remove_traceroutes(){
 	for (k = 0; k < all_traceroute_polylines.length; k++){
@@ -803,6 +802,7 @@ function format_probe_data(probe_data){
 
 }
 var probe_table;
+var bread_crumb_probes;
 
 function create_probe_datatable(probe_dataset){
 
@@ -827,6 +827,8 @@ function create_probe_datatable(probe_dataset){
 	btn_div.className = "btn-group";
 
 	if (document.getElementById("show_ips") == null){
+
+
 		btn_show_ips_probes =  document.createElement("button");
 		btn_show_ips_probes.className = "btn btn-info";
 		btn_show_ips_probes.id = "show_ips_probes";
@@ -859,9 +861,64 @@ function create_probe_datatable(probe_dataset){
   		 		display_ip_data(ip_address_data);
   		 	}
 
+  		 		breadcrumb.removeChild(bread_crumb_probes)
+	  		 	bread_crumb_probes = null;
+	  		 	bread_crumb_dest_ip.innerHTML = "Destination IP Information";
+  		 	
+
 
   		 } //End click event
-}
+
+
+}//End if
+
+  		   // <li><a href="#">Destination IP Information</a></li>
+  		 breadcrumb = document.getElementById("bread_crumb");
+
+  		 if (bread_crumb_probes == null){
+  		 bread_crumb_probes =  document.createElement("li");
+  		 bread_crumb_probes.id = "bread_crumb_probe_info";
+		 bread_crumb_probes.innerHTML = "Probe Information";
+
+		 breadcrumb.appendChild(bread_crumb_probes);
+
+		 bread_crumb_dest_ip = document.getElementById("bread_crumb_ip_info");
+		 bread_crumb_dest_ip.innerHTML = "<a>Destination IP Information</a>";
+
+		 bread_crumb_dest_ip.onclick = function(event){
+		 	clicked_ip.setMap(null); //Remove current marker 
+  		 	add_destination_ip_layer(map); //Re-add destination IPs
+
+  		 	map.setZoom(3);
+  		 	map.setCenter( {lat: 0.070959, lng: 23.923482})
+
+  		 	probe_layer.setMap(null); //Remove probes from map
+  		 	document.getElementById("probe_layer").checked = false;
+  		 	load_probe_JSON(); //Reload probes
+
+  		 	remove_hops(); //Remove hops
+  		 	remove_traceroutes(); //Remove all selected traceroutes
+  		 	
+  		 	if (selected_traceroute_polyline != null)
+  		 		removeLine(selected_traceroute_polyline);
+  		 	traceroute_path = [];
+
+  		 	if (rendered_table != null){
+  		 		p_table = $('#hop_info_table').dataTable();
+  		 		destroy_old_datatable(p_table);
+  		 		display_ip_data(ip_address_data);
+  		 	}
+
+  		 	breadcrumb.removeChild(bread_crumb_probes)
+  		 	bread_crumb_probes = null;
+  		 	bread_crumb_dest_ip.innerHTML = "Destination IP Information";
+
+
+
+		 	}//End click event
+		}
+
+
   		 var highlight = false;
   		 var row_index = " ";
 
