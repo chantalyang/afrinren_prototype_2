@@ -16,21 +16,21 @@ The following data was used to create the visualisation:
 *IXP Data as `.json` generated from a `.csv` from the [Internet Exchange Point Directory](https://prefix.pch.net/applications/ixpdir/) managed by Packet Clearing House  
 *[Terrestrial Fibre in Africa Data](https://github.com/stevesong/afterfibre-kml) as `.geojson` courtesy of Steve Song from [AfTerFibre](https://manypossibilities.net/afterfibre-old/)
 
-The MaxMind GeoLite City Database was used to map IP addresses to coordinates on a city level and used to position markers on the map for both probes and destination IP addresses.
+The [MaxMind GeoLite City Database](http://dev.maxmind.com/geoip/legacy/geolite/) was used to map IP addresses to coordinates on a city level and used to position markers on the map for both probes and destination IP addresses.
 
 ##Implementation
-*Google Maps Javascript API v3
-*[DataTable | Table plug-in for jQuery] (https://www.datatables.net/)
-*Server: Python Simple HTTP Server `python -m SimpleHTTPServer 8080` 
+* Google Maps Javascript API v3
+* [DataTable | Table plug-in for jQuery] (https://www.datatables.net/)
+* Server: Python Simple HTTP Server `python -m SimpleHTTPServer 8080` 
 
 ##Map Layers and Symbols
 Below the map, there are several checkboxes which can be used to toggle various map layers on and off - either displaying or hiding icons and layers on the map.
 
-*Destination IP Address - where a traceroute is sent t (coloured circle)
-*Probe - where a traceroute is sent from (blue diamond)
-*Internet Exchange Point (pink triangle)
-*Traceroute Hops -  (bright green circle)
-*Terrestrial Fibre - Fibre Optic Cables over land (green lines)
+* Destination IP Address - where a traceroute is sent t (coloured circle)
+* Probe - where a traceroute is sent from (blue diamond)
+* Internet Exchange Point (pink triangle)
+* Traceroute Hops -  (bright green circle)
+* Terrestrial Fibre - Fibre Optic Cables over land (green lines)
 
 By default, all destination IPs are shown on the map. With the exception of hops, mousing over each symbol displays information about that particular icon such as the name, ASN and IP Address.
 
