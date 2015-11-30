@@ -1,9 +1,9 @@
 # AfriNREN Project Information
 AfriNREN is a Computer Science honours project at the University of Cape Town aiming to design and develop a network traffic analysis tool for use by network managers of African National Research and Education Networks (NRENs).
 
-[Project Website](http://pubs.cs.uct.ac.za/honsproj/cgi-bin/view/2015/passmore_sanby_yang.zip/AfriNRENWeb-master/)
-[Geovis Website](http://pubs.cs.uct.ac.za/honsproj/cgi-bin/view/2015/passmore_sanby_yang.zip/AfriNRENWeb-master/geovis.html)
-[Research Paper](http://pubs.cs.uct.ac.za/honsproj/cgi-bin/view/2015/passmore_sanby_yang.zip/AfriNRENWeb-master/documents/final_papers/Chantal_Final_Paper.pdf)
+* [Project Website](http://pubs.cs.uct.ac.za/honsproj/cgi-bin/view/2015/passmore_sanby_yang.zip/AfriNRENWeb-master/)
+* [Geovis Website](http://pubs.cs.uct.ac.za/honsproj/cgi-bin/view/2015/passmore_sanby_yang.zip/AfriNRENWeb-master/geovis.html)
+* [Research Paper](http://pubs.cs.uct.ac.za/honsproj/cgi-bin/view/2015/passmore_sanby_yang.zip/AfriNRENWeb-master/documents/final_papers/Chantal_Final_Paper.pdf)
 
 #Geospatial Visualisation
 The visualisation shows the results of traceroute data collected for the network topology (network structure) discovery of National Research and Education Networks in Africa using the [Ripe Atlas](https://atlas.ripe.net/) platform. The probes shown in the visualisation are those hosted on various NRENs in Southern and Eastern Africa. Probes are small, USB-powered hardware devices that hosts attach to an Ethernet port on their router via a network cable. These probes were then used to conduct various traceroute measurements from the networks in which they are hosted. Traceroutes are sent to selected destination IPs which are also located within an African NRENs or related institution. 
