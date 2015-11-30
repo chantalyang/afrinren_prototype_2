@@ -1,7 +1,7 @@
 # AfriNREN Project Information
 AfriNREN is a Computer Science honours project at the University of Cape Town aiming to design and develop a network traffic analysis tool for use by network managers of African National Research and Education Networks (NRENs).
 
-Project Members: Rob Passmore, Rosy Sanby, Chantal Yang
+Project Members: Rob Passmore, Rosy Sanby, Chantal Yang.
 
 The project was split into the following sections:
 * Data Collection and Formatting - Rosy Sanby
