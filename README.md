@@ -9,7 +9,8 @@ The project was split into the following sections:
 * Non-geospatial Visualisation - Rob Passmore
 
 ##Links
-* [Project Website](http://pubs.cs.uct.ac.za/honsproj/cgi-bin/view/2015/passmore_sanby_yang.zip/AfriNRENWeb-master/)
+* [Project Website at UCT CS Project Archive](http://pubs.cs.uct.ac.za/honsproj/cgi-bin/view/2015/passmore_sanby_yang.zip/AfriNRENWeb-master/)
+* [Project Website on Github.io](http://chantalyang.github.io/AfriNRENWeb/)
 * [Geospatial Visualisation Webpage](http://pubs.cs.uct.ac.za/honsproj/cgi-bin/view/2015/passmore_sanby_yang.zip/AfriNRENWeb-master/geovis.html)
 * [Research Paper - "Visualising the Network Topology of National Research and Education Networks in Africa"](http://pubs.cs.uct.ac.za/honsproj/cgi-bin/view/2015/passmore_sanby_yang.zip/AfriNRENWeb-master/documents/final_papers/Chantal_Final_Paper.pdf)
 
