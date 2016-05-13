@@ -1,7 +1,7 @@
 # AfriNREN Project Information
 AfriNREN is a Computer Science honours project at the University of Cape Town aiming to design and develop a network traffic analysis tool for use by network managers of African National Research and Education Networks (NRENs).
 
-Project Members: Rob Passmore, Rosy Sanby, Chantal Yang.
+Project Members: Rob Passmore, Rosy Sanby, Chantal Yang. Supervised by Hussein Suleman and Josiah Chavula.
 
 The project was split into the following sections:
 * Data Collection and Formatting - Rosy Sanby
@@ -13,6 +13,9 @@ The project was split into the following sections:
 * [Project Website on Github.io](http://chantalyang.github.io/AfriNRENWeb/)
 * [Geospatial Visualisation Webpage](http://pubs.cs.uct.ac.za/honsproj/cgi-bin/view/2015/passmore_sanby_yang.zip/AfriNRENWeb-master/geovis.html)
 * [Research Paper - "Visualising the Network Topology of National Research and Education Networks in Africa"](http://pubs.cs.uct.ac.za/honsproj/cgi-bin/view/2015/passmore_sanby_yang.zip/AfriNRENWeb-master/documents/final_papers/Chantal_Final_Paper.pdf)
+* [IST Africa 2016 Conference Paper - "A Topology Visualisation Tool for National Research and Education Networks in Africa"](http://www.ist-africa.org/Conference2016/outbox/ISTAfrica_Paper_ref_86_8274.pdf)
+* [Screen recording of Visualisation in Use](https://youtu.be/GWCUC39ZfBg)
+
 
 #Geospatial Visualisation
 The visualisation shows the results of traceroute data collected for the network topology (network structure) discovery of National Research and Education Networks in Africa using the [Ripe Atlas](https://atlas.ripe.net/) platform. The probes shown in the visualisation are those hosted on various NRENs in Southern and Eastern Africa. Probes are small, USB-powered hardware devices that hosts attach to an Ethernet port on their router via a network cable. These probes were then used to conduct various traceroute measurements from the networks in which they are hosted. Traceroutes are sent to selected destination IPs which are also located within an African NRENs or related institution. 
