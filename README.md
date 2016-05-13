@@ -12,7 +12,7 @@ The project was split into the following sections:
 * [Project Website at UCT CS Project Archive](http://pubs.cs.uct.ac.za/honsproj/cgi-bin/view/2015/passmore_sanby_yang.zip/AfriNRENWeb-master/)
 * [Project Website on Github.io](http://chantalyang.github.io/AfriNRENWeb/)
 * [Geospatial Visualisation Webpage](http://pubs.cs.uct.ac.za/honsproj/cgi-bin/view/2015/passmore_sanby_yang.zip/AfriNRENWeb-master/geovis.html)
-* [Research Paper - "Visualising the Network Topology of National Research and Education Networks in Africa"](http://pubs.cs.uct.ac.za/honsproj/cgi-bin/view/2015/passmore_sanby_yang.zip/AfriNRENWeb-master/documents/final_papers/Chantal_Final_Paper.pdf)
+* [Honours Research Paper - "Visualising the Network Topology of National Research and Education Networks in Africa"](http://pubs.cs.uct.ac.za/honsproj/cgi-bin/view/2015/passmore_sanby_yang.zip/AfriNRENWeb-master/documents/final_papers/Chantal_Final_Paper.pdf)
 * [IST Africa 2016 Conference Paper - "A Topology Visualisation Tool for National Research and Education Networks in Africa"](http://www.ist-africa.org/Conference2016/outbox/ISTAfrica_Paper_ref_86_8274.pdf)
 * [Screen recording of Visualisation in Use](https://youtu.be/GWCUC39ZfBg)
 
