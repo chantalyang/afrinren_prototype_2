@@ -67,7 +67,7 @@ function load_ixps_JSON(){
 
 
 	ixp_data_layer = new google.maps.Data();
-	ixp_data_layer.loadGeoJson("/Algerie_Telecom.geojson");
+	ixp_data_layer.loadGeoJson("/data/ixps.json");
 	ixp_data_layer.setStyle({icon: ixp_symbol, clickable: true} );
 }
 
